@@ -3,14 +3,14 @@ import { ArtPiece } from '@/data/mockArt';
 
 interface ArtCardProps {
   art: ArtPiece;
+  onClick: (art: ArtPiece) => void;
 }
 
-const ArtCard = ({ art }: ArtCardProps) => {
+const ArtCard = ({ art, onClick }: ArtCardProps) => {
   return (
     <motion.div
-      layout
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
+      layoutId={`art-${art.id}`}
+      onClick={() => onClick(art)}
       className="art-card"
       style={{
         marginBottom: '1rem',

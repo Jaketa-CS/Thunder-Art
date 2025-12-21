@@ -40,7 +40,7 @@ const Navbar = () => {
         <NavLink to="/commissions" active={isActive('/commissions')}>
           Commissions
         </NavLink>
-        <NavLink to="#" onClick={() => alert('Coming soon!')} active={false}>
+        <NavLink to="/about" active={isActive('/about')}>
           About
         </NavLink>
       </div>

@@ -1,9 +1,13 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import ArtGrid from '@/components/ArtGrid';
 import Footer from '@/components/Footer';
-import { MOCK_ART } from '@/data/mockArt';
+import ArtModal from '@/components/ArtModal';
+import { MOCK_ART, ArtPiece } from '@/data/mockArt';
 
 const Home = () => {
+  const [selectedArt, setSelectedArt] = useState<ArtPiece | null>(null);
+
   return (
     <motion.div
       className="container"
@@ -20,9 +24,15 @@ const Home = () => {
         </p>
       </div>
 
-      <ArtGrid artworks={MOCK_ART} />
+      <ArtGrid artworks={MOCK_ART} onArtClick={setSelectedArt} />
 
       <Footer />
+
+      <AnimatePresence>
+        {selectedArt && (
+          <ArtModal art={selectedArt} onClose={() => setSelectedArt(null)} />
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

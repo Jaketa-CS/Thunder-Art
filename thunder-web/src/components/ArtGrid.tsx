@@ -3,9 +3,10 @@ import ArtCard from './ArtCard';
 
 interface ArtGridProps {
   artworks: ArtPiece[];
+  onArtClick: (art: ArtPiece) => void;
 }
 
-const ArtGrid = ({ artworks }: ArtGridProps) => {
+const ArtGrid = ({ artworks, onArtClick }: ArtGridProps) => {
   return (
     <div
       style={{
@@ -24,7 +25,7 @@ const ArtGrid = ({ artworks }: ArtGridProps) => {
         `}</style>
 
       {artworks.map((art) => (
-        <ArtCard key={art.id} art={art} />
+        <ArtCard key={art.id} art={art} onClick={onArtClick} />
       ))}
     </div>
   );

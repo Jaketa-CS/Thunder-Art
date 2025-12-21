@@ -5,6 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Home from '@/pages/Home';
 import Commissions from '@/pages/Commissions';
+import About from '@/pages/About';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/commissions" element={<Commissions />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </AnimatePresence>
       </div>
