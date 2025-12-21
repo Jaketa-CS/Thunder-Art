@@ -1,22 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
-// Pages (We will create these next)
+// Pages
 import Navbar from '@/components/Navbar';
-
-// Pages (We will create these next)
 import Home from '@/pages/Home';
+import Commissions from '@/pages/Commissions';
 
 function App() {
   return (
     <Router>
       <div className="app-container">
-        <Navbar /> 
-        
+        <Navbar />
+
         <AnimatePresence mode="wait">
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/commissions" element={<Commissions />} /> */}
+            <Route path="/commissions" element={<Commissions />} />
           </Routes>
         </AnimatePresence>
       </div>

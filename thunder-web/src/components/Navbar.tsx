@@ -7,7 +7,7 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <motion.nav 
+    <motion.nav
       className="navbar"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -19,17 +19,30 @@ const Navbar = () => {
         alignItems: 'center',
         maxWidth: '1400px',
         margin: '0 auto',
-        width: '100%'
+        width: '100%',
       }}
     >
-      <Link to="/" style={{ fontSize: '1.5rem', fontWeight: '800', fontFamily: 'var(--font-family-header)' }}>
+      <Link
+        to="/"
+        style={{
+          fontSize: '1.5rem',
+          fontWeight: '800',
+          fontFamily: 'var(--font-family-header)',
+        }}
+      >
         THUNDER<span style={{ color: 'var(--color-accent)' }}>.</span>
       </Link>
 
       <div style={{ display: 'flex', gap: '2rem' }}>
-        <NavLink to="/" active={isActive('/')}>Work</NavLink>
-        {/* <NavLink to="/commissions" active={isActive('/commissions')}>Commissions</NavLink> */}
-        <NavLink to="#" onClick={() => alert("Coming soon!")} active={false}>About</NavLink>
+        <NavLink to="/" active={isActive('/')}>
+          Work
+        </NavLink>
+        <NavLink to="/commissions" active={isActive('/commissions')}>
+          Commissions
+        </NavLink>
+        <NavLink to="#" onClick={() => alert('Coming soon!')} active={false}>
+          About
+        </NavLink>
       </div>
     </motion.nav>
   );
@@ -43,18 +56,20 @@ interface NavLinkProps {
 }
 
 const NavLink = ({ to, children, active, onClick }: NavLinkProps) => (
-  <Link 
-    to={to} 
+  <Link
+    to={to}
     onClick={onClick}
-    style={{ 
+    style={{
       position: 'relative',
-      color: active ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
-      fontWeight: active ? '600' : '400'
+      color: active
+        ? 'var(--color-text-primary)'
+        : 'var(--color-text-secondary)',
+      fontWeight: active ? '600' : '400',
     }}
   >
     {children}
     {active && (
-      <motion.div 
+      <motion.div
         layoutId="underline"
         style={{
           position: 'absolute',
@@ -62,7 +77,7 @@ const NavLink = ({ to, children, active, onClick }: NavLinkProps) => (
           left: 0,
           right: 0,
           height: '2px',
-          background: 'var(--color-accent)'
+          background: 'var(--color-accent)',
         }}
       />
     )}
