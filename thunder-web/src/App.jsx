@@ -5,11 +5,13 @@ import { AnimatePresence } from 'framer-motion';
 import Home from './pages/Home';
 // import Commissions from './pages/Commissions'; 
 
+import Navbar from './components/Navbar';
+
 function App() {
   return (
     <Router>
       <div className="app-container">
-        {/* We will add Navbar here later */}
+        <Navbar /> 
         
         <AnimatePresence mode="wait">
           <Routes>
