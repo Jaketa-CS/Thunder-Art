@@ -43,7 +43,9 @@ const ArtCard = ({ art, onClick }: ArtCardProps) => {
           padding: '1rem',
         }}
       >
-        <h3 style={{ fontSize: '1.2rem', marginBottom: '0.25rem' }}>
+        <h3
+          style={{ fontSize: '1.2rem', marginBottom: '0.25rem', color: '#fff' }}
+        >
           {art.title}
         </h3>
         <span

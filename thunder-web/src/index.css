@@ -1,12 +1,7 @@
 :root {
-  /* Brand Colors - Thunder Theme */
-  --color-bg-primary: #0a0a0b;
-  --color-bg-secondary: #141416;
-  --color-text-primary: #eaeaea;
-  --color-text-secondary: #a0a0a0;
-
-  --color-accent: #ffd700; /* Thunderbolt Gold */
-  --color-accent-glow: rgba(255, 215, 0, 0.4);
+  /* Typography */
+  --font-family-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-header: 'Outfit', sans-serif;
 
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -15,9 +10,55 @@
   --spacing-lg: 4rem;
   --spacing-xl: 8rem;
 
-  /* Typography */
-  --font-family-body: "Inter", system-ui, -apple-system, sans-serif;
-  --font-family-header: "Outfit", sans-serif;
+  /* Radii - Google/Antigravity tend to be very round */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-theme:
+    background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme='dark'] {
+  /* Google Dark Theme - Material 3 */
+  --color-bg-primary: #121212; /* Deepest Background */
+  --color-bg-secondary: #1e1e1e; /* Surface Container */
+  --color-bg-tertiary: #2c2c2c; /* Surface Container High */
+
+  --color-text-primary: #e3e3e3;
+  --color-text-secondary: #c4c7c5;
+
+  --color-border: #444746;
+  --color-accent: #00e5ff; /* Electric Blue (Cyan A400) */
+
+  --radius-sm: 12px;
+  --radius-md: 24px; /* Google Pill Shape */
+  --radius-lg: 32px;
+
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='light'] {
+  /* Google Light Theme - Material 3 */
+  --color-bg-primary: #f0f4f9; /* Surface Container Low */
+  --color-bg-secondary: #ffffff; /* Surface */
+  --color-bg-tertiary: #dee3eb; /* Surface Container High */
+
+  --color-text-primary: #1f1f1f;
+  --color-text-secondary: #444746;
+
+  --color-border: #e0e3e1;
+  --color-accent: #00b0ff; /* Deep Electric Blue */
+
+  --radius-sm: 12px;
+  --radius-md: 24px;
+  --radius-lg: 32px;
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -33,6 +74,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: var(--transition-theme);
 }
 
 h1,
@@ -43,6 +85,7 @@ h4 {
   font-weight: 700;
   color: var(--color-text-primary);
   line-height: 1.1;
+  letter-spacing: -0.02em; /* Tighter headings for modern look */
 }
 
 a {
@@ -51,13 +94,8 @@ a {
   transition: opacity 0.2s ease;
 }
 
-a:hover {
-  opacity: 0.8;
-}
-
-img {
-  max-width: 100%;
-  display: block;
+button {
+  font-family: inherit;
 }
 
 /* Utilities */
@@ -67,21 +105,17 @@ img {
   padding: 0 var(--spacing-sm);
 }
 
-.grid {
-  display: grid;
-  gap: var(--spacing-sm);
-}
-
-/* Scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   background: var(--color-bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-bg-secondary);
-  border-radius: 4px;
+  background: var(--color-bg-tertiary);
+  border-radius: 99px;
+  border: 2px solid var(--color-bg-primary);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-secondary);

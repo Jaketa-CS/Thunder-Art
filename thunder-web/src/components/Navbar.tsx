@@ -1,8 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Navbar = () => {
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -30,7 +32,7 @@ const Navbar = () => {
           fontFamily: 'var(--font-family-header)',
         }}
       >
-        THUNDER<span style={{ color: 'var(--color-accent)' }}>.</span>
+        THUNDERFENNEC<span style={{ color: 'var(--color-accent)' }}>.</span>
       </Link>
 
       <div style={{ display: 'flex', gap: '2rem' }}>
@@ -43,6 +45,26 @@ const Navbar = () => {
         <NavLink to="/about" active={isActive('/about')}>
           About
         </NavLink>
+
+        <button
+          onClick={toggleTheme}
+          style={{
+            background: 'var(--color-bg-tertiary)',
+            border: 'none',
+            padding: '0.5rem',
+            borderRadius: '50%',
+            cursor: 'pointer',
+            marginLeft: '1rem',
+            color: 'var(--color-text-primary)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '40px',
+            height: '40px',
+          }}
+        >
+          {theme === 'dark' ? '☀️' : '🌙'}
+        </button>
       </div>
     </motion.nav>
   );
