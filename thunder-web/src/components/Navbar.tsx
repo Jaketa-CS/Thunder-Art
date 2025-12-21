@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const Navbar = () => {
   const location = useLocation();
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <motion.nav 
@@ -35,7 +35,14 @@ const Navbar = () => {
   );
 };
 
-const NavLink = ({ to, children, active, onClick }) => (
+interface NavLinkProps {
+  to: string;
+  children: React.ReactNode;
+  active: boolean;
+  onClick?: () => void;
+}
+
+const NavLink = ({ to, children, active, onClick }: NavLinkProps) => (
   <Link 
     to={to} 
     onClick={onClick}

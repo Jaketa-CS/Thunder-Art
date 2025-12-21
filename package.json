@@ -1,0 +1,69 @@
+{
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4"
+  },
+  "name": "thunder-art",
+  "version": "1.0.0",
+  "description": "Welcome! This is the starting point for my portfolio website.",
+  "main": "index.js",
+  "dependencies": {
+    "ansi-escapes": "^7.2.0",
+    "ansi-regex": "^6.2.2",
+    "ansi-styles": "^6.2.3",
+    "braces": "^3.0.3",
+    "cli-cursor": "^5.0.0",
+    "cli-truncate": "^5.1.1",
+    "colorette": "^2.0.20",
+    "commander": "^14.0.2",
+    "emoji-regex": "^10.6.0",
+    "environment": "^1.1.0",
+    "eventemitter3": "^5.0.1",
+    "fill-range": "^7.1.1",
+    "get-east-asian-width": "^1.4.0",
+    "is-fullwidth-code-point": "^5.1.0",
+    "is-number": "^7.0.0",
+    "listr2": "^9.0.5",
+    "log-update": "^6.1.0",
+    "micromatch": "^4.0.8",
+    "mimic-function": "^5.0.1",
+    "nano-spawn": "^2.0.0",
+    "onetime": "^7.0.0",
+    "picomatch": "^2.3.1",
+    "pidtree": "^0.6.0",
+    "restore-cursor": "^5.1.0",
+    "rfdc": "^1.4.1",
+    "signal-exit": "^4.1.0",
+    "slice-ansi": "^7.1.2",
+    "string-argv": "^0.3.2",
+    "string-width": "^8.1.0",
+    "strip-ansi": "^7.1.2",
+    "to-regex-range": "^5.0.1",
+    "wrap-ansi": "^9.0.2",
+    "yaml": "^2.8.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaketa-CS/Thunder-Art.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Jaketa-CS/Thunder-Art/issues"
+  },
+  "homepage": "https://github.com/Jaketa-CS/Thunder-Art#readme",
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown",
+    "thunder-web/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "cd thunder-web && npm run lint -- --fix"
+    ]
+  }
+}
