@@ -60,10 +60,6 @@
   },
   "homepage": "https://github.com/Jaketa-CS/Thunder-Art#readme",
   "lint-staged": {
-    "*": "prettier --write --ignore-unknown",
-    "thunder-web/**/*.{js,jsx,ts,tsx}": [
-      "prettier --write",
-      "cd thunder-web && npm run lint -- --fix"
-    ]
+    "*": "prettier --write --ignore-unknown"
   }
 }
