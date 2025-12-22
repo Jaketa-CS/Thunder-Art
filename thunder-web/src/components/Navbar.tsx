@@ -52,9 +52,9 @@ const Navbar = () => {
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            style={{ 
+            style={{
               transform: 'translateY(-2px) rotate(15deg) scale(0.8, 1.5)',
-              animation: 'electric-glitch 5s infinite ease-in-out'
+              animation: 'electric-glitch 5s infinite ease-in-out',
             }}
           >
             <defs>
@@ -63,12 +63,12 @@ const Navbar = () => {
                 <stop offset="100%" stopColor="#2979FF" />
               </linearGradient>
             </defs>
-            <path 
-              d="M13 2L3 14H12L11 22L21 10H12L13 2Z" 
+            <path
+              d="M13 2L3 14H12L11 22L21 10H12L13 2Z"
               fill="url(#bolt-grad)"
             />
           </svg>
-          
+
           {/* Secondary Bolt - appears during glitch */}
           <svg
             width="0.8em"
@@ -76,13 +76,14 @@ const Navbar = () => {
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            style={{ 
+            style={{
               position: 'absolute',
               left: 0,
               top: 0,
               transform: 'translate(3px, -4px) rotate(20deg) scale(0.9, 1.2)',
-              animation: 'electric-glitch-2 5s infinite ease-in-out, bolt-appear 5s infinite',
-              pointerEvents: 'none'
+              animation:
+                'electric-glitch-2 5s infinite ease-in-out, bolt-appear 5s infinite',
+              pointerEvents: 'none',
             }}
           >
             <defs>
@@ -91,8 +92,8 @@ const Navbar = () => {
                 <stop offset="100%" stopColor="#0080FF" />
               </linearGradient>
             </defs>
-            <path 
-              d="M13 2L3 14H12L11 22L21 10H12L13 2Z" 
+            <path
+              d="M13 2L3 14H12L11 22L21 10H12L13 2Z"
               fill="url(#bolt-grad-2)"
             />
           </svg>
@@ -132,7 +133,38 @@ const Navbar = () => {
             height: '40px',
           }}
         >
-          {theme === 'dark' ? '☀️' : '🌙'}
+          {theme === 'dark' ? (
+            /* Sun Icon - White for Light Mode */
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="12" cy="12" r="5" fill="#FFFFFF" />
+              <path
+                d="M12 1v3M12 20v3M23 12h-3M4 12H1M20.485 3.515l-2.121 2.121M5.636 18.364l-2.121 2.121M20.485 20.485l-2.121-2.121M5.636 5.636L3.515 3.515"
+                stroke="#FFFFFF"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          ) : (
+            /* Moon Icon - Dark for Dark Mode */
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                fill="#1E1E1E"
+              />
+            </svg>
+          )}
         </button>
       </div>
     </motion.nav>
