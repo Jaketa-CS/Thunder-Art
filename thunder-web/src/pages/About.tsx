@@ -94,8 +94,8 @@ const About = () => {
           style={{ lineHeight: '1.8', color: 'var(--color-text-secondary)' }}
         >
           <p style={{ marginBottom: '1.5rem' }}>
-            Hi! I'm a digital artist who loves bringing characters to life. I
-            specialize in vibrant illustrations and character designs.
+            Hi! I'm a digital artist and animator who doodling fluffy creatures.
+            I specialize in vibrant illustrations and character designs.
           </p>
           <p style={{ marginBottom: '1.5rem' }}>
             My work focuses on dynamic lighting, expressive poses, and unique
