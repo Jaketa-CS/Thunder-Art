@@ -53,7 +53,7 @@ const About = () => {
           <div style={{ textAlign: 'center' }}>
             <h2 style={{ marginBottom: '0.5rem' }}>Thunder / Zevoloz</h2>
             <p style={{ color: 'var(--color-accent)', fontWeight: '600' }}>
-              Software Engineer & Digital Artist
+              Digital Artist & Illustrator
             </p>
           </div>
         </div>
@@ -62,18 +62,15 @@ const About = () => {
           style={{ lineHeight: '1.8', color: 'var(--color-text-secondary)' }}
         >
           <p style={{ marginBottom: '1.5rem' }}>
-            Hi! I'm a creative developer who loves bridging the gap between code
-            and art. By day, I build software; by night, I create digital
-            illustrations and character designs.
+            Hi! I'm a digital artist who loves bringing characters to life.
+            I specialize in vibrant illustrations and character designs.
           </p>
           <p style={{ marginBottom: '1.5rem' }}>
-            My work focuses on vibrant colors, dynamic lighting, and expressive
-            characters. I'm always experimenting with new styles and
-            technologies (like this website!).
+            My work focuses on dynamic lighting, expressive poses, and unique color palettes.
+            I'm always experimenting with new artistic styles and techniques.
           </p>
           <p>
-            Feel free to reach out for commissions or just to chat about art and
-            tech!
+            Feel free to reach out for commissions or just to chat about art/characters!
           </p>
         </div>
 
@@ -85,17 +82,14 @@ const About = () => {
               paddingBottom: '0.5rem',
             }}
           >
-            Tools & Tech
+            Tools
           </h3>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             {[
               'Clip Studio Paint',
               'Photoshop',
               'Blender',
-              'React',
-              'TypeScript',
-              'Golang',
-              'Three.js',
+              'Paint Tool SAI',
             ].map((tech) => (
               <span
                 key={tech}
