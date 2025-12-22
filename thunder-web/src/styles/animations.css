@@ -1,0 +1,243 @@
+/* ============================================
+   LIGHTNING BOLT ANIMATIONS
+   ============================================ */
+
+/* Primary Lightning Bolt Animation
+   Sequence: Idle → Pulse → Pause → Electric Discharge → Return
+   Duration: 5s loop
+   ============================================ */
+@keyframes electric-glitch {
+  /* Idle State (0-79%) */
+  0%,
+  79% {
+    transform: translateY(-2px) rotate(15deg) scale(0.8, 1.5);
+    opacity: 1;
+    filter: brightness(1) drop-shadow(0 0 0px transparent);
+  }
+
+  /* Pulse Charge-Up (80-84%) */
+  80% {
+    transform: translateY(-2px) rotate(15deg) scale(0.85, 1.55);
+    opacity: 1;
+    filter: brightness(1.4) drop-shadow(0 0 6px rgba(0, 229, 255, 0.5));
+  }
+  82% {
+    transform: translateY(-2px) rotate(15deg) scale(0.9, 1.6);
+    opacity: 1;
+    filter: brightness(1.6) drop-shadow(0 0 8px rgba(0, 229, 255, 0.7));
+  }
+  84% {
+    transform: translateY(-2px) rotate(15deg) scale(0.85, 1.55);
+    opacity: 1;
+    filter: brightness(1.3) drop-shadow(0 0 5px rgba(0, 229, 255, 0.4));
+  }
+
+  /* Pause/Hold (85-87%) */
+  85%,
+  87% {
+    transform: translateY(-2px) rotate(15deg) scale(0.8, 1.5);
+    opacity: 1;
+    filter: brightness(1.1) drop-shadow(0 0 2px rgba(0, 229, 255, 0.2));
+  }
+
+  /* Electric Discharge (88-96%) */
+  88% {
+    transform: translateY(-2.5px) rotate(16deg) scale(0.82, 1.52);
+    opacity: 0.98;
+    filter: brightness(1.5) drop-shadow(0 0 5px rgba(0, 229, 255, 0.6));
+  }
+  89% {
+    transform: translateY(-4px) rotate(20deg) scale(0.98, 1.75) skewX(18deg);
+    opacity: 0.65;
+    filter: brightness(2.4) drop-shadow(0 0 14px rgba(0, 229, 255, 1))
+      drop-shadow(0 0 22px rgba(41, 121, 255, 0.8));
+  }
+  90% {
+    transform: translateY(-1px) rotate(10deg) scale(0.68, 1.38) skewX(-12deg);
+    opacity: 1;
+    filter: brightness(1.6) drop-shadow(0 0 8px rgba(0, 229, 255, 0.7));
+  }
+  91% {
+    transform: translateY(-3px) rotate(18deg) scale(0.92, 1.68) skewX(14deg);
+    opacity: 0.72;
+    filter: brightness(2.1) drop-shadow(0 0 12px rgba(0, 229, 255, 0.95))
+      drop-shadow(0 0 18px rgba(41, 121, 255, 0.7));
+  }
+  92% {
+    transform: translateY(-1.5px) rotate(12deg) scale(0.75, 1.45) skewX(-6deg);
+    opacity: 0.95;
+    filter: brightness(1.5) drop-shadow(0 0 7px rgba(0, 229, 255, 0.6));
+  }
+  93% {
+    transform: translateY(-3.5px) rotate(19deg) scale(0.88, 1.62) skewX(10deg);
+    opacity: 0.78;
+    filter: brightness(2) drop-shadow(0 0 11px rgba(0, 229, 255, 0.9));
+  }
+  94% {
+    transform: translateY(-2px) rotate(14deg) scale(0.8, 1.52) skewX(-4deg);
+    opacity: 0.92;
+    filter: brightness(1.4) drop-shadow(0 0 5px rgba(0, 229, 255, 0.5));
+  }
+  95% {
+    transform: translateY(-2px) rotate(15deg) scale(0.82, 1.54) skewX(2deg);
+    opacity: 0.98;
+    filter: brightness(1.2) drop-shadow(0 0 3px rgba(0, 229, 255, 0.3));
+  }
+
+  /* Return to Idle (96-100%) */
+  96%,
+  97%,
+  100% {
+    transform: translateY(-2px) rotate(15deg) scale(0.8, 1.5);
+    opacity: 1;
+    filter: brightness(1) drop-shadow(0 0 0px transparent);
+  }
+}
+
+/* Secondary Lightning Bolt Animation
+   Mirrors primary bolt with offset positioning
+   ============================================ */
+@keyframes electric-glitch-2 {
+  /* Idle State (0-79%) */
+  0%,
+  79% {
+    transform: translate(3px, -4px) rotate(20deg) scale(0.7, 1.4);
+    opacity: 1;
+    filter: brightness(1.2) drop-shadow(0 0 0px transparent);
+  }
+
+  /* Pulse Charge-Up (80-84%) */
+  80% {
+    transform: translate(3px, -4px) rotate(20deg) scale(0.75, 1.45);
+    opacity: 1;
+    filter: brightness(1.5) drop-shadow(0 0 7px rgba(0, 255, 255, 0.5));
+  }
+  82% {
+    transform: translate(3px, -4px) rotate(20deg) scale(0.8, 1.5);
+    opacity: 1;
+    filter: brightness(1.7) drop-shadow(0 0 9px rgba(0, 255, 255, 0.7));
+  }
+  84% {
+    transform: translate(3px, -4px) rotate(20deg) scale(0.75, 1.45);
+    opacity: 1;
+    filter: brightness(1.4) drop-shadow(0 0 6px rgba(0, 255, 255, 0.4));
+  }
+
+  /* Pause/Hold (85-87%) */
+  85%,
+  87% {
+    transform: translate(3px, -4px) rotate(20deg) scale(0.7, 1.4);
+    opacity: 1;
+    filter: brightness(1.2) drop-shadow(0 0 3px rgba(0, 255, 255, 0.2));
+  }
+
+  /* Electric Discharge (88-96%) */
+  88% {
+    transform: translate(2.5px, -5px) rotate(23deg) scale(0.72, 1.42);
+    opacity: 0.95;
+    filter: brightness(1.6) drop-shadow(0 0 6px rgba(0, 255, 255, 0.6));
+  }
+  89% {
+    transform: translate(-2px, -8px) rotate(32deg) scale(0.95, 1.72)
+      skewX(-22deg);
+    opacity: 0.6;
+    filter: brightness(2.7) drop-shadow(0 0 18px rgba(0, 255, 255, 1))
+      drop-shadow(0 0 28px rgba(0, 128, 255, 0.9));
+  }
+  90% {
+    transform: translate(7px, -1px) rotate(11deg) scale(0.62, 1.28) skewX(16deg);
+    opacity: 1;
+    filter: brightness(1.8) drop-shadow(0 0 9px rgba(0, 255, 255, 0.75));
+  }
+  91% {
+    transform: translate(0px, -7px) rotate(29deg) scale(0.88, 1.6) skewX(-16deg);
+    opacity: 0.68;
+    filter: brightness(2.3) drop-shadow(0 0 14px rgba(0, 255, 255, 1))
+      drop-shadow(0 0 20px rgba(0, 128, 255, 0.8));
+  }
+  92% {
+    transform: translate(5px, -3px) rotate(16deg) scale(0.7, 1.38) skewX(10deg);
+    opacity: 0.92;
+    filter: brightness(1.7) drop-shadow(0 0 8px rgba(0, 255, 255, 0.7));
+  }
+  93% {
+    transform: translate(1px, -6px) rotate(27deg) scale(0.84, 1.54)
+      skewX(-14deg);
+    opacity: 0.75;
+    filter: brightness(2.2) drop-shadow(0 0 13px rgba(0, 255, 255, 0.95));
+  }
+  94% {
+    transform: translate(3.5px, -4px) rotate(19deg) scale(0.72, 1.42)
+      skewX(6deg);
+    opacity: 0.88;
+    filter: brightness(1.5) drop-shadow(0 0 6px rgba(0, 255, 255, 0.5));
+  }
+  95% {
+    transform: translate(3px, -4px) rotate(20deg) scale(0.72, 1.44);
+    opacity: 0.96;
+    filter: brightness(1.3) drop-shadow(0 0 4px rgba(0, 255, 255, 0.4));
+  }
+
+  /* Return to Idle (96-100%) */
+  96%,
+  97%,
+  100% {
+    transform: translate(3px, -4px) rotate(20deg) scale(0.7, 1.4);
+    opacity: 1;
+    filter: brightness(1.2) drop-shadow(0 0 0px transparent);
+  }
+}
+
+/* Secondary Bolt Visibility Animation
+   Controls when the second bolt appears/disappears
+   ============================================ */
+@keyframes bolt-appear {
+  /* Hidden during idle */
+  0%,
+  79.5% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  /* Faint pulse preview */
+  80% {
+    opacity: 0.2;
+    transform: scale(0.85);
+  }
+  82% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+
+  /* Hidden during pause */
+  84%,
+  87% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  /* Appear during discharge */
+  88% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  96% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Fade out */
+  96.5% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  97%,
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
