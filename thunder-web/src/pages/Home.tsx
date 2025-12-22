@@ -32,7 +32,7 @@ const Home = () => {
             ? 'var(--color-bg-primary)'
             : 'var(--color-text-secondary)',
         border: 'none',
-        padding: '0.5rem 1.5rem',
+        padding: '0.5rem 1rem',
         borderRadius: '24px',
         cursor: 'pointer',
         fontSize: '0.9rem',
@@ -79,7 +79,7 @@ const Home = () => {
         }}
       >
         <h3 style={{ margin: 0 }}>Gallery</h3>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div style={{ display: 'flex', gap: '0.25rem' }}>
           <FilterButton label="All" value="all" />
           <FilterButton label="Animations" value="video" />
           <FilterButton label="Illustrations" value="image" />
