@@ -18,15 +18,6 @@ const Home = () => {
       transition={{ duration: 0.5 }}
       style={{ paddingTop: '2rem' }}
     >
-      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '4rem', marginBottom: '0.5rem' }}>
-          THUNDER ART
-        </h1>
-        <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.2rem' }}>
-          Digital Art & Animation Portfolio
-        </p>
-      </div>
-
       <HeroSection />
 
       <h3 style={{ marginBottom: '1rem', marginTop: '2rem' }}>Gallery</h3>

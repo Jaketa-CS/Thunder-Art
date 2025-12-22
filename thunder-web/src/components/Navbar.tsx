@@ -27,15 +27,23 @@ const Navbar = () => {
       <Link
         to="/"
         style={{
-          fontSize: '1.5rem',
+          fontSize: '2.25rem',
           fontWeight: '800',
           fontFamily: 'var(--font-family-header)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '4px', // Closer
         }}
       >
         THUNDERFENNEC<span style={{ color: 'var(--color-accent)' }}>.</span>
+        <img
+          src="/dance.gif"
+          alt="Dancing Character"
+          style={{ height: '60px', width: 'auto' }} // Bigger
+        />
       </Link>
 
-      <div style={{ display: 'flex', gap: '2rem' }}>
+      <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
         <NavLink to="/" active={isActive('/')}>
           Work
         </NavLink>
