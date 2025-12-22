@@ -32,7 +32,7 @@ const Navbar = () => {
           fontFamily: 'var(--font-family-header)',
           display: 'flex',
           alignItems: 'center',
-          gap: '4px', // Closer
+          gap: '4px',
         }}
       >
         THUNDERFENNEC<span style={{ color: 'var(--color-accent)' }}>.</span>
