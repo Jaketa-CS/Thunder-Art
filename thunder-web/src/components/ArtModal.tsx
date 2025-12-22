@@ -56,6 +56,7 @@ const ArtModal = ({ art, onClose }: ArtModalProps) => {
                 src={art.image}
                 controls
                 autoPlay
+                muted
                 style={{
                   maxHeight: '70vh',
                   maxWidth: '100%',

@@ -17,7 +17,7 @@ export const MOCK_ART: ArtPiece[] = [
   {
     id: '1',
     title: 'Cyberpunk City',
-    image: '/art1.jpg',
+    image: 'https://picsum.photos/600/800?random=1',
     type: 'image',
     tags: ['Sci-Fi', 'Environment'],
   },
