@@ -32,12 +32,14 @@ const Home = () => {
             ? 'var(--color-bg-primary)'
             : 'var(--color-text-secondary)',
         border: 'none',
-        padding: '0.5rem 1rem',
-        borderRadius: '24px',
+        padding: '0.4rem 1.5rem',
+        borderRadius: '4px',
         cursor: 'pointer',
         fontSize: '0.9rem',
-        fontWeight: '600',
-        transition: 'color 0.3s ease',
+        fontWeight: '800',
+        textTransform: 'uppercase',
+        transform: 'skewX(-12deg)',
+        transition: 'color 0.2s ease',
         zIndex: 1,
       }}
     >
@@ -47,14 +49,17 @@ const Home = () => {
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'var(--color-accent)',
-            borderRadius: '24px',
+            background: 'var(--color-accent)', // Electric Blue
+            borderRadius: '4px',
             zIndex: -1,
+            boxShadow: '0 0 10px var(--color-accent)', // Glow effect
           }}
-          transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+          transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
         />
       )}
-      {label}
+      <span style={{ display: 'block', transform: 'skewX(12deg)' }}>
+        {label}
+      </span>
     </button>
   );
 
@@ -78,8 +83,25 @@ const Home = () => {
           marginBottom: '1rem',
         }}
       >
-        <h3 style={{ margin: 0 }}>Gallery</h3>
-        <div style={{ display: 'flex', gap: '0.25rem' }}>
+        <h3
+          style={{
+            margin: 0,
+            // fontStyle: 'italic', // Removed
+            textTransform: 'uppercase',
+            fontWeight: '900',
+            fontSize: '2rem',
+            transform: 'skewX(-12deg)',
+            letterSpacing: '0.05em',
+          }}
+        >
+          Gallery
+        </h3>
+        <div
+          style={{
+            display: 'flex',
+            gap: '0.5rem', // Space between the skewed buttons
+          }}
+        >
           <FilterButton label="All" value="all" />
           <FilterButton label="Animations" value="video" />
           <FilterButton label="Illustrations" value="image" />
