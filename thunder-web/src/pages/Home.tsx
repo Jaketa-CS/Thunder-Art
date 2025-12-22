@@ -12,7 +12,9 @@ const Home = () => {
 
   const filteredArt = MOCK_ART.filter((art) => {
     if (filter === 'all') return true;
-    return art.type === filter;
+    if (filter === 'video') return art.tags.includes('Animation');
+    if (filter === 'image') return art.tags.includes('Illustration');
+    return true;
   });
 
   const FilterButton = ({

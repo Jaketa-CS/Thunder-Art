@@ -139,7 +139,7 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Why Birbs Dont Wear Leashes GIF',
     image: '/whybirbsdontwearleashes.gif',
     type: 'image',
-    tags: ['Illustration'],
+    tags: ['Animation'],
   },
   {
     id: 'img-art-g4',
