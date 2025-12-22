@@ -34,7 +34,7 @@ const Home = () => {
             ? 'var(--color-bg-primary)'
             : 'var(--color-text-secondary)',
         border: 'none',
-        padding: '0.4rem 0.8rem',
+        padding: '0.5rem 1rem',
         borderRadius: '4px',
         cursor: 'pointer',
         fontSize: '0.9rem',
@@ -54,7 +54,7 @@ const Home = () => {
             background: 'var(--color-accent)', // Electric Blue
             borderRadius: '4px',
             zIndex: -1,
-            boxShadow: '0 0 10px var(--color-accent)', // Glow effect
+            // boxShadow removed for flat look
           }}
           transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
         />
@@ -101,7 +101,7 @@ const Home = () => {
         <div
           style={{
             display: 'flex',
-            gap: '0px', // Maximum tightness
+            gap: '1rem', // Comfortable breathing room
             alignItems: 'center',
           }}
         >
