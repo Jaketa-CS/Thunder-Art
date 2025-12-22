@@ -32,7 +32,7 @@ const Home = () => {
             ? 'var(--color-bg-primary)'
             : 'var(--color-text-secondary)',
         border: 'none',
-        padding: '0.4rem 1.5rem',
+        padding: '0.4rem 0.8rem',
         borderRadius: '4px',
         cursor: 'pointer',
         fontSize: '0.9rem',
@@ -99,7 +99,8 @@ const Home = () => {
         <div
           style={{
             display: 'flex',
-            gap: '0.5rem', // Space between the skewed buttons
+            gap: '0px', // Maximum tightness
+            alignItems: 'center',
           }}
         >
           <FilterButton label="All" value="all" />

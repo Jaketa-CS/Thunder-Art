@@ -23,20 +23,15 @@ const HeroSection = () => {
         2. Name it 'hero.mp4'.
         3. Place it in the 'thunder-web/public/' folder.
       */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
+      <img
+        src="/recent-work-placeholder.png"
+        alt="Recent Work"
         style={{
           width: '100%',
           height: '100%',
           objectFit: 'cover',
         }}
-      >
-        <source src="/hero.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      />
 
       {/* Overlay Gradient (Optional: Makes text readable if you put text over it) */}
       <div
@@ -65,7 +60,7 @@ const HeroSection = () => {
             textShadow: '0 2px 4px rgba(0,0,0,0.5)',
           }}
         >
-          Recent Work
+          IN PROGRESS ///
         </h2>
       </div>
     </motion.div>
