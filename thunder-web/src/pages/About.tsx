@@ -31,23 +31,55 @@ const About = () => {
             flexDirection: 'column',
           }}
         >
-          {/* Placeholder for Profile Pic */}
           <div
             style={{
-              width: '150px',
-              height: '150px',
+              position: 'relative',
+              width: '154px', // Slightly larger for border
+              height: '154px',
               borderRadius: '50%',
-              background:
-                'linear-gradient(45deg, var(--color-accent), #ff6b6b)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '3rem',
-              fontWeight: 'bold',
-              color: 'var(--color-bg-primary)',
+              overflow: 'hidden',
             }}
           >
-            T
+            {/* Spinning Rainbow Border */}
+            <div
+              style={{
+                position: 'absolute',
+                inset: '-50%', // Make it large enough to cover rotation
+                background:
+                  'conic-gradient(from 0deg, #FF0055, #A020F0, #0055FF, #A020F0, #FF0055)',
+                animation: 'spin 4s linear infinite',
+              }}
+            />
+
+            {/* Video Container */}
+            <div
+              style={{
+                width: '150px',
+                height: '150px',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                position: 'relative',
+                zIndex: 1, // On top of gradient
+                background: 'var(--color-bg-secondary)', // Fallback bg
+              }}
+            >
+              <video
+                src="/2.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
+            </div>
           </div>
 
           <div style={{ textAlign: 'center' }}>
@@ -62,15 +94,17 @@ const About = () => {
           style={{ lineHeight: '1.8', color: 'var(--color-text-secondary)' }}
         >
           <p style={{ marginBottom: '1.5rem' }}>
-            Hi! I'm a digital artist who loves bringing characters to life.
-            I specialize in vibrant illustrations and character designs.
+            Hi! I'm a digital artist who loves bringing characters to life. I
+            specialize in vibrant illustrations and character designs.
           </p>
           <p style={{ marginBottom: '1.5rem' }}>
-            My work focuses on dynamic lighting, expressive poses, and unique color palettes.
-            I'm always experimenting with new artistic styles and techniques.
+            My work focuses on dynamic lighting, expressive poses, and unique
+            color palettes. I'm always experimenting with new artistic styles
+            and techniques.
           </p>
           <p>
-            Feel free to reach out for commissions or just to chat about art/characters!
+            Feel free to reach out for commissions or just to chat about
+            art/characters!
           </p>
         </div>
 

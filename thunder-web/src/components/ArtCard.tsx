@@ -21,12 +21,23 @@ const ArtCard = ({ art, onClick }: ArtCardProps) => {
         cursor: 'pointer',
       }}
     >
-      <img
-        src={art.imageUrl}
-        alt={art.title}
-        style={{ width: '100%', display: 'block' }}
-        loading="lazy"
-      />
+      {art.type === 'video' ? (
+        <video
+          src={art.image}
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ width: '100%', display: 'block', objectFit: 'cover' }}
+        />
+      ) : (
+        <img
+          src={art.image}
+          alt={art.title}
+          style={{ width: '100%', display: 'block' }}
+          loading="lazy"
+        />
+      )}
 
       {/* Overlay */}
       <motion.div
@@ -56,7 +67,7 @@ const ArtCard = ({ art, onClick }: ArtCardProps) => {
             letterSpacing: '0.05em',
           }}
         >
-          {art.category}
+          {art.tags.join(', ')}
         </span>
       </motion.div>
     </motion.div>

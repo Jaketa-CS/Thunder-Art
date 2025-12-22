@@ -51,15 +51,28 @@ const ArtModal = ({ art, onClose }: ArtModalProps) => {
               background: '#000',
             }}
           >
-            <img
-              src={art.imageUrl}
-              alt={art.title}
-              style={{
-                maxHeight: '70vh',
-                maxWidth: '100%',
-                objectFit: 'contain',
-              }}
-            />
+            {art.type === 'video' ? (
+              <video
+                src={art.image}
+                controls
+                autoPlay
+                style={{
+                  maxHeight: '70vh',
+                  maxWidth: '100%',
+                  outline: 'none',
+                }}
+              />
+            ) : (
+              <img
+                src={art.image}
+                alt={art.title}
+                style={{
+                  maxHeight: '70vh',
+                  maxWidth: '100%',
+                  objectFit: 'contain',
+                }}
+              />
+            )}
           </div>
 
           <div style={{ padding: '2rem' }}>
@@ -84,7 +97,7 @@ const ArtModal = ({ art, onClose }: ArtModalProps) => {
                     fontWeight: 'bold',
                   }}
                 >
-                  {art.category}
+                  {art.tags.join(', ')}
                 </span>
               </div>
               <button
