@@ -116,17 +116,27 @@ const About = () => {
               paddingBottom: '0.5rem',
             }}
           >
-            Tools
+            Software
           </h3>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <div
+            style={{
+              display: 'flex',
+              gap: '1rem',
+              flexWrap: 'wrap',
+              marginBottom: '2rem',
+            }}
+          >
             {[
+              'Procreate',
+              'TVPaint',
+              'Toon Boom',
               'Clip Studio Paint',
               'Photoshop',
               'Blender',
               'Paint Tool SAI',
-            ].map((tech) => (
+            ].map((tool) => (
               <span
-                key={tech}
+                key={tool}
                 style={{
                   background: 'rgba(255, 255, 255, 0.05)',
                   padding: '0.5rem 1rem',
@@ -135,9 +145,37 @@ const About = () => {
                   color: 'var(--color-text-primary)',
                 }}
               >
-                {tech}
+                {tool}
               </span>
             ))}
+          </div>
+
+          <h3
+            style={{
+              marginBottom: '1rem',
+              borderBottom: '1px solid #333',
+              paddingBottom: '0.5rem',
+            }}
+          >
+            Hardware
+          </h3>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            {['iPad Pro 13" (2024)', 'Huion Kamvas Pro 16 (2021)'].map(
+              (gear) => (
+                <span
+                  key={gear}
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '20px',
+                    fontSize: '0.9rem',
+                    color: 'var(--color-text-primary)',
+                  }}
+                >
+                  {gear}
+                </span>
+              )
+            )}
           </div>
         </div>
       </div>
