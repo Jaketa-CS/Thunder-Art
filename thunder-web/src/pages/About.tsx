@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import GalleryRotator from '@/components/GalleryRotator';
+import ConSchedule from '@/components/ConSchedule';
 
 const About = () => {
   return (
@@ -116,7 +117,7 @@ const About = () => {
           <h3
             style={{
               marginBottom: '1rem',
-              borderBottom: '1px solid #333',
+              borderBottom: '1px solid var(--color-border)',
               paddingBottom: '0.5rem',
             }}
           >
@@ -142,7 +143,7 @@ const About = () => {
               <span
                 key={tool}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
+                  background: 'var(--color-bg-tertiary)',
                   padding: '0.5rem 1rem',
                   borderRadius: '20px',
                   fontSize: '0.9rem',
@@ -157,7 +158,7 @@ const About = () => {
           <h3
             style={{
               marginBottom: '1rem',
-              borderBottom: '1px solid #333',
+              borderBottom: '1px solid var(--color-border)',
               paddingBottom: '0.5rem',
             }}
           >
@@ -169,7 +170,7 @@ const About = () => {
                 <span
                   key={gear}
                   style={{
-                    background: 'rgba(255, 255, 255, 0.05)',
+                    background: 'var(--color-bg-tertiary)',
                     padding: '0.5rem 1rem',
                     borderRadius: '20px',
                     fontSize: '0.9rem',
@@ -187,7 +188,7 @@ const About = () => {
           <h3
             style={{
               marginBottom: '1rem',
-              borderBottom: '1px solid #333',
+              borderBottom: '1px solid var(--color-border)',
               paddingBottom: '0.5rem',
             }}
           >
@@ -239,6 +240,8 @@ const About = () => {
               View More on FurTrack
             </motion.button>
           </a>
+
+          <ConSchedule />
         </div>
       </div>
     </motion.div>
