@@ -34,7 +34,6 @@ if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 }
 
-// Helper to download
 const downloadImage = (url, filepath) => {
   return new Promise((resolve, reject) => {
     https.get(url, (res) => {
@@ -52,7 +51,7 @@ const downloadImage = (url, filepath) => {
 };
 
 (async () => {
-  console.log('🦁 Launching browser to scrape metadata and photos...');
+  console.log('🦁 Launching browser to scrape credits and photos...');
   const browser = await puppeteer.launch({
     headless: 'new',
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -67,49 +66,58 @@ const downloadImage = (url, filepath) => {
 
   for (const pageUrl of TARGET_URLS) {
     count++;
-    const filename = `fTrackImage-${count}.jpg`;
+    const filename = `fTrackImage-${count}.jpg`; // Renamed as requested
     const filepath = path.join(OUTPUT_DIR, filename);
     const id = pageUrl.split('/').pop();
 
     console.log(`[${count}/${TARGET_URLS.length}] Processing ${pageUrl}...`);
 
-    // We try to scrape mainly for the CREDITS.
-    // If we can also find the High-Res image URL from the page, great.
-    // If not, we fallback to our CDN guess pattern.
-
     let photographer = 'Unknown';
-    let highResUrl = null;
 
     try {
-      await page.goto(pageUrl, {
-        waitUntil: 'domcontentloaded',
-        timeout: 30000,
-      });
+      await page.goto(pageUrl, { waitUntil: 'networkidle2', timeout: 30000 });
 
-      // 1. Get Photographer from Title
-      // Usually: "Thunder (Gryphon) at [Event] by [Photographer] - FurTrack"
+      // Strategy 1: Title parsing
+      // "Thunder (Gryphon) at [Event] by [Photographer] - FurTrack"
       const title = await page.title();
       console.log(`   📄 Title: ${title}`);
 
       if (title.includes(' by ')) {
-        const parts = title.split(' by ');
-        if (parts.length > 1) {
-          // "Photographer - FurTrack"
-          const suffix = parts[1].split(' - ')[0];
-          photographer = suffix.trim();
-        }
+        photographer = title.split(' by ')[1].split(' - ')[0].trim();
       }
 
-      // 2. Try to find image on page (might fail like before due to JS render)
-      // But we rely on our CDN fallback logic mostly.
+      // Strategy 2: DOM Scraping if title failed or just to confirm
+      if (photographer === 'Unknown' || photographer === '') {
+        const domCredit = await page.evaluate(() => {
+          // Look for "Photographer" label
+          const xpath =
+            "//dt[contains(text(), 'Photographer')]/following-sibling::dd";
+          const matchingElement = document.evaluate(
+            xpath,
+            document,
+            null,
+            XPathResult.FIRST_ORDERED_NODE_TYPE,
+            null
+          ).singleNodeValue;
+          if (matchingElement) return matchingElement.innerText.trim();
+
+          // Try simpler text search in small elements
+          const smalls = Array.from(
+            document.querySelectorAll('small, span, div.detail')
+          );
+          for (const el of smalls) {
+            if (el.innerText.includes('Photographer:')) {
+              return el.innerText.replace('Photographer:', '').trim();
+            }
+          }
+          return null;
+        });
+        if (domCredit) photographer = domCredit;
+      }
     } catch (e) {
-      console.error(
-        `   ⚠️ Failed to visit page (network/timeout): ${e.message}`
-      );
+      console.error(`   ⚠️ Failed to visit page: ${e.message}`);
     }
 
-    // Fallback/Verify Image Download
-    // Try patterns
     const patterns = [
       `https://orca2.furtrack.com/cdn/${id}.jpg`,
       `https://orca2.furtrack.com/pubs/${id}.jpg`,
@@ -127,22 +135,21 @@ const downloadImage = (url, filepath) => {
 
     if (downloaded) {
       console.log(`   ✅ Saved ${filename} (Credit: ${photographer})`);
-      credits[filename] = photographer;
-    } else {
-      console.error(`   ❌ Failed to download image for ${id}`);
+      credits[filename] = {
+        credit: photographer,
+        url: pageUrl,
+      };
     }
 
-    // Polite delay
-    await new Promise((r) => setTimeout(r, 500));
+    await new Promise((r) => setTimeout(r, 1000));
   }
 
-  // Save credits manifest
   fs.writeFileSync(
-    path.join(OUTPUT_DIR, 'credits.json'),
+    path.join(OUTPUT_DIR, 'metadata.json'),
     JSON.stringify(credits, null, 2)
   );
-  console.log('📝 Saved credits.json');
+  console.log('📝 Saved metadata.json');
 
   await browser.close();
-  console.log('✨ All done! Photos renamed and credited.');
+  console.log('✨ All done!');
 })();
