@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import FursuitRotator from '@/components/FursuitRotator';
+import GalleryRotator from '@/components/GalleryRotator';
 
 const About = () => {
   return (
@@ -201,7 +201,7 @@ const About = () => {
           >
             Catch me at conventions!
           </p>
-          <FursuitRotator />
+          <GalleryRotator />
 
           {/* View More Button */}
           <a
