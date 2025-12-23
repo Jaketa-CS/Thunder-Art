@@ -32,6 +32,7 @@
     "onetime": "^7.0.0",
     "picomatch": "^2.3.1",
     "pidtree": "^0.6.0",
+    "puppeteer": "^24.34.0",
     "restore-cursor": "^5.1.0",
     "rfdc": "^1.4.1",
     "signal-exit": "^4.1.0",

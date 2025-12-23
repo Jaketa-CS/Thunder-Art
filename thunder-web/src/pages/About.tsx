@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import FursuitRotator from '@/components/FursuitRotator';
 
 const About = () => {
   return (
@@ -94,17 +95,20 @@ const About = () => {
           style={{ lineHeight: '1.8', color: 'var(--color-text-secondary)' }}
         >
           <p style={{ marginBottom: '1.5rem' }}>
-            Hi! I'm a digital artist and animator who doodling fluffy creatures.
-            I specialize in vibrant illustrations and character designs.
+            Hello and thank you for visiting my page! I'm Thunder, you might
+            also know me as Zevoloz. I'm a Fennec Bird Hybrid from Colorado, and
+            I am a digital artist and animator!
           </p>
           <p style={{ marginBottom: '1.5rem' }}>
-            My work focuses on dynamic lighting, expressive poses, and unique
-            color palettes. I'm always experimenting with new artistic styles
-            and techniques.
+            My work focuses on vibrant illustrations, expressive character
+            designs, and dynamic animations. I love experimenting with
+            expressions, unique color palettes, and bringing fluffy creatures to
+            life.
           </p>
           <p>
-            Feel free to reach out for commissions or just to chat about
-            art/characters!
+            Im inspired by friends and the furry art community. Im always
+            looking to learn and grow. Feel free to reach out for commissions or
+            just to chat about art, characters, or anything else! :P
           </p>
         </div>
 
@@ -177,6 +181,64 @@ const About = () => {
               )
             )}
           </div>
+        </div>
+
+        <div style={{ marginTop: '3rem' }}>
+          <h3
+            style={{
+              marginBottom: '1rem',
+              borderBottom: '1px solid #333',
+              paddingBottom: '0.5rem',
+            }}
+          >
+            Fursuiting
+          </h3>
+          <p
+            style={{
+              color: 'var(--color-text-secondary)',
+              marginBottom: '1rem',
+            }}
+          >
+            Catch me at conventions!
+          </p>
+          <FursuitRotator />
+
+          {/* View More Button */}
+          <a
+            href="https://www.furtrack.com/index/character:thunder_(gryphon)"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              textDecoration: 'none',
+              display: 'block',
+              textAlign: 'center',
+            }}
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                background: '#2e1052', // FurTrack Purple
+                color: '#fff',
+                border: '1px solid #4a2080',
+                padding: '0.8rem 2rem',
+                borderRadius: '30px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.8rem',
+              }}
+            >
+              <img
+                src="/furtrack-logo.png"
+                alt="FurTrack Logo"
+                style={{ width: '24px', height: '24px', objectFit: 'contain' }}
+              />
+              View More on FurTrack
+            </motion.button>
+          </a>
         </div>
       </div>
     </motion.div>
