@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import GalleryRotator from '@/components/GalleryRotator';
 import ConSchedule from '@/components/ConSchedule';
+import FursuitMakers from '@/components/FursuitMakers';
 
 const About = () => {
   return (
@@ -194,14 +195,9 @@ const About = () => {
           >
             Fursuiting
           </h3>
-          <p
-            style={{
-              color: 'var(--color-text-secondary)',
-              marginBottom: '1rem',
-            }}
-          >
-            Catch me at conventions!
-          </p>
+
+          <FursuitMakers />
+
           <GalleryRotator />
 
           {/* View More Button */}
