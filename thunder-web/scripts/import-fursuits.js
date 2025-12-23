@@ -51,7 +51,7 @@ const downloadImage = (url, filepath) => {
 };
 
 (async () => {
-  console.log('🦁 Launching browser to scrape credits and photos...');
+  console.log('Launching browser to scrape metadata and photos...');
   const browser = await puppeteer.launch({
     headless: 'new',
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -66,7 +66,7 @@ const downloadImage = (url, filepath) => {
 
   for (const pageUrl of TARGET_URLS) {
     count++;
-    const filename = `fTrackImage-${count}.jpg`; // Renamed as requested
+    const filename = `fTrackImage-${count}.jpg`;
     const filepath = path.join(OUTPUT_DIR, filename);
     const id = pageUrl.split('/').pop();
 
@@ -78,18 +78,15 @@ const downloadImage = (url, filepath) => {
       await page.goto(pageUrl, { waitUntil: 'networkidle2', timeout: 30000 });
 
       // Strategy 1: Title parsing
-      // "Thunder (Gryphon) at [Event] by [Photographer] - FurTrack"
       const title = await page.title();
-      console.log(`   📄 Title: ${title}`);
 
       if (title.includes(' by ')) {
         photographer = title.split(' by ')[1].split(' - ')[0].trim();
       }
 
-      // Strategy 2: DOM Scraping if title failed or just to confirm
+      // Strategy 2: DOM Scraping
       if (photographer === 'Unknown' || photographer === '') {
         const domCredit = await page.evaluate(() => {
-          // Look for "Photographer" label
           const xpath =
             "//dt[contains(text(), 'Photographer')]/following-sibling::dd";
           const matchingElement = document.evaluate(
@@ -101,7 +98,6 @@ const downloadImage = (url, filepath) => {
           ).singleNodeValue;
           if (matchingElement) return matchingElement.innerText.trim();
 
-          // Try simpler text search in small elements
           const smalls = Array.from(
             document.querySelectorAll('small, span, div.detail')
           );
@@ -115,7 +111,7 @@ const downloadImage = (url, filepath) => {
         if (domCredit) photographer = domCredit;
       }
     } catch (e) {
-      console.error(`   ⚠️ Failed to visit page: ${e.message}`);
+      console.error(`Failed to visit page: ${e.message}`);
     }
 
     const patterns = [
@@ -134,11 +130,13 @@ const downloadImage = (url, filepath) => {
     }
 
     if (downloaded) {
-      console.log(`   ✅ Saved ${filename} (Credit: ${photographer})`);
+      console.log(`   Saved ${filename} (Credit: ${photographer})`);
       credits[filename] = {
         credit: photographer,
         url: pageUrl,
       };
+    } else {
+      console.error(`   Failed to download image for ${id}`);
     }
 
     await new Promise((r) => setTimeout(r, 1000));
@@ -148,8 +146,8 @@ const downloadImage = (url, filepath) => {
     path.join(OUTPUT_DIR, 'metadata.json'),
     JSON.stringify(credits, null, 2)
   );
-  console.log('📝 Saved metadata.json');
+  console.log('Saved metadata.json');
 
   await browser.close();
-  console.log('✨ All done!');
+  console.log('All done.');
 })();
