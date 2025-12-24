@@ -8,7 +8,7 @@ interface PricingOption {
 
 interface CommissionCategory {
   title: string;
-  image: string;
+  images: string[];
   description?: string;
   options: PricingOption[];
   extras?: string[];
@@ -17,7 +17,7 @@ interface CommissionCategory {
 const COMMISSION_DATA: CommissionCategory[] = [
   {
     title: 'Icons',
-    image: '/com-images/headshotwithbackground.jpg',
+    images: ['/com-images/headshotwithbackground.jpg'],
     description:
       'High-quality avatars perfect for social media (2000x2000px). I focus on expression and lighting to make your character pop!',
     options: [
@@ -35,7 +35,11 @@ const COMMISSION_DATA: CommissionCategory[] = [
   },
   {
     title: 'Stickers',
-    image: '/com-images/sickers1.jpg',
+    images: [
+      '/com-images/sickers1.jpg',
+      '/com-images/stickers2.jpg',
+      '/com-images/stickers_headshots.png',
+    ],
     description:
       "Expressive Telegram stickers! I can work from a list of emotions or suggest them based on your character's personality.",
     options: [
@@ -48,7 +52,7 @@ const COMMISSION_DATA: CommissionCategory[] = [
   },
   {
     title: 'Badges',
-    image: '/com-images/badge.jpg',
+    images: ['/com-images/badge.jpg', '/com-images/badge2.png'],
     description:
       'Convention badges to show off your character! Includes name text and durable lamination styling if printed.',
     options: [
@@ -58,7 +62,10 @@ const COMMISSION_DATA: CommissionCategory[] = [
   },
   {
     title: 'Full Body',
-    image: '/com-images/1character_fullbody.jpg',
+    images: [
+      '/com-images/1character_fullbody.jpg',
+      '/com-images/2characters_fullbody.jpg',
+    ],
     description:
       "Showcase your character's full design! Great for showing off outfits, anatomy, or dynamic action poses.",
     options: [
@@ -72,7 +79,11 @@ const COMMISSION_DATA: CommissionCategory[] = [
   },
   {
     title: 'Reference Sheets',
-    image: '/com-images/ref3.jpg',
+    images: [
+      '/com-images/ref3.jpg',
+      '/com-images/ref1.jpg',
+      '/com-images/ref2.png',
+    ],
     description:
       'The ultimate guide to your character. I focus on clarity and accuracy so other artists can draw your sona perfectly.',
     options: [
@@ -95,7 +106,7 @@ const COMMISSION_DATA: CommissionCategory[] = [
   },
   {
     title: 'Full Pieces',
-    image: '/com-images/image11.jpg',
+    images: ['/com-images/image11.jpg'],
     description:
       'A complete scene with a detailed background. Perfect for storytelling, wallpapers, or printing as a poster.',
     options: [
@@ -108,6 +119,8 @@ const COMMISSION_DATA: CommissionCategory[] = [
   },
 ];
 
+import { useState } from 'react';
+
 const CommissionItem = ({
   category,
   index,
@@ -116,6 +129,11 @@ const CommissionItem = ({
   index: number;
 }) => {
   const isEven = index % 2 === 0;
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % category.images.length);
+  };
 
   return (
     <motion.div
@@ -136,7 +154,8 @@ const CommissionItem = ({
       <div style={{ flex: '1 1 400px', position: 'relative' }}>
         <motion.div
           whileHover={{ scale: 1.02, rotate: isEven ? 1 : -1 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={handleNextImage}
           style={{
             borderRadius: '20px',
             overflow: 'hidden',
@@ -147,11 +166,16 @@ const CommissionItem = ({
                 ? '3/4'
                 : '4/3',
             background: 'transparent',
+            cursor: category.images.length > 1 ? 'pointer' : 'default',
           }}
         >
-          <img
-            src={category.image}
-            alt={category.title}
+          <motion.img
+            key={currentImageIndex} // Key forces re-render for animation
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            src={category.images[currentImageIndex]}
+            alt={`${category.title} example`}
             style={{
               width: '100%',
               height: '100%',
@@ -159,6 +183,23 @@ const CommissionItem = ({
               borderRadius: '20px',
             }}
           />
+          {category.images.length > 1 && (
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '10px',
+                right: '10px',
+                background: 'rgba(0,0,0,0.6)',
+                color: 'white',
+                padding: '4px 8px',
+                borderRadius: '12px',
+                fontSize: '0.8rem',
+                pointerEvents: 'none',
+              }}
+            >
+              {currentImageIndex + 1}/{category.images.length}
+            </div>
+          )}
         </motion.div>
 
         {/* Decorative element behind image */}
