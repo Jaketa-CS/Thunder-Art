@@ -11,7 +11,7 @@ interface CommissionCategory {
   images: string[];
   description?: string;
   options: PricingOption[];
-  extras?: string[];
+  extras?: (string | React.ReactNode)[];
 }
 
 const COMMISSION_DATA: CommissionCategory[] = [
@@ -37,6 +37,7 @@ const COMMISSION_DATA: CommissionCategory[] = [
     title: 'Stickers',
     images: [
       '/com-images/sickers1.jpg',
+      '/stickers.jpg',
       '/com-images/stickers2.jpg',
       '/com-images/stickers_headshots.png',
     ],
@@ -48,7 +49,27 @@ const COMMISSION_DATA: CommissionCategory[] = [
       { name: '6 Pack', price: '$135' },
       { name: '9 Pack', price: '$200' },
     ],
-    extras: ['+ $5-15 per complex prop'],
+    extras: [
+      <span>+$5-15 per complex prop</span>,
+      <a
+        href="https://t.me/addstickers/Zevoloz"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          color: '#0088cc',
+          textDecoration: 'none',
+          fontWeight: 'bold',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px',
+        }}
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+        </svg>
+        My Main Telegram Pack!
+      </a>,
+    ],
   },
   {
     title: 'Badges',
@@ -58,7 +79,6 @@ const COMMISSION_DATA: CommissionCategory[] = [
     options: [
       { name: 'Standard Badge', price: '$50', details: 'Headshot + Name' },
     ],
-    extras: ['Holographic overlay: +$10', 'Shipping: +$5'],
   },
   {
     title: 'Full Body',
@@ -76,6 +96,38 @@ const COMMISSION_DATA: CommissionCategory[] = [
         details: 'Clean lines, full shading & lighting',
       },
     ],
+  },
+  {
+    title: 'Animations',
+    images: [
+      '/rock.mp4',
+      '/bite.mp4',
+      '/2 frame animation.mp4',
+      '/2frameanimation2.mp4',
+      '/dance.gif',
+      '/watchyotone.gif',
+      '/whybirbsdontwearleashes.gif',
+    ],
+    description:
+      'Bring your character to life! From charming 2-frame wiggles to full activity loops.',
+    options: [
+      {
+        name: '2-Frame Wiggle',
+        price: '$45',
+        details: 'Simple bouncy icon (perfect for Discord)',
+      },
+      {
+        name: 'Simple Loop',
+        price: '$120+',
+        details: 'Walk cycle, dance, or specific action',
+      },
+      {
+        name: 'Complex / Meme',
+        price: '$250+',
+        details: 'Full body movement, lip-sync, or multi-action',
+      },
+    ],
+    extras: ['Complex background: +$30', 'Additional character: +75%'],
   },
   {
     title: 'Reference Sheets',
@@ -106,7 +158,7 @@ const COMMISSION_DATA: CommissionCategory[] = [
   },
   {
     title: 'Full Pieces',
-    images: ['/com-images/image11.jpg'],
+    images: ['/com-images/image11.jpg', '/com-images/fullscene.jpg'],
     description:
       'A complete scene with a detailed background. Perfect for storytelling, wallpapers, or printing as a poster.',
     options: [
@@ -134,6 +186,9 @@ const CommissionItem = ({
   const handleNextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % category.images.length);
   };
+
+  const currentMedia = category.images[currentImageIndex];
+  const isVideo = currentMedia.endsWith('.mp4');
 
   return (
     <motion.div
@@ -169,20 +224,40 @@ const CommissionItem = ({
             cursor: category.images.length > 1 ? 'pointer' : 'default',
           }}
         >
-          <motion.img
-            key={currentImageIndex} // Key forces re-render for animation
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            src={category.images[currentImageIndex]}
-            alt={`${category.title} example`}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'contain', // Ensures the whole image is seen
-              borderRadius: '20px',
-            }}
-          />
+          {isVideo ? (
+            <motion.video
+              key={currentMedia}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              src={currentMedia}
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+                borderRadius: '20px',
+              }}
+            />
+          ) : (
+            <motion.img
+              key={currentMedia}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              src={currentMedia}
+              alt={`${category.title} example`}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+                borderRadius: '20px',
+              }}
+            />
+          )}
           {category.images.length > 1 && (
             <div
               style={{
@@ -333,18 +408,21 @@ const CommissionItem = ({
                 Add-ons
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
-                {category.extras.map((extra) => (
+                {category.extras.map((extra, idx) => (
                   <span
-                    key={extra}
+                    key={idx}
                     style={{
                       background: 'var(--color-bg-tertiary)',
                       padding: '0.4rem 0.8rem',
                       borderRadius: '6px',
                       fontSize: '0.9rem',
                       color: 'var(--color-text-primary)',
+                      display: 'inline-flex',
+                      alignItems: 'center',
                     }}
                   >
-                    + {extra}
+                    {/* If it's a string, prepend +, otherwise just show it */}
+                    {typeof extra === 'string' ? `+ ${extra}` : extra}
                   </span>
                 ))}
               </div>

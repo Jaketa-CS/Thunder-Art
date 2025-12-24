@@ -121,7 +121,7 @@ const ConSchedule = () => {
           paddingBottom: '0.5rem',
         }}
       >
-        Convention Log Book
+        Convention Log Book (conventions I've gone to!)
       </motion.h3>
 
       {/* Clean List with staggered animation */}
