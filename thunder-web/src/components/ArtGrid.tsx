@@ -23,16 +23,24 @@ const ArtGrid = ({ artworks, onArtClick }: ArtGridProps) => {
           @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
         `}</style>
 
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence mode="popLayout" initial={false}>
         {artworks.map((art) => (
           <motion.div
             key={art.id}
-            layout
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3 }}
-            style={{ marginBottom: '1rem', breakInside: 'avoid' }}
+            layout="position" // Prevents expensive size calculations during movement
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              duration: 0.25,
+              ease: 'circOut',
+            }}
+            style={{
+              marginBottom: '1rem',
+              breakInside: 'avoid',
+              // Performance hint
+              willChange: 'transform, opacity',
+            }}
           >
             <ArtCard art={art} onClick={onArtClick} />
           </motion.div>

@@ -28,13 +28,26 @@ const ArtCard = ({ art, onClick }: ArtCardProps) => {
           loop
           muted
           playsInline
-          style={{ width: '100%', display: 'block', objectFit: 'cover' }}
+          style={{
+            width: '100%',
+            display: 'block',
+            objectFit: 'cover',
+            // Safari/Brave stability hints
+            transform: 'translateZ(0)',
+            backfaceVisibility: 'hidden',
+          }}
         />
       ) : (
         <img
           src={art.image}
           alt={art.title}
-          style={{ width: '100%', display: 'block' }}
+          style={{
+            width: '100%',
+            display: 'block',
+            // Safari/Brave stability hints
+            transform: 'translateZ(0)',
+            backfaceVisibility: 'hidden',
+          }}
           loading="lazy"
         />
       )}
