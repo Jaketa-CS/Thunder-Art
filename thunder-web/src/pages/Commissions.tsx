@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Footer from '@/components/Footer';
 
 interface PricingOption {
   name: string;
@@ -436,119 +437,126 @@ const CommissionItem = ({
 
 const Commissions = () => {
   return (
-    <div
-      style={{
-        paddingTop: '3rem',
-        paddingBottom: '6rem',
-        maxWidth: '1200px',
-        margin: '0 auto',
-        paddingLeft: '1.5rem',
-        paddingRight: '1.5rem',
-        fontFamily: 'var(--font-family-body)',
-        overflowX: 'hidden', // Prevent scrollbar from animation
-      }}
-    >
-      {/* Minimal Header */}
+    <>
       <div
-        style={{ textAlign: 'center', marginBottom: '8rem', marginTop: '2rem' }}
-      >
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          style={{
-            fontSize: '4rem',
-            marginBottom: '1rem',
-            fontFamily: 'var(--font-family-header)',
-          }}
-        >
-          COMMISSIONS
-        </motion.h1>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          style={{
-            display: 'inline-block',
-            padding: '0.6rem 2rem',
-            border: '1px solid #2ecc71',
-            borderRadius: '50px',
-            color: '#2ecc71',
-            fontWeight: '800',
-            fontSize: '0.9rem',
-            letterSpacing: '0.1em',
-            background: 'rgba(46, 204, 113, 0.05)',
-          }}
-        >
-          STATUS: OPEN
-        </motion.div>
-      </div>
-
-      {/* Main Content */}
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        {COMMISSION_DATA.map((category, index) => (
-          <CommissionItem
-            key={category.title}
-            category={category}
-            index={index}
-          />
-        ))}
-      </div>
-
-      {/* Large Bottom CTA */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
         style={{
-          marginTop: '4rem',
-          padding: '4rem',
-          background: 'var(--color-bg-secondary)',
-          borderRadius: '30px',
-          textAlign: 'center',
-          border: '1px solid var(--color-border)',
+          paddingTop: '3rem',
+          paddingBottom: '6rem',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          paddingLeft: '1.5rem',
+          paddingRight: '1.5rem',
+          fontFamily: 'var(--font-family-body)',
+          overflowX: 'hidden', // Prevent scrollbar from animation
         }}
       >
-        <h2
+        {/* Minimal Header */}
+        <div
           style={{
-            fontSize: '2.5rem',
-            fontFamily: 'var(--font-family-header)',
-            marginBottom: '1rem',
+            textAlign: 'center',
+            marginBottom: '8rem',
+            marginTop: '2rem',
           }}
         >
-          Interested?
-        </h2>
-        <p
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            style={{
+              fontSize: '4rem',
+              marginBottom: '1rem',
+              fontFamily: 'var(--font-family-header)',
+            }}
+          >
+            COMMISSIONS
+          </motion.h1>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            style={{
+              display: 'inline-block',
+              padding: '0.6rem 2rem',
+              border: '1px solid #2ecc71',
+              borderRadius: '50px',
+              color: '#2ecc71',
+              fontWeight: '800',
+              fontSize: '0.9rem',
+              letterSpacing: '0.1em',
+              background: 'rgba(46, 204, 113, 0.05)',
+            }}
+          >
+            STATUS: OPEN
+          </motion.div>
+        </div>
+
+        {/* Main Content */}
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          {COMMISSION_DATA.map((category, index) => (
+            <CommissionItem
+              key={category.title}
+              category={category}
+              index={index}
+            />
+          ))}
+        </div>
+
+        {/* Large Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
           style={{
-            fontSize: '1.2rem',
-            color: 'var(--color-text-secondary)',
-            marginBottom: '3rem',
-            maxWidth: '600px',
-            margin: '0 auto 3rem auto',
+            marginTop: '4rem',
+            padding: '4rem',
+            background: 'var(--color-bg-secondary)',
+            borderRadius: '30px',
+            textAlign: 'center',
+            border: '1px solid var(--color-border)',
           }}
         >
-          Please have your character reference (ref sheet) ready and a clear
-          idea of what you would like!
-        </p>
-        <a
-          href="https://twitter.com/messages/compose?recipient_id=YOUR_ID"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            background: 'var(--color-accent)',
-            color: 'white',
-            padding: '1.2rem 3rem',
-            borderRadius: '100px',
-            fontSize: '1.2rem',
-            fontWeight: 'bold',
-            textDecoration: 'none',
-            display: 'inline-block',
-            boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-          }}
-        >
-          Send a DM
-        </a>
-      </motion.div>
-    </div>
+          <h2
+            style={{
+              fontSize: '2.5rem',
+              fontFamily: 'var(--font-family-header)',
+              marginBottom: '1rem',
+            }}
+          >
+            Interested?
+          </h2>
+          <p
+            style={{
+              fontSize: '1.2rem',
+              color: 'var(--color-text-secondary)',
+              marginBottom: '3rem',
+              maxWidth: '600px',
+              margin: '0 auto 3rem auto',
+            }}
+          >
+            Please have your character reference (ref sheet) ready and a clear
+            idea of what you would like!
+          </p>
+          <a
+            href="https://twitter.com/messages/compose?recipient_id=YOUR_ID"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: 'var(--color-accent)',
+              color: 'white',
+              padding: '1.2rem 3rem',
+              borderRadius: '100px',
+              fontSize: '1.2rem',
+              fontWeight: 'bold',
+              textDecoration: 'none',
+              display: 'inline-block',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+            }}
+          >
+            Send a DM
+          </a>
+        </motion.div>
+      </div>
+      <Footer />
+    </>
   );
 };
 
