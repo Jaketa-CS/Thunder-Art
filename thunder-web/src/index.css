@@ -353,24 +353,35 @@ button {
   }
 }
 
-/* INVISIBLE PERFORMANCE & MOBILE OPTIMIZATIONS  */
-/* Force iPad to use GPU for smoother rendering of components */
+/* PERFORMANCE OPTIMIZATIONS (ZERO VISUAL IMPACT) */
+
+/* 1. Hardware Acceleration Hints */
+/* Tells the browser to use the GPU for these complex elements */
 .art-card,
 .navbar,
-.footer,
-.container {
+.footer {
   transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity;
   backface-visibility: hidden;
 }
 
-/* Enable native-feeling momentum scrolling on iPad Safari */
-html,
-body {
+/* 2. Scroll Experience */
+html {
+  /* Native-feel scrolling on iOS */
   -webkit-overflow-scrolling: touch;
 }
 
-/* Remove the gray tap highlight on mobile/tablets */
+/* 3. Image Stability */
+.art-card img,
+.art-card video {
+  /* Prevents "white flash" while image decodes */
+  background-color: var(--color-bg-tertiary);
+  /* Crisp rendering on high-DPI screens */
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* 4. Touch Interactions */
 * {
+  /* Removes gray highlight box on tap */
   -webkit-tap-highlight-color: transparent;
 }
