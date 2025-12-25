@@ -56,7 +56,7 @@ const Footer = () => {
             {
               name: 'X (Twitter)',
               url: 'https://x.com/ThunderFennec',
-              color: '#ffffff', // White for dark mode compatibility
+              color: 'var(--color-text-primary)', // Adapts to light/dark mode
               icon: (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -122,8 +122,10 @@ const Footer = () => {
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = social.color;
                 e.currentTarget.style.transform = 'translateY(-3px) scale(1.1)';
-                e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
-                e.currentTarget.style.boxShadow = `0 4px 12px ${social.color}40`;
+                // Use color-mix for dynamic opacity with brand colors/variables
+                e.currentTarget.style.background = `color-mix(in srgb, ${social.color}, transparent 90%)`;
+                e.currentTarget.style.boxShadow = `0 4px 12px color-mix(in srgb, ${social.color}, transparent 75%)`;
+
                 const img = e.currentTarget.querySelector('img');
                 if (img) img.style.filter = 'grayscale(0%)';
               }}
