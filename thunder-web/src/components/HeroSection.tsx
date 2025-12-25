@@ -7,6 +7,7 @@ const HeroSection = () => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8 }}
       style={{
+        display: 'none', // Hidden until content is ready
         position: 'relative',
         width: '100%',
         height: '400px', // Adjustable height
@@ -23,7 +24,7 @@ const HeroSection = () => {
         2. Name it 'hero.mp4'.
         3. Place it in the 'thunder-web/public/' folder.
       */}
-      <img
+      {/* <img
         src="/recent-work-placeholder.png"
         alt="Recent Work"
         style={{
@@ -33,7 +34,6 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Overlay Gradient (Optional: Makes text readable if you put text over it) */}
       <div
         style={{
           position: 'absolute',
@@ -44,7 +44,6 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Title Overlay (Optional) */}
       <div
         style={{
           position: 'absolute',
@@ -62,7 +61,7 @@ const HeroSection = () => {
         >
           IN PROGRESS ///
         </h2>
-      </div>
+      </div> */}
     </motion.div>
   );
 };

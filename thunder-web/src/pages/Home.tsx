@@ -88,7 +88,6 @@ const Home = () => {
         <h3
           style={{
             margin: 0,
-            // fontStyle: 'italic', // Removed
             textTransform: 'uppercase',
             fontWeight: '900',
             fontSize: '2rem',
