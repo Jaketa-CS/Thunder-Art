@@ -74,15 +74,19 @@ const Footer = () => {
               url: 'https://www.furaffinity.net/user/zevoloz',
               color: '#FAAF3A', // FA Orange
               icon: (
-                <img
-                  src="/fa-logo-old.png"
-                  alt="FurAffinity"
+                <div
                   style={{
                     width: '24px',
                     height: '24px',
-                    objectFit: 'contain',
-                    filter: 'grayscale(100%)',
-                    transition: 'filter 0.2s ease',
+                    backgroundColor: 'currentColor',
+                    maskImage: 'url("/fa-logo-old.png")',
+                    WebkitMaskImage: 'url("/fa-logo-old.png")',
+                    maskSize: 'contain',
+                    WebkitMaskSize: 'contain',
+                    maskRepeat: 'no-repeat',
+                    WebkitMaskRepeat: 'no-repeat',
+                    maskPosition: 'center',
+                    WebkitMaskPosition: 'center',
                   }}
                 />
               ),
@@ -125,17 +129,12 @@ const Footer = () => {
                 // Use color-mix for dynamic opacity with brand colors/variables
                 e.currentTarget.style.background = `color-mix(in srgb, ${social.color}, transparent 90%)`;
                 e.currentTarget.style.boxShadow = `0 4px 12px color-mix(in srgb, ${social.color}, transparent 75%)`;
-
-                const img = e.currentTarget.querySelector('img');
-                if (img) img.style.filter = 'grayscale(0%)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.color = 'var(--color-text-secondary)';
                 e.currentTarget.style.transform = 'translateY(0) scale(1)';
                 e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
                 e.currentTarget.style.boxShadow = 'none';
-                const img = e.currentTarget.querySelector('img');
-                if (img) img.style.filter = 'grayscale(100%)';
               }}
             >
               {social.icon}
