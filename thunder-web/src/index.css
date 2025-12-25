@@ -352,3 +352,25 @@ button {
     transform: rotate(360deg);
   }
 }
+
+/* INVISIBLE PERFORMANCE & MOBILE OPTIMIZATIONS  */
+/* Force iPad to use GPU for smoother rendering of components */
+.art-card,
+.navbar,
+.footer,
+.container {
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Enable native-feeling momentum scrolling on iPad Safari */
+html,
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Remove the gray tap highlight on mobile/tablets */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
