@@ -109,6 +109,12 @@ button {
   padding: 0 var(--spacing-sm);
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
@@ -384,4 +390,155 @@ html {
 * {
   /* Removes gray highlight box on tap */
   -webkit-tap-highlight-color: transparent;
+}
+
+/* 5. Responsive Utilities */
+.mobile-hidden {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+.desktop-hidden {
+  @media (min-width: 769px) {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Navbar Responsive Tweaks */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem !important;
+  }
+
+  .navbar-logo img {
+    height: 80px !important;
+    margin-right: 0 !important;
+  }
+
+  .navbar-logo div {
+    font-size: 1.2rem !important;
+    margin-top: -10px !important;
+  }
+
+  .navbar-menu {
+    gap: 1rem !important;
+    margin-bottom: 0 !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-header {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .filter-bar {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* ConSchedule Mobile Fixes */
+@media (max-width: 640px) {
+  .con-years-grid {
+    grid-template-columns: repeat(5, 35px) !important;
+    font-size: 0.75rem !important;
+    gap: 2px !important;
+  }
+
+  .con-card {
+    height: auto !important;
+    min-height: 60px;
+  }
+
+  .con-logo-section {
+    width: 70px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .con-years-grid {
+    display: none !important;
+  }
+
+  .con-mobile-years {
+    display: block !important;
+  }
+}
+
+.con-mobile-years {
+  display: none;
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* Modal Responsive */
+@media (max-width: 768px) {
+  .art-modal-overlay {
+    padding: 1rem !important;
+  }
+
+  .art-modal-content {
+    max-height: 95vh !important;
+  }
+
+  .art-modal-info {
+    padding: 1rem !important;
+  }
+
+  .art-modal-header {
+    flex-direction: column !important;
+    gap: 1rem;
+  }
+
+  .art-modal-title {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* Content Panels */
+@media (max-width: 768px) {
+  .content-panel {
+    padding: 1.5rem !important;
+  }
+}
+
+/* Commissions Page Responsive */
+@media (max-width: 768px) {
+  .commissions-header {
+    margin-bottom: 4rem !important;
+  }
+
+  .commissions-title {
+    font-size: 2.5rem !important;
+  }
+
+  .commission-item-gap {
+    gap: 2rem !important;
+    margin-bottom: 4rem !important;
+  }
+
+  .commission-cta {
+    padding: 2rem !important;
+  }
 }

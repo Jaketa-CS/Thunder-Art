@@ -15,6 +15,7 @@ const ArtModal = ({ art, onClose }: ArtModalProps) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
+        className="art-modal-overlay"
         style={{
           position: 'fixed',
           inset: 0,
@@ -29,6 +30,7 @@ const ArtModal = ({ art, onClose }: ArtModalProps) => {
         <motion.div
           layoutId={`art-${art.id}`}
           onClick={(e) => e.stopPropagation()} // Prevent close on content click
+          className="art-modal-content"
           style={{
             background: 'var(--color-bg-secondary)',
             borderRadius: '12px',
@@ -76,8 +78,9 @@ const ArtModal = ({ art, onClose }: ArtModalProps) => {
             )}
           </div>
 
-          <div style={{ padding: '2rem' }}>
+          <div className="art-modal-info" style={{ padding: '2rem' }}>
             <div
+              className="art-modal-header"
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -85,7 +88,10 @@ const ArtModal = ({ art, onClose }: ArtModalProps) => {
               }}
             >
               <div>
-                <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>
+                <h2
+                  className="art-modal-title"
+                  style={{ fontSize: '2rem', marginBottom: '0.5rem' }}
+                >
                   {art.title}
                 </h2>
                 <span

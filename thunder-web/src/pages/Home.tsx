@@ -77,12 +77,15 @@ const Home = () => {
       <HeroSection />
 
       <div
+        className="gallery-header"
         style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           marginTop: '2rem',
           marginBottom: '1rem',
+          flexWrap: 'wrap',
+          gap: '1rem',
         }}
       >
         <h3
@@ -90,7 +93,7 @@ const Home = () => {
             margin: 0,
             textTransform: 'uppercase',
             fontWeight: '900',
-            fontSize: '2rem',
+            fontSize: 'clamp(1.5rem, 5vw, 2rem)',
             transform: 'skewX(-12deg)',
             letterSpacing: '0.05em',
           }}
@@ -98,10 +101,15 @@ const Home = () => {
           Gallery
         </h3>
         <div
+          className="filter-bar"
           style={{
             display: 'flex',
-            gap: '1rem', // Comfortable breathing room
+            gap: '0.5rem',
             alignItems: 'center',
+            overflowX: 'auto',
+            paddingBottom: '0.5rem',
+            scrollbarWidth: 'none',
+            maxWidth: '100%',
           }}
         >
           <FilterButton label="All" value="all" />

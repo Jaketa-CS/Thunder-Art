@@ -26,6 +26,7 @@ const Navbar = () => {
     >
       <Link
         to="/"
+        className="navbar-logo"
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -121,6 +122,7 @@ const Navbar = () => {
       </Link>
 
       <div
+        className="navbar-menu"
         style={{
           display: 'flex',
           gap: '2rem',
@@ -148,20 +150,20 @@ const Navbar = () => {
             padding: '0.5rem',
             borderRadius: '50%',
             cursor: 'pointer',
-            marginLeft: '1rem',
+            marginLeft: '0.5rem',
             color: 'var(--color-text-primary)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            width: '40px',
-            height: '40px',
+            width: '36px',
+            height: '36px',
           }}
         >
           {theme === 'dark' ? (
             /* Sun Icon - White for Light Mode */
             <svg
-              width="20"
-              height="20"
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -177,8 +179,8 @@ const Navbar = () => {
           ) : (
             /* Moon Icon - Dark for Dark Mode */
             <svg
-              width="20"
-              height="20"
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

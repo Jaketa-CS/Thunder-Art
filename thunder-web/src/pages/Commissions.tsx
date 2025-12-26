@@ -197,6 +197,7 @@ const CommissionItem = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6, delay: 0.1 }}
+      className="commission-item-gap"
       style={{
         display: 'flex',
         flexDirection: isEven ? 'row' : 'row-reverse',
@@ -452,6 +453,7 @@ const Commissions = () => {
       >
         {/* Minimal Header */}
         <div
+          className="commissions-header"
           style={{
             textAlign: 'center',
             marginBottom: '8rem',
@@ -461,6 +463,7 @@ const Commissions = () => {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            className="commissions-title"
             style={{
               fontSize: '4rem',
               marginBottom: '1rem',
@@ -505,6 +508,7 @@ const Commissions = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
+          className="commission-cta"
           style={{
             marginTop: '4rem',
             padding: '4rem',

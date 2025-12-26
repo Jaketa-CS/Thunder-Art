@@ -20,6 +20,7 @@ const About = () => {
         </div>
 
         <div
+          className="content-panel"
           style={{
             background: 'var(--color-bg-secondary)',
             padding: '3rem',

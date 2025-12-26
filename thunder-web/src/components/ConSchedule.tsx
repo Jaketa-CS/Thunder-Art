@@ -139,6 +139,7 @@ const ConSchedule = () => {
             <motion.div
               key={con.abbrev}
               variants={cardVariants}
+              className="con-card"
               style={{
                 display: 'flex',
                 alignItems: 'stretch',
@@ -150,6 +151,7 @@ const ConSchedule = () => {
             >
               {/* Logo Section - 1/3 of card with gradient fade */}
               <div
+                className="con-logo-section"
                 style={{
                   width: 100,
                   flexShrink: 0,
@@ -221,10 +223,17 @@ const ConSchedule = () => {
                   >
                     {con.name}
                   </div>
+                  {/* Mobile-only years list */}
+                  <div className="con-mobile-years">
+                    {con.years
+                      .filter((y) => !String(y).includes('?'))
+                      .join(', ')}
+                  </div>
                 </div>
 
                 {/* Years Grid - Fixed columns for each year */}
                 <div
+                  className="con-years-grid"
                   style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(5, 45px)', // 5 years, fixed width each
