@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Footer from '@/components/Footer';
+import { siteConfig } from '@/data/siteConfig';
 
 interface PricingOption {
   name: string;
@@ -479,16 +480,24 @@ const Commissions = () => {
             style={{
               display: 'inline-block',
               padding: '0.6rem 2rem',
-              border: '1px solid #2ecc71',
+              border: `1px solid ${
+                siteConfig.commissions.status === 'OPEN' ? '#2ecc71' : '#e74c3c'
+              }`,
               borderRadius: '50px',
-              color: '#2ecc71',
+              color:
+                siteConfig.commissions.status === 'OPEN'
+                  ? '#2ecc71'
+                  : '#e74c3c',
               fontWeight: '800',
               fontSize: '0.9rem',
               letterSpacing: '0.1em',
-              background: 'rgba(46, 204, 113, 0.05)',
+              background:
+                siteConfig.commissions.status === 'OPEN'
+                  ? 'rgba(46, 204, 113, 0.05)'
+                  : 'rgba(231, 76, 60, 0.05)',
             }}
           >
-            STATUS: OPEN
+            STATUS: {siteConfig.commissions.status}
           </motion.div>
         </div>
 

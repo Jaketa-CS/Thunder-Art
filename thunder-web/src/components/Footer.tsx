@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { siteConfig } from '@/data/siteConfig';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -39,7 +40,7 @@ const Footer = () => {
           {[
             {
               name: 'Bluesky',
-              url: 'https://bsky.app/profile/thunderfennec.bsky.social',
+              url: siteConfig.socials.bluesky,
               color: '#0085ff',
               icon: (
                 <svg
@@ -55,7 +56,7 @@ const Footer = () => {
             },
             {
               name: 'X (Twitter)',
-              url: 'https://x.com/ThunderFennec',
+              url: siteConfig.socials.twitter,
               color: 'var(--color-text-primary)', // Adapts to light/dark mode
               icon: (
                 <svg
@@ -71,7 +72,7 @@ const Footer = () => {
             },
             {
               name: 'FurAffinity',
-              url: 'https://www.furaffinity.net/user/zevoloz',
+              url: siteConfig.socials.furaffinity,
               color: '#FAAF3A', // FA Orange
               icon: (
                 <div
@@ -93,7 +94,7 @@ const Footer = () => {
             },
             {
               name: 'Instagram',
-              url: 'https://www.instagram.com/zevoloz/',
+              url: siteConfig.socials.instagram,
               color: '#E1306C', // Instagram Pink
               icon: (
                 <svg
