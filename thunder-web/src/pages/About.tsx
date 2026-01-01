@@ -138,7 +138,7 @@ const About = () => {
               {[
                 'Procreate',
                 'TVPaint',
-                'Toon Boom',
+                'Toon Squid',
                 'Clip Studio Paint',
                 'Photoshop',
                 'Blender',
