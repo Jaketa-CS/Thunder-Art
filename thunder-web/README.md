@@ -1,16 +1,59 @@
-# React + Vite
+# Thunder Art ⚡🎨
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-fidelity digital art portfolio website built to showcase illustrations, animations, and creative commissions. This project is a custom-coded React application designed with a focus on premium aesthetics, smooth animations, and a responsive user experience.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Dynamic Art Grid**: Interactive gallery filtering for Animations and Illustrations.
+- **Custom Music Player**: Integrated audio player with a visual soundwave component.
+- **Commission System**: Dedicated page for commission information and requests.
+- **Convention Schedule**: "Tour dates" style tracking for convention appearances.
+- **Responsive Design**: Fully optimized for Desktop, Tablet, and Mobile devices.
+- **Modern Styling**: Built with Vanilla CSS using modern variables, glassmorphism, and smooth transitions.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework**: [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: Vanilla CSS (Variables, Flexbox/Grid)
+- **Deployment**: Netlify (configured via `netlify.toml`)
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+Ensure you have [Node.js](https://nodejs.org/) installed (version 18+ recommended).
+
+### Installation
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone <repository-url>
+   cd thunder-web
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+### Running Locally
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open your browser and navigate to `http://localhost:5173` (or the port shown in your terminal).
+
+## 📦 Building for Production
+
+To create a production-ready build:
+
+```bash
+npm run build
+```
+
+The output will be in the `dist/` directory, ready to be deployed to your hosting provider.
