@@ -1,59 +1,67 @@
-# Thunder Art ⚡🎨
+<div align="center">
+  <img src="public/site-images/image02.png" alt="ThunderFennec Logo" width="100" />
+  <h1>ThunderFennec</h1>
+  
+  [![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
+  [![React](https://img.shields.io/badge/react-%2320232a.svg?style=flat-square&logo=react&logoColor=%2361DAFB)](https://react.dev/)
+  [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=flat-square&logo=Cloudflare&logoColor=white)](https://pages.cloudflare.com/)
+</div>
 
-A high-fidelity digital art portfolio website built to showcase illustrations, animations, and creative commissions. This project is a custom-coded React application designed with a focus on premium aesthetics, smooth animations, and a responsive user experience.
+<br />
 
-## ✨ Features
+Source code for the ThunderFennec portfolio website.
 
-- **Dynamic Art Grid**: Interactive gallery filtering for Animations and Illustrations.
-- **Custom Music Player**: Integrated audio player with a visual soundwave component.
-- **Commission System**: Dedicated page for commission information and requests.
-- **Convention Schedule**: "Tour dates" style tracking for convention appearances.
-- **Responsive Design**: Fully optimized for Desktop, Tablet, and Mobile devices.
-- **Modern Styling**: Built with Vanilla CSS using modern variables, glassmorphism, and smooth transitions.
+This project uses React and TypeScript to create a custom gallery experience, avoiding the limitations of standard portfolio templates. It focuses on performance, custom animations, and a responsive layout for displaying digital art.
 
-## 🛠️ Tech Stack
+## Features
 
-- **Framework**: [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
-- **Build Tool**: [Vite](https://vitejs.dev/)
-- **Styling**: Vanilla CSS (Variables, Flexbox/Grid)
-- **Deployment**: Netlify (configured via `netlify.toml`)
+- **Gallery**: Masonry grid layout handling mixed aspect ratios for illustrations and animations.
+- **Audio**: Persistent background audio player utilizing the HTML5 Audio API.
+- **Commissions**: Form-based flow for client inquiries with availability checks.
+- **Schedule**: Component for tracking convention appearances.
 
-## 🚀 Getting Started
+## Development
 
-### Prerequisites
+The project is built with Vite.
 
-Ensure you have [Node.js](https://nodejs.org/) installed (version 18+ recommended).
-
-### Installation
-
-1. **Clone the repository**:
+1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/yourusername/thunder-web.git
    cd thunder-web
    ```
 
-2. **Install dependencies**:
+2. Install dependencies:
+
    ```bash
    npm install
    ```
 
-### Running Locally
+3. Start the local server:
+   ```bash
+   npm run dev
+   ```
 
-Start the development server:
+## Deployment
 
-```bash
-npm run dev
-```
+The site is hosted on Cloudflare Pages.
 
-Open your browser and navigate to `http://localhost:5173` (or the port shown in your terminal).
-
-## 📦 Building for Production
-
-To create a production-ready build:
+To build for production locally:
 
 ```bash
 npm run build
 ```
 
-The output will be in the `dist/` directory, ready to be deployed to your hosting provider.
+This generates static assets in the `dist/` directory, which Cloudflare detects and serves.
+
+## Structure
+
+- `src/components`: Reusable UI elements (Navbar, Buttons, ArtCards).
+- `src/data`: Static data configurations.
+- `src/pages`: Main application views.
+- `src/styles`: CSS modules and global variables.
+
+---
+
+_Created by Jake Teeter._
