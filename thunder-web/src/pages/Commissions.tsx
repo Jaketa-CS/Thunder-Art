@@ -499,6 +499,75 @@ const Commissions = () => {
           >
             STATUS: {siteConfig.commissions.status}
           </motion.div>
+
+          {/* Top Action Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            style={{
+              marginTop: '2rem',
+              display: 'flex',
+              gap: '1rem',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+            }}
+          >
+            <a
+              href="https://t.me/ThunderFennec"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: 'var(--color-accent)',
+                color: 'white',
+                padding: '1rem 2.5rem',
+                borderRadius: '100px',
+                fontSize: '1.2rem',
+                fontWeight: '800',
+                textDecoration: 'none',
+                boxShadow: '0 8px 20px rgba(0,229,255,0.3)',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow =
+                  '0 10px 25px rgba(0,229,255,0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow =
+                  '0 8px 20px rgba(0,229,255,0.3)';
+              }}
+            >
+              Send a Message
+            </a>
+            <a
+              href="https://trello.com/b/w0MZ464h/thunder-commision-info"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: 'var(--color-bg-tertiary)',
+                color: 'var(--color-text-primary)',
+                padding: '1rem 2.5rem',
+                borderRadius: '100px',
+                fontSize: '1.2rem',
+                fontWeight: '800',
+                textDecoration: 'none',
+                border: '1px solid var(--color-border)',
+                transition: 'background 0.2s ease, transform 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.background = 'var(--color-border)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.background = 'var(--color-bg-tertiary)';
+              }}
+            >
+              View Queue
+            </a>
+          </motion.div>
         </div>
 
         {/* Main Content */}
@@ -511,63 +580,46 @@ const Commissions = () => {
             />
           ))}
         </div>
-
-        {/* Large Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="commission-cta"
-          style={{
-            marginTop: '4rem',
-            padding: '4rem',
-            background: 'var(--color-bg-secondary)',
-            borderRadius: '30px',
-            textAlign: 'center',
-            border: '1px solid var(--color-border)',
-          }}
-        >
-          <h2
-            style={{
-              fontSize: '2.5rem',
-              fontFamily: 'var(--font-family-header)',
-              marginBottom: '1rem',
-            }}
-          >
-            Interested?
-          </h2>
-          <p
-            style={{
-              fontSize: '1.2rem',
-              color: 'var(--color-text-secondary)',
-              marginBottom: '3rem',
-              maxWidth: '600px',
-              margin: '0 auto 3rem auto',
-            }}
-          >
-            Please have your character reference (ref sheet) ready and a clear
-            idea of what you would like!
-          </p>
-          <a
-            href="https://t.me/ThunderFennec"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              background: 'var(--color-accent)',
-              color: 'white',
-              padding: '1.2rem 3rem',
-              borderRadius: '100px',
-              fontSize: '1.2rem',
-              fontWeight: 'bold',
-              textDecoration: 'none',
-              display: 'inline-block',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-            }}
-          >
-            Send a Message
-          </a>
-        </motion.div>
       </div>
+
+      {/* Back to Top Button */}
+      <motion.button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ margin: '100px' }}
+        style={{
+          position: 'fixed',
+          bottom: '2rem',
+          right: '2rem',
+          background: 'var(--color-bg-tertiary)',
+          color: 'var(--color-text-primary)',
+          border: '1px solid var(--color-border)',
+          width: '50px',
+          height: '50px',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          boxShadow: 'var(--shadow-md)',
+          zIndex: 100,
+          fontSize: '1.5rem',
+          transition: 'background 0.2s ease, transform 0.2s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'translateY(-5px)';
+          e.currentTarget.style.background = 'var(--color-border)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.background = 'var(--color-bg-tertiary)';
+        }}
+        aria-label="Back to Top"
+      >
+        ↑
+      </motion.button>
+
       <Footer />
     </>
   );
