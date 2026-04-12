@@ -549,7 +549,7 @@ const Commissions = () => {
             idea of what you would like!
           </p>
           <a
-            href="https://twitter.com/messages/compose?recipient_id=YOUR_ID"
+            href="https://t.me/ThunderFennec"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -564,7 +564,7 @@ const Commissions = () => {
               boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
             }}
           >
-            Send a DM
+            Send a Message
           </a>
         </motion.div>
       </div>
