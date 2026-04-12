@@ -6,6 +6,7 @@ interface PricingOption {
   name: string;
   price: string;
   details?: string;
+  isSubItem?: boolean;
 }
 
 interface CommissionCategory {
@@ -96,16 +97,18 @@ const COMMISSION_DATA: CommissionCategory[] = [
     description:
       "Showcase your character's full design! Great for showing off outfits, anatomy, or dynamic action poses.",
     options: [
-      { name: 'Cartoony Style', price: '$40', details: 'Exaggerated, playful proportions' },
+      {
+        name: 'Cartoony Style',
+        price: '$55',
+        details: 'Exaggerated, playful proportions',
+      },
       {
         name: 'Standard Style',
-        price: '$45-$50',
+        price: '$65-$70',
         details: 'More detailed anatomy and proportions',
       },
     ],
-    extras: [
-      'Full shading & rendering: +$5-$10',
-    ],
+    extras: ['Full shading & rendering: +$5-$10'],
   },
   {
     title: 'Animations',
@@ -173,9 +176,27 @@ const COMMISSION_DATA: CommissionCategory[] = [
       'A complete scene with a detailed background. Perfect for storytelling, wallpapers, or printing as a poster.',
     options: [
       {
-        name: 'Full Illustration',
-        price: '$180+',
-        details: 'Character + Environment + Lighting',
+        name: 'Full Scene (Total)',
+        price: '~$150-$170+',
+        details: 'Price varies based on complexity. Breakdown below:',
+      },
+      {
+        name: 'Base Character',
+        price: '~$60-$80',
+        details: 'Matches your chosen Full Body style + Shading',
+        isSubItem: true,
+      },
+      {
+        name: 'Custom Environment',
+        price: '~$50+',
+        details: 'Detailed painted background and scenery',
+        isSubItem: true,
+      },
+      {
+        name: 'Atmospheric Lighting',
+        price: '~$40+',
+        details: 'Complex full-scene shading and mood lighting',
+        isSubItem: true,
       },
     ],
   },
@@ -392,9 +413,12 @@ const CommissionItem = ({
               <div>
                 <strong
                   style={{
-                    fontSize: '1.2rem',
+                    fontSize: option.isSubItem ? '1rem' : '1.2rem',
+                    fontWeight: option.isSubItem ? '600' : 'bold',
                     display: 'block',
-                    color: 'var(--color-text-primary)',
+                    color: option.isSubItem
+                      ? 'var(--color-text-secondary)'
+                      : 'var(--color-text-primary)',
                   }}
                 >
                   {option.name}
@@ -402,8 +426,9 @@ const CommissionItem = ({
                 {option.details && (
                   <span
                     style={{
-                      fontSize: '0.9rem',
+                      fontSize: option.isSubItem ? '0.8rem' : '0.9rem',
                       color: 'var(--color-text-secondary)',
+                      opacity: option.isSubItem ? 0.8 : 1,
                     }}
                   >
                     {option.details}
@@ -412,9 +437,10 @@ const CommissionItem = ({
               </div>
               <div
                 style={{
-                  fontSize: '1.4rem',
-                  fontWeight: '800',
+                  fontSize: option.isSubItem ? '1.1rem' : '1.4rem',
+                  fontWeight: option.isSubItem ? '600' : '800',
                   color: 'var(--color-accent)',
+                  opacity: option.isSubItem ? 0.9 : 1,
                 }}
               >
                 {option.price}
