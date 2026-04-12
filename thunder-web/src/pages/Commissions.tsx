@@ -11,6 +11,7 @@ interface PricingOption {
 interface CommissionCategory {
   title: string;
   images: string[];
+  imageLabels?: string[];
   description?: string;
   options: PricingOption[];
   extras?: (string | React.ReactNode)[];
@@ -19,7 +20,11 @@ interface CommissionCategory {
 const COMMISSION_DATA: CommissionCategory[] = [
   {
     title: 'Icons',
-    images: ['/com-images/headshotwithbackground.jpg'],
+    images: [
+      '/com-images/sketch_icon.png',
+      '/com-images/headshotwithbackground.jpg',
+    ],
+    imageLabels: ['Sketch', 'Detailed'],
     description:
       'High-quality avatars perfect for social media (2000x2000px). I focus on expression and lighting to make your character pop!',
     options: [
@@ -91,12 +96,15 @@ const COMMISSION_DATA: CommissionCategory[] = [
     description:
       "Showcase your character's full design! Great for showing off outfits, anatomy, or dynamic action poses.",
     options: [
-      { name: 'Sketch', price: '$45', details: 'Rough lines, simple color' },
+      { name: 'Cartoony Style', price: '$40', details: 'Exaggerated, playful proportions' },
       {
-        name: 'Full Render',
-        price: '$60',
-        details: 'Clean lines, full shading & lighting',
+        name: 'Standard Style',
+        price: '$45-$50',
+        details: 'More detailed anatomy and proportions',
       },
+    ],
+    extras: [
+      'Full shading & rendering: +$5-$10',
     ],
   },
   {
@@ -261,6 +269,29 @@ const CommissionItem = ({
               }}
             />
           )}
+
+          {/* Label Badge */}
+          {category.imageLabels && category.imageLabels[currentImageIndex] && (
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '10px',
+                left: '10px',
+                background: 'var(--color-accent)',
+                color: 'white',
+                padding: '4px 12px',
+                borderRadius: '12px',
+                fontSize: '0.9rem',
+                fontWeight: '800',
+                pointerEvents: 'none',
+                boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+              }}
+            >
+              {category.imageLabels[currentImageIndex]}
+            </div>
+          )}
+
+          {/* Number Counter Badge */}
           {category.images.length > 1 && (
             <div
               style={{
