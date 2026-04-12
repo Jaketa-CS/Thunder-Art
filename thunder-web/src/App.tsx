@@ -7,6 +7,8 @@ import Home from '@/pages/Home';
 import Commissions from '@/pages/Commissions';
 import About from '@/pages/About';
 
+import BackToTop from '@/components/BackToTop';
+
 import { ThemeProvider } from '@/contexts/ThemeContext';
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
               <Route path="/about" element={<About />} />
             </Routes>
           </AnimatePresence>
+
+          <BackToTop />
         </div>
       </Router>
     </ThemeProvider>

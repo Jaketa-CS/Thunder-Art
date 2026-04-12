@@ -177,7 +177,7 @@ const COMMISSION_DATA: CommissionCategory[] = [
     options: [
       {
         name: 'Full Scene (Total)',
-        price: '~$150-$170+',
+        price: '~$150-$200',
         details: 'Price varies based on complexity. Breakdown below:',
       },
       {
@@ -300,12 +300,13 @@ const CommissionItem = ({
                 left: '10px',
                 background: 'var(--color-accent)',
                 color: 'white',
-                padding: '4px 12px',
+                padding: '6px 16px',
                 borderRadius: '12px',
-                fontSize: '0.9rem',
+                fontSize: '1.05rem',
                 fontWeight: '800',
                 pointerEvents: 'none',
                 boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+                opacity: 0.85,
               }}
             >
               {category.imageLabels[currentImageIndex]}
@@ -373,6 +374,7 @@ const CommissionItem = ({
           />
         </h2>
 
+        {/* 
         {category.description && (
           <p
             style={{
@@ -385,6 +387,7 @@ const CommissionItem = ({
             {category.description}
           </p>
         )}
+        */}
 
         {/* PRICING TABLE styled cleanly */}
         <div
@@ -402,12 +405,30 @@ const CommissionItem = ({
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'baseline',
-                marginBottom: i === category.options.length - 1 ? 0 : '1rem',
-                borderBottom:
+                marginBottom:
                   i === category.options.length - 1
+                    ? 0
+                    : option.isSubItem
+                      ? '0.5rem'
+                      : '1rem',
+                borderBottom:
+                  i === category.options.length - 1 ||
+                  option.isSubItem ||
+                  category.options[i + 1]?.isSubItem
                     ? 'none'
                     : '1px solid rgba(255,255,255,0.05)',
-                paddingBottom: i === category.options.length - 1 ? 0 : '1rem',
+                paddingBottom:
+                  i === category.options.length - 1
+                    ? 0
+                    : option.isSubItem
+                      ? '0.5rem'
+                      : '1rem',
+                marginLeft: option.isSubItem ? '1rem' : '0',
+                paddingLeft: option.isSubItem ? '1.5rem' : '0',
+                borderLeft: option.isSubItem
+                  ? '3px solid var(--color-bg-tertiary)'
+                  : 'none',
+                marginTop: option.isSubItem ? '-0.2rem' : '0',
               }}
             >
               <div>
@@ -638,44 +659,6 @@ const Commissions = () => {
           ))}
         </div>
       </div>
-
-      {/* Back to Top Button */}
-      <motion.button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ margin: '100px' }}
-        style={{
-          position: 'fixed',
-          bottom: '2rem',
-          right: '2rem',
-          background: 'var(--color-bg-tertiary)',
-          color: 'var(--color-text-primary)',
-          border: '1px solid var(--color-border)',
-          width: '50px',
-          height: '50px',
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer',
-          boxShadow: 'var(--shadow-md)',
-          zIndex: 100,
-          fontSize: '1.5rem',
-          transition: 'background 0.2s ease, transform 0.2s ease',
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'translateY(-5px)';
-          e.currentTarget.style.background = 'var(--color-border)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'translateY(0)';
-          e.currentTarget.style.background = 'var(--color-bg-tertiary)';
-        }}
-        aria-label="Back to Top"
-      >
-        ↑
-      </motion.button>
 
       <Footer />
     </>
