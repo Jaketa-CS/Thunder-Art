@@ -546,6 +546,19 @@ const Commissions = () => {
             alignItems: 'center',
           }}
         >
+          <motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            style={{
+              fontSize: '3rem',
+              marginBottom: '1rem',
+              color: 'var(--color-text-primary)',
+              letterSpacing: '0.02em',
+            }}
+          >
+            COMMISSIONS
+          </motion.h1>
+
           {/* Status Badge */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -589,21 +602,6 @@ const Commissions = () => {
             />
             STATUS: {siteConfig.commissions.status}
           </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="commissions-title"
-            style={{
-              fontSize: '3.5rem',
-              marginBottom: '2rem',
-              fontFamily: 'var(--font-family-header)',
-              color: 'var(--color-text-primary)',
-              letterSpacing: '0.02em',
-            }}
-          >
-            COMMISSIONS
-          </motion.h1>
 
           {/* Action Row */}
           <motion.div
