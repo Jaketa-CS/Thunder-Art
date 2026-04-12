@@ -40,8 +40,8 @@ const About = () => {
             <div
               style={{
                 position: 'relative',
-                width: '154px', // Slightly larger for border
-                height: '154px',
+                width: '224px', // Slightly larger for border
+                height: '224px',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
@@ -63,8 +63,8 @@ const About = () => {
               {/* Video Container */}
               <div
                 style={{
-                  width: '150px',
-                  height: '150px',
+                  width: '220px',
+                  height: '220px',
                   borderRadius: '50%',
                   overflow: 'hidden',
                   position: 'relative',
