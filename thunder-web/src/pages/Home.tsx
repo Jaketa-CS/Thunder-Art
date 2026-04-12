@@ -6,6 +6,56 @@ import ArtModal from '@/components/ArtModal';
 import HeroSection from '@/components/HeroSection';
 import { MOCK_ART, ArtPiece } from '@/data/mockArt';
 
+const FilterButton = ({
+  label,
+  value,
+  currentFilter,
+  setFilter,
+}: {
+  label: string;
+  value: 'all' | 'video' | 'image';
+  currentFilter: 'all' | 'video' | 'image';
+  setFilter: (val: 'all' | 'video' | 'image') => void;
+}) => (
+  <button
+    onClick={() => setFilter(value)}
+    style={{
+      position: 'relative',
+      background: 'transparent',
+      color:
+        currentFilter === value
+          ? 'var(--color-bg-primary)'
+          : 'var(--color-text-secondary)',
+      border: 'none',
+      padding: '0.5rem 1rem',
+      borderRadius: '4px',
+      cursor: 'pointer',
+      fontSize: '0.9rem',
+      fontWeight: '800',
+      textTransform: 'uppercase',
+      transform: 'skewX(-12deg)',
+      transition: 'color 0.2s ease',
+      zIndex: 1,
+    }}
+  >
+    {currentFilter === value && (
+      <motion.div
+        layoutId="activeFilter"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'var(--color-accent)', // Electric Blue
+          borderRadius: '4px',
+          zIndex: -1,
+          // boxShadow removed for flat look
+        }}
+        transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
+      />
+    )}
+    <span style={{ display: 'block', transform: 'skewX(12deg)' }}>{label}</span>
+  </button>
+);
+
 const Home = () => {
   const [selectedArt, setSelectedArt] = useState<ArtPiece | null>(null);
   const [filter, setFilter] = useState<'all' | 'video' | 'image'>('all');
@@ -16,54 +66,6 @@ const Home = () => {
     if (filter === 'image') return art.tags.includes('Illustration');
     return true;
   });
-
-  const FilterButton = ({
-    label,
-    value,
-  }: {
-    label: string;
-    value: 'all' | 'video' | 'image';
-  }) => (
-    <button
-      onClick={() => setFilter(value)}
-      style={{
-        position: 'relative',
-        background: 'transparent',
-        color:
-          filter === value
-            ? 'var(--color-bg-primary)'
-            : 'var(--color-text-secondary)',
-        border: 'none',
-        padding: '0.5rem 1rem',
-        borderRadius: '4px',
-        cursor: 'pointer',
-        fontSize: '0.9rem',
-        fontWeight: '800',
-        textTransform: 'uppercase',
-        transform: 'skewX(-12deg)',
-        transition: 'color 0.2s ease',
-        zIndex: 1,
-      }}
-    >
-      {filter === value && (
-        <motion.div
-          layoutId="activeFilter"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'var(--color-accent)', // Electric Blue
-            borderRadius: '4px',
-            zIndex: -1,
-            // boxShadow removed for flat look
-          }}
-          transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
-        />
-      )}
-      <span style={{ display: 'block', transform: 'skewX(12deg)' }}>
-        {label}
-      </span>
-    </button>
-  );
 
   return (
     <motion.div
@@ -112,9 +114,24 @@ const Home = () => {
             maxWidth: '100%',
           }}
         >
-          <FilterButton label="All" value="all" />
-          <FilterButton label="Animations" value="video" />
-          <FilterButton label="Illustrations" value="image" />
+          <FilterButton
+            label="All"
+            value="all"
+            currentFilter={filter}
+            setFilter={setFilter}
+          />
+          <FilterButton
+            label="Animations"
+            value="video"
+            currentFilter={filter}
+            setFilter={setFilter}
+          />
+          <FilterButton
+            label="Illustrations"
+            value="image"
+            currentFilter={filter}
+            setFilter={setFilter}
+          />
         </div>
       </div>
 
