@@ -534,6 +534,7 @@ html {
   }
 
   .commission-item-gap {
+    flex-direction: column !important;
     gap: 2rem !important;
     margin-bottom: 4rem !important;
   }
