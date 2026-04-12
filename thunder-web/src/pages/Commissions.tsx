@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Footer from '@/components/Footer';
+import ToSModal from '@/components/ToSModal';
 import { siteConfig } from '@/data/siteConfig';
 
 interface PricingOption {
@@ -516,8 +517,11 @@ const CommissionItem = ({
 };
 
 const Commissions = () => {
+  const [isToSOpen, setIsToSOpen] = useState(false);
+
   return (
     <>
+      <ToSModal isOpen={isToSOpen} onClose={() => setIsToSOpen(false)} />
       <div
         style={{
           paddingTop: '3rem',
@@ -530,95 +534,117 @@ const Commissions = () => {
           overflowX: 'hidden', // Prevent scrollbar from animation
         }}
       >
-        {/* Minimal Header */}
+        {/* Clean, Professional Header */}
         <div
           className="commissions-header"
           style={{
             textAlign: 'center',
-            marginBottom: '8rem',
-            marginTop: '2rem',
+            marginBottom: '6rem',
+            marginTop: '3rem',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
           }}
         >
+          {/* Status Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.4rem 1rem',
+              border: `1px solid ${
+                siteConfig.commissions.status === 'OPEN' ? '#2ea043' : '#f85149'
+              }`,
+              borderRadius: '20px',
+              color:
+                siteConfig.commissions.status === 'OPEN'
+                  ? '#3fb950'
+                  : '#f85149',
+              background: 'transparent',
+              fontSize: '0.85rem',
+              fontWeight: '600',
+              letterSpacing: '0.05em',
+              marginBottom: '1.5rem',
+            }}
+          >
+            <div
+              style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                background:
+                  siteConfig.commissions.status === 'OPEN'
+                    ? '#3fb950'
+                    : '#f85149',
+                boxShadow: `0 0 8px ${
+                  siteConfig.commissions.status === 'OPEN'
+                    ? '#3fb950'
+                    : '#f85149'
+                }`,
+              }}
+            />
+            STATUS: {siteConfig.commissions.status}
+          </motion.div>
+
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             className="commissions-title"
             style={{
-              fontSize: '4rem',
-              marginBottom: '1rem',
+              fontSize: '3.5rem',
+              marginBottom: '2rem',
               fontFamily: 'var(--font-family-header)',
+              color: 'var(--color-text-primary)',
+              letterSpacing: '0.02em',
             }}
           >
             COMMISSIONS
           </motion.h1>
+
+          {/* Action Row */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             style={{
-              display: 'inline-block',
-              padding: '0.6rem 2rem',
-              border: `1px solid ${
-                siteConfig.commissions.status === 'OPEN' ? '#2ecc71' : '#e74c3c'
-              }`,
-              borderRadius: '50px',
-              color:
-                siteConfig.commissions.status === 'OPEN'
-                  ? '#2ecc71'
-                  : '#e74c3c',
-              fontWeight: '800',
-              fontSize: '0.9rem',
-              letterSpacing: '0.1em',
-              background:
-                siteConfig.commissions.status === 'OPEN'
-                  ? 'rgba(46, 204, 113, 0.05)'
-                  : 'rgba(231, 76, 60, 0.05)',
-            }}
-          >
-            STATUS: {siteConfig.commissions.status}
-          </motion.div>
-
-          {/* Top Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            style={{
-              marginTop: '2rem',
               display: 'flex',
-              gap: '1rem',
+              alignItems: 'center',
               justifyContent: 'center',
+              gap: '1rem',
               flexWrap: 'wrap',
+              marginBottom: '1.5rem',
             }}
           >
+            {/* Primary Button */}
             <a
               href="https://t.me/ThunderFennec"
               target="_blank"
               rel="noopener noreferrer"
               style={{
                 background: 'var(--color-accent)',
-                color: 'white',
-                padding: '1rem 2.5rem',
-                borderRadius: '100px',
-                fontSize: '1.2rem',
-                fontWeight: '800',
+                color: 'var(--color-bg-primary)',
+                padding: '0.7rem 1.8rem',
+                borderRadius: '6px',
+                fontSize: '1rem',
+                fontWeight: '600',
                 textDecoration: 'none',
-                boxShadow: '0 8px 20px rgba(0,229,255,0.3)',
-                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                transition: 'background 0.2s ease, transform 0.1s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow =
-                  '0 10px 25px rgba(0,229,255,0.4)';
+                e.currentTarget.style.filter = 'brightness(1.1)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow =
-                  '0 8px 20px rgba(0,229,255,0.3)';
+                e.currentTarget.style.filter = 'brightness(1)';
               }}
             >
               Send a Message
             </a>
+
+            {/* Secondary Button */}
             <a
               href="https://trello.com/b/w0MZ464h/thunder-commision-info"
               target="_blank"
@@ -626,26 +652,51 @@ const Commissions = () => {
               style={{
                 background: 'var(--color-bg-tertiary)',
                 color: 'var(--color-text-primary)',
-                padding: '1rem 2.5rem',
-                borderRadius: '100px',
-                fontSize: '1.2rem',
-                fontWeight: '800',
+                padding: '0.7rem 1.8rem',
+                borderRadius: '6px',
+                fontSize: '1rem',
+                fontWeight: '500',
                 textDecoration: 'none',
                 border: '1px solid var(--color-border)',
-                transition: 'background 0.2s ease, transform 0.2s ease',
+                transition: 'background 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
                 e.currentTarget.style.background = 'var(--color-border)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
                 e.currentTarget.style.background = 'var(--color-bg-tertiary)';
               }}
             >
               View Queue
             </a>
           </motion.div>
+
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            onClick={() => setIsToSOpen(true)}
+            style={{
+              background: 'transparent',
+              color: 'var(--color-text-secondary)',
+              fontSize: '0.9rem',
+              border: 'none',
+              cursor: 'pointer',
+              textDecoration: 'none',
+              display: 'inline-block',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = 'var(--color-text-primary)';
+              e.currentTarget.style.textDecoration = 'underline';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = 'var(--color-text-secondary)';
+              e.currentTarget.style.textDecoration = 'none';
+            }}
+          >
+            Read Terms of Service
+          </motion.button>
         </div>
 
         {/* Main Content */}
