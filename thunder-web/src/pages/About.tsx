@@ -99,21 +99,14 @@ const About = () => {
           <div
             style={{ lineHeight: '1.8', color: 'var(--color-text-secondary)' }}
           >
-            <p style={{ marginBottom: '1.5rem' }}>
-              Hello and thank you for visiting my page! I'm Thunder, you might
-              also know me as Zevoloz. I'm a Fennec Bird Hybrid from Colorado,
-              and I am a digital artist and animator!
-            </p>
-            <p style={{ marginBottom: '1.5rem' }}>
-              My work focuses on vibrant illustrations, expressive character
-              designs, and dynamic animations. I love experimenting with
-              expressions, unique color palettes, and bringing fluffy creatures
-              to life.
+            <p style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>
+              Hi, I'm Thunder (also known as Zevoloz)! I'm a Fennec/Bird hybrid
+              based out of Colorado, and I specialize in digital art and
+              animation.
             </p>
             <p>
-              Im inspired by friends and the furry art community. Im always
-              looking to learn and grow. Feel free to reach out for commissions
-              or just to chat about art, characters, or anything else! :P
+              Whether you're looking for commission work or just want to chat
+              about art and stuff, feel free to reach out! :P
             </p>
           </div>
 

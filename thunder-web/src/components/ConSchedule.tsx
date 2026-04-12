@@ -44,7 +44,7 @@ const CONVENTIONS: Convention[] = [
     abbrev: 'FWA',
     logo: '/con-logos/fwa.png',
     logoStyle: 'cover',
-    years: [2025, '2026'],
+    years: [2025],
   },
   {
     name: 'Midwest FurFest',
@@ -54,14 +54,7 @@ const CONVENTIONS: Convention[] = [
     logoBg: '#f0f0f0',
     years: [2025],
   },
-  {
-    name: 'Megaplex',
-    abbrev: 'MP',
-    logo: '/con-logos/megaplex.png',
-    logoStyle: 'cover',
-    logoPosition: 'left center',
-    years: ['2026'],
-  },
+
   {
     name: 'FurPoc',
     abbrev: 'FP',
@@ -69,7 +62,7 @@ const CONVENTIONS: Convention[] = [
     logoStyle: 'cover',
     logoScale: 1.3,
     logoBg: '#f0f0f0',
-    years: [2024, '2026?'],
+    years: [2024],
   },
 ];
 
@@ -121,7 +114,7 @@ const ConSchedule = () => {
           paddingBottom: '0.5rem',
         }}
       >
-        Convention Log Book (conventions I've gone to!)
+        Convention Log Book (where I've been & where I'm heading!)
       </motion.h3>
 
       {/* Clean List with staggered animation */}
