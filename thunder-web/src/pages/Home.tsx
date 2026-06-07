@@ -27,9 +27,7 @@ const FilterButton = ({
         currentFilter === value
           ? 'var(--color-bg-primary)'
           : 'var(--color-text-secondary)',
-      border: '1px solid',
-      borderColor:
-        currentFilter === value ? 'var(--color-accent)' : 'transparent',
+      border: 'none',
       padding: '0.4rem 1rem',
       borderRadius: 'var(--radius-sm)',
       cursor: 'pointer',
