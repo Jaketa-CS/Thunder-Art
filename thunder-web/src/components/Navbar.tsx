@@ -147,9 +147,9 @@ const Navbar = () => {
           aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
           style={{
             background: 'var(--color-bg-tertiary)',
-            border: 'none',
+            border: '1px solid var(--color-border)',
             padding: '0.5rem',
-            borderRadius: '50%',
+            borderRadius: 'var(--radius-sm)',
             cursor: 'pointer',
             marginLeft: '0.5rem',
             color: 'var(--color-text-primary)',
@@ -158,6 +158,7 @@ const Navbar = () => {
             justifyContent: 'center',
             width: '36px',
             height: '36px',
+            transition: 'all 0.2s ease',
           }}
         >
           {theme === 'dark' ? (

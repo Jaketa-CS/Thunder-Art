@@ -27,15 +27,16 @@ const FilterButton = ({
         currentFilter === value
           ? 'var(--color-bg-primary)'
           : 'var(--color-text-secondary)',
-      border: 'none',
-      padding: '0.5rem 1rem',
-      borderRadius: '4px',
+      border: '1px solid',
+      borderColor:
+        currentFilter === value ? 'var(--color-accent)' : 'transparent',
+      padding: '0.4rem 1rem',
+      borderRadius: 'var(--radius-sm)',
       cursor: 'pointer',
       fontSize: '0.9rem',
-      fontWeight: '800',
+      fontWeight: '600',
       textTransform: 'uppercase',
-      transform: 'skewX(-12deg)',
-      transition: 'color 0.2s ease',
+      transition: 'all 0.2s ease',
       zIndex: 1,
     }}
   >
@@ -46,14 +47,13 @@ const FilterButton = ({
           position: 'absolute',
           inset: 0,
           background: 'var(--color-accent)', // Electric Blue
-          borderRadius: '4px',
+          borderRadius: 'var(--radius-sm)',
           zIndex: -1,
-          // boxShadow removed for flat look
         }}
-        transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
+        transition={{ type: 'spring', bounce: 0.1, duration: 0.3 }}
       />
     )}
-    <span style={{ display: 'block', transform: 'skewX(12deg)' }}>{label}</span>
+    <span style={{ display: 'block' }}>{label}</span>
   </button>
 );
 
@@ -95,9 +95,8 @@ const Home = () => {
           style={{
             margin: 0,
             textTransform: 'uppercase',
-            fontWeight: '900',
+            fontWeight: '700',
             fontSize: 'clamp(1.5rem, 5vw, 2rem)',
-            transform: 'skewX(-12deg)',
             letterSpacing: '0.05em',
           }}
         >

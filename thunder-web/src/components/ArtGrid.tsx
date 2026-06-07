@@ -1,6 +1,5 @@
 import { ArtPiece } from '@/data/mockArt';
 import ArtCard from './ArtCard';
-import { motion, AnimatePresence } from 'framer-motion';
 
 interface ArtGridProps {
   artworks: ArtPiece[];
@@ -23,21 +22,14 @@ const ArtGrid = ({ artworks, onArtClick }: ArtGridProps) => {
           @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
         `}</style>
 
-      <AnimatePresence>
-        {artworks.map((art) => (
-          <motion.div
-            key={art.id}
-            layout
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3 }}
-            style={{ marginBottom: '1rem', breakInside: 'avoid' }}
-          >
-            <ArtCard art={art} onClick={onArtClick} />
-          </motion.div>
-        ))}
-      </AnimatePresence>
+      {artworks.map((art) => (
+        <div
+          key={art.id}
+          style={{ marginBottom: '1rem', breakInside: 'avoid' }}
+        >
+          <ArtCard art={art} onClick={onArtClick} />
+        </div>
+      ))}
     </div>
   );
 };

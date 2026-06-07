@@ -47,7 +47,7 @@ const CommissionItem = ({
           whileTap={{ scale: 0.98 }}
           onClick={handleNextImage}
           style={{
-            borderRadius: '20px',
+            borderRadius: 'var(--radius-sm)',
             overflow: 'hidden',
             border: 'none',
             // Use vertical ratio for Full Body/Pieces, landscape for others
@@ -74,7 +74,7 @@ const CommissionItem = ({
                 width: '100%',
                 height: '100%',
                 objectFit: 'contain',
-                borderRadius: '20px',
+                borderRadius: 'var(--radius-sm)',
               }}
             />
           ) : (
@@ -89,7 +89,7 @@ const CommissionItem = ({
                 width: '100%',
                 height: '100%',
                 objectFit: 'contain',
-                borderRadius: '20px',
+                borderRadius: 'var(--radius-sm)',
               }}
             />
           )}
@@ -102,14 +102,13 @@ const CommissionItem = ({
                 bottom: '10px',
                 left: '10px',
                 background: 'var(--color-accent)',
-                color: 'white',
-                padding: '6px 16px',
-                borderRadius: '12px',
-                fontSize: '1.05rem',
-                fontWeight: '800',
+                color: 'var(--color-bg-primary)',
+                padding: '4px 12px',
+                borderRadius: 'var(--radius-sm)',
+                fontSize: '0.9rem',
+                fontWeight: '600',
                 pointerEvents: 'none',
-                boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-                opacity: 0.85,
+                opacity: 0.9,
               }}
             >
               {category.imageLabels[currentImageIndex]}
@@ -126,7 +125,7 @@ const CommissionItem = ({
                 background: 'rgba(0,0,0,0.6)',
                 color: 'white',
                 padding: '4px 8px',
-                borderRadius: '12px',
+                borderRadius: 'var(--radius-sm)',
                 fontSize: '0.8rem',
                 pointerEvents: 'none',
               }}
@@ -147,7 +146,7 @@ const CommissionItem = ({
             width: '100%',
             height: '100%',
             border: '2px solid var(--color-accent)',
-            borderRadius: '20px',
+            borderRadius: 'var(--radius-sm)',
             zIndex: -1,
             opacity: 0.3,
           }}
@@ -197,7 +196,7 @@ const CommissionItem = ({
           style={{
             background: 'var(--color-bg-secondary)',
             padding: '2rem',
-            borderRadius: '16px',
+            borderRadius: 'var(--radius-sm)',
             border: '1px solid var(--color-border)',
           }}
         >
@@ -374,7 +373,7 @@ const Commissions = () => {
               border: `1px solid ${
                 siteConfig.commissions.status === 'OPEN' ? '#2ea043' : '#f85149'
               }`,
-              borderRadius: '20px',
+              borderRadius: 'var(--radius-sm)',
               color:
                 siteConfig.commissions.status === 'OPEN'
                   ? '#3fb950'
@@ -428,7 +427,7 @@ const Commissions = () => {
                 background: 'var(--color-accent)',
                 color: 'var(--color-bg-primary)',
                 padding: '0.7rem 1.8rem',
-                borderRadius: '6px',
+                borderRadius: 'var(--radius-sm)',
                 fontSize: '1rem',
                 fontWeight: '600',
                 textDecoration: 'none',
