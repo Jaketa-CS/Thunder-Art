@@ -19,6 +19,7 @@ const FilterButton = ({
 }) => (
   <button
     onClick={() => setFilter(value)}
+    aria-label={`Filter by ${label}`}
     style={{
       position: 'relative',
       background: 'transparent',

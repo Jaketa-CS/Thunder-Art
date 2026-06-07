@@ -126,7 +126,9 @@ const downloadImage = (url, filepath) => {
         await downloadImage(url, filepath);
         downloaded = true;
         break;
-      } catch (e) {}
+      } catch {
+        // Try the next pattern
+      }
     }
 
     if (downloaded) {

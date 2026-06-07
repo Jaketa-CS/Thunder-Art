@@ -144,6 +144,7 @@ const Navbar = () => {
 
         <button
           onClick={toggleTheme}
+          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
           style={{
             background: 'var(--color-bg-tertiary)',
             border: 'none',

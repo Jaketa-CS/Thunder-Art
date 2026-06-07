@@ -23,7 +23,7 @@ const ArtGrid = ({ artworks, onArtClick }: ArtGridProps) => {
           @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
         `}</style>
 
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence>
         {artworks.map((art) => (
           <motion.div
             key={art.id}
