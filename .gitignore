@@ -3,6 +3,7 @@ implementation_plan.md
 task.md
 *.tmp
 .gemini/
+CLAUDE.md
 
 # Dependencies
 node_modules/

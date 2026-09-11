@@ -45,6 +45,9 @@
     "yaml": "^2.8.2"
   },
   "scripts": {
+    "dev": "npm --prefix thunder-web run dev",
+    "build": "npm --prefix thunder-web run build",
+    "lint": "npm --prefix thunder-web run lint",
     "test": "echo \"No test specified\" && exit 0",
     "prepare": "husky"
   },
