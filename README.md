@@ -7,16 +7,16 @@ Welcome! This is the starting point for my portfolio website.
 Before running the project, you need to install **Node.js**. This includes `npm` (Node Package Manager), which is used to install dependencies and run the server.
 
 1. **Download Node.js**: [https://nodejs.org/](https://nodejs.org/)
-    * *Recommendation*: Choose the **LTS (Long Term Support)** version.
+   - _Recommendation_: Choose the **LTS (Long Term Support)** version.
 2. **Verify Installation**:
-    Open your terminal (PowerShell or Command Prompt) and run:
+   Open your terminal (PowerShell or Command Prompt) and run:
 
-    ```bash
-    node -v
-    npm -v
-    ```
+   ```bash
+   node -v
+   npm -v
+   ```
 
-    If you see version numbers, you are ready to go!
+   If you see version numbers, you are ready to go!
 
 ## Getting Started
 
@@ -62,9 +62,9 @@ You should see a local URL (e.g., `http://localhost:5173`) where you can view yo
 
 ## Project Structure
 
-* `src/main.jsx`: The entry point of the app.
+- `src/main.jsx`: The entry point of the app.
 
-* `src/App.jsx`: The main component structure.
-* `vite.config.js`: Configuration for the build tool.
+- `src/App.jsx`: The main component structure.
+- `vite.config.js`: Configuration for the build tool.
 
 Happy Coding!

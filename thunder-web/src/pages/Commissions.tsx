@@ -3,7 +3,7 @@ import Footer from '@/components/Footer';
 import ToSModal from '@/components/ToSModal';
 import { siteConfig } from '@/data/siteConfig';
 
-import { COMMISSION_DATA, CommissionCategory } from '@/data/commissionsData';
+import { COMMISSION_DATA } from '@/data/commissionsData';
 
 import { useState } from 'react';
 

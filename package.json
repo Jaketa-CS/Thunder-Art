@@ -49,7 +49,12 @@
     "dev": "npm --prefix thunder-web run dev",
     "build": "npm --prefix thunder-web run build",
     "lint": "npm --prefix thunder-web run lint",
-    "test": "echo \"No test specified\" && exit 0",
+    "lint:fix": "npm --prefix thunder-web run lint:fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "npm --prefix thunder-web run test",
+    "test:watch": "npm --prefix thunder-web run test:watch",
+    "test:e2e": "npm --prefix thunder-web run test:e2e",
     "prepare": "husky"
   },
   "repository": {

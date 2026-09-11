@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [master, main]
   pull_request:
-    branches: [ master, main ]
+    branches: [master, main]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -37,8 +37,8 @@ jobs:
         working-directory: ./thunder-web
         run: npm run lint
 
-  build:
-    name: Build
+  test-and-build:
+    name: Unit Tests & Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -55,9 +55,39 @@ jobs:
         working-directory: ./thunder-web
         run: npm ci
 
+      - name: Run Unit Tests (Vitest + happy-dom)
+        working-directory: ./thunder-web
+        run: npm run test
+
       - name: Build Application
         working-directory: ./thunder-web
         run: npm run build
+
+  e2e:
+    name: E2E Tests (Playwright)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (20)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'thunder-web/package-lock.json'
+
+      - name: Install Dependencies
+        working-directory: ./thunder-web
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        working-directory: ./thunder-web
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright Tests
+        working-directory: ./thunder-web
+        run: npm run test:e2e
 
   secrets:
     name: Secret Scan
