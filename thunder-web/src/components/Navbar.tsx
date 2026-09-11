@@ -10,61 +10,26 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className="navbar"
+      className="navbar flex items-center justify-between max-w-[1400px] mx-auto w-full p-4 md:px-4 md:py-6"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      style={{
-        padding: '1.5rem var(--spacing-sm)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        maxWidth: '1400px',
-        margin: '0 auto',
-        width: '100%',
-      }}
     >
       <Link
         to="/"
-        className="navbar-logo"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '0px',
-          marginTop: '-15px',
-        }}
+        className="navbar-logo flex flex-col items-center -mt-3.5"
       >
         <img
           src="/dance.gif"
           alt="Dancing Character"
-          style={{
-            height: '120px',
-            width: 'auto',
-            marginRight: '30px',
-          }}
+          className="h-20 md:h-[120px] w-auto mr-0 md:mr-7"
         />
         <div
-          style={{
-            fontSize: '1.7rem',
-            fontWeight: '700',
-            fontFamily: 'var(--font-family-header)',
-            display: 'flex',
-            alignItems: 'center',
-            marginTop: '-20px',
-            letterSpacing: '0.15rem',
-          }}
+          className="flex items-center -mt-2.5 md:-mt-5 text-xl md:text-[1.7rem] font-bold tracking-[0.15rem]"
+          style={{ fontFamily: 'var(--font-family-header)' }}
         >
           THUNDER
-          <span
-            style={{
-              color: 'var(--color-accent)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              marginLeft: '2px',
-              position: 'relative',
-            }}
-          >
+          <span className="text-[var(--color-accent)] inline-flex items-center ml-0.5 relative">
             {/* Primary Bolt */}
             <svg
               width="0.8em"
@@ -121,17 +86,7 @@ const Navbar = () => {
         </div>
       </Link>
 
-      <div
-        className="navbar-menu"
-        style={{
-          display: 'flex',
-          gap: '2rem',
-          alignItems: 'center',
-          marginBottom: '50px', // Adjusted down slightly
-          fontSize: '1.1rem', // Bigger menu text
-          fontWeight: '500',
-        }}
-      >
+      <div className="navbar-menu flex items-center gap-4 md:gap-8 mb-0 md:mb-12 text-sm md:text-[1.1rem] font-medium">
         <NavLink to="/" active={isActive('/')}>
           Work
         </NavLink>
@@ -145,21 +100,7 @@ const Navbar = () => {
         <button
           onClick={toggleTheme}
           aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
-          style={{
-            background: 'var(--color-bg-tertiary)',
-            border: '1px solid var(--color-border)',
-            padding: '0.5rem',
-            borderRadius: 'var(--radius-sm)',
-            cursor: 'pointer',
-            marginLeft: '0.5rem',
-            color: 'var(--color-text-primary)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '36px',
-            height: '36px',
-            transition: 'all 0.2s ease',
-          }}
+          className="flex items-center justify-center w-9 h-9 ml-2 p-2 rounded-xs border border-[var(--color-border)] bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] transition-all duration-200 cursor-pointer hover:border-[var(--color-accent)]"
         >
           {theme === 'dark' ? (
             /* Sun Icon - White for Light Mode */
@@ -210,26 +151,17 @@ const NavLink = ({ to, children, active, onClick }: NavLinkProps) => (
   <Link
     to={to}
     onClick={onClick}
-    style={{
-      position: 'relative',
-      color: active
-        ? 'var(--color-text-primary)'
-        : 'var(--color-text-secondary)',
-      fontWeight: active ? '600' : '400',
-    }}
+    className={`relative transition-colors duration-200 ${
+      active
+        ? 'text-[var(--color-text-primary)] font-semibold'
+        : 'text-[var(--color-text-secondary)] font-normal hover:text-[var(--color-text-primary)]'
+    }`}
   >
     {children}
     {active && (
       <motion.div
         layoutId="underline"
-        style={{
-          position: 'absolute',
-          bottom: '-4px',
-          left: 0,
-          right: 0,
-          height: '2px',
-          background: 'var(--color-accent)',
-        }}
+        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[var(--color-accent)]"
       />
     )}
   </Link>

@@ -67,8 +67,9 @@ const Home = () => {
   });
 
   return (
-    <motion.div
-      className="container"
+    <>
+      <motion.div
+        className="container"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
@@ -135,15 +136,15 @@ const Home = () => {
 
       <ArtGrid artworks={filteredArt} onArtClick={setSelectedArt} />
 
-      <Footer />
-
       <AnimatePresence>
         {selectedArt && (
           <ArtModal art={selectedArt} onClose={() => setSelectedArt(null)} />
         )}
       </AnimatePresence>
     </motion.div>
-  );
+    <Footer />
+  </>
+);
 };
 
 export default Home;

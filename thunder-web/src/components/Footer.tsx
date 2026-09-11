@@ -9,34 +9,11 @@ const Footer = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.5, duration: 0.5 }}
-      style={{
-        marginTop: 'auto',
-        padding: '3rem 2rem',
-        borderTop: '1px solid var(--color-border)',
-        background: 'var(--color-bg-secondary)',
-        position: 'relative',
-        zIndex: 10,
-      }}
+      className="relative z-10 mt-16 mt-auto border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)] px-8 pt-16 pb-12 md:mt-24 md:pt-20 md:pb-14"
     >
-      <div
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '1.5rem',
-        }}
-      >
+      <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-6">
         {/* Social Links */}
-        <div
-          style={{
-            display: 'flex',
-            gap: '2rem',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-          }}
-        >
+        <div className="flex flex-wrap justify-center gap-8">
           {[
             {
               name: 'Bluesky',
@@ -115,19 +92,10 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${social.name} Profile`}
-              style={{
-                color: 'var(--color-text-secondary)',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                display: 'flex',
-                alignItems: 'center',
-                padding: '0.5rem',
-                borderRadius: '50%',
-                background: 'rgba(255,255,255,0.03)',
-              }}
+              className="flex items-center rounded-full bg-white/[0.03] p-2 text-[var(--color-text-secondary)] transition-all duration-300 ease-out"
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = social.color;
                 e.currentTarget.style.transform = 'translateY(-3px) scale(1.1)';
-                // Use color-mix for dynamic opacity with brand colors/variables
                 e.currentTarget.style.background = `color-mix(in srgb, ${social.color}, transparent 90%)`;
                 e.currentTarget.style.boxShadow = `0 4px 12px color-mix(in srgb, ${social.color}, transparent 75%)`;
               }}
@@ -144,14 +112,8 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div
-          style={{
-            fontSize: '0.9rem',
-            color: 'var(--color-text-tertiary)',
-            textAlign: 'center',
-          }}
-        >
-          <p style={{ margin: 0 }}>
+        <div className="text-center text-sm text-[var(--color-text-secondary)] opacity-80">
+          <p className="m-0">
             &copy; {currentYear} Thunder Fennec. All rights reserved.
           </p>
         </div>

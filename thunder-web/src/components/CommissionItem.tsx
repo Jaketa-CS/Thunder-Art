@@ -25,18 +25,12 @@ export const CommissionItem = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6, delay: 0.1 }}
-      className="commission-item-gap"
-      style={{
-        display: 'flex',
-        flexDirection: isEven ? 'row' : 'row-reverse',
-        gap: '4rem',
-        alignItems: 'center',
-        marginBottom: '6rem',
-        flexWrap: 'wrap', // Responsive wrapping
-      }}
+      className={`commission-item-gap flex items-center gap-8 md:gap-16 mb-16 md:mb-24 flex-wrap ${
+        isEven ? 'flex-row' : 'flex-row-reverse'
+      }`}
     >
       {/* IMAGE SIDE */}
-      <div style={{ flex: '1 1 400px', position: 'relative' }}>
+      <div className="relative flex-1 min-w-[280px] basis-[400px]">
         <motion.div
           whileHover={{ scale: 1.02, rotate: isEven ? 1 : -1 }}
           whileTap={{ scale: 0.98 }}
@@ -57,18 +51,11 @@ export const CommissionItem = ({
               ? `View next image for ${category.title}`
               : `${category.title} example`
           }
-          style={{
-            borderRadius: 'var(--radius-sm)',
-            overflow: 'hidden',
-            border: 'none',
-            // Use vertical ratio for Full Body/Pieces, landscape for others
-            aspectRatio:
-              category.title === 'Full Body' || category.title.includes('Piece')
-                ? '3/4'
-                : '4/3',
-            background: 'transparent',
-            cursor: category.images.length > 1 ? 'pointer' : 'default',
-          }}
+          className={`relative overflow-hidden rounded-xs bg-transparent border-none ${
+            category.title === 'Full Body' || category.title.includes('Piece')
+              ? 'aspect-[3/4]'
+              : 'aspect-[4/3]'
+          } ${category.images.length > 1 ? 'cursor-pointer' : 'cursor-default'}`}
         >
           {isVideo ? (
             <motion.video
@@ -81,12 +68,7 @@ export const CommissionItem = ({
               loop
               muted
               playsInline
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'contain',
-                borderRadius: 'var(--radius-sm)',
-              }}
+              className="w-full h-full object-contain rounded-xs"
             />
           ) : (
             <motion.img
@@ -96,51 +78,20 @@ export const CommissionItem = ({
               transition={{ duration: 0.3 }}
               src={currentMedia}
               alt={`${category.title} example`}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'contain',
-                borderRadius: 'var(--radius-sm)',
-              }}
+              className="w-full h-full object-contain rounded-xs"
             />
           )}
 
           {/* Label Badge */}
           {category.imageLabels && category.imageLabels[currentImageIndex] && (
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '10px',
-                left: '10px',
-                background: 'var(--color-accent)',
-                color: 'var(--color-bg-primary)',
-                padding: '4px 12px',
-                borderRadius: 'var(--radius-sm)',
-                fontSize: '0.9rem',
-                fontWeight: '600',
-                pointerEvents: 'none',
-                opacity: 0.9,
-              }}
-            >
+            <div className="absolute bottom-2.5 left-2.5 px-3 py-1 rounded-xs text-sm font-semibold pointer-events-none opacity-90 bg-[var(--color-accent)] text-[var(--color-bg-primary)]">
               {category.imageLabels[currentImageIndex]}
             </div>
           )}
 
           {/* Number Counter Badge */}
           {category.images.length > 1 && (
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '10px',
-                right: '10px',
-                background: 'rgba(0,0,0,0.6)',
-                color: 'white',
-                padding: '4px 8px',
-                borderRadius: 'var(--radius-sm)',
-                fontSize: '0.8rem',
-                pointerEvents: 'none',
-              }}
-            >
+            <div className="absolute bottom-2.5 right-2.5 px-2 py-1 rounded-xs text-xs font-mono pointer-events-none bg-black/60 text-white">
               {currentImageIndex + 1}/{category.images.length}
             </div>
           )}
@@ -148,119 +99,71 @@ export const CommissionItem = ({
 
         {/* Decorative element behind image */}
         <div
-          style={{
-            position: 'absolute',
-            top: '20px',
-            left: isEven ? '-20px' : 'auto',
-            right: isEven ? 'auto' : '-20px',
-            bottom: '-20px',
-            width: '100%',
-            height: '100%',
-            border: '2px solid var(--color-accent)',
-            borderRadius: 'var(--radius-sm)',
-            zIndex: -1,
-            opacity: 0.3,
-          }}
+          className={`absolute top-5 -bottom-5 w-full h-full -z-10 rounded-xs border-2 border-[var(--color-accent)] opacity-30 ${
+            isEven ? '-left-5 right-auto' : 'left-auto -right-5'
+          }`}
         />
       </div>
 
       {/* TEXT/PRICING SIDE */}
-      <div style={{ flex: '1 1 350px' }}>
+      <div className="flex-1 min-w-[280px] basis-[350px]">
         <h2
-          style={{
-            fontSize: '2.5rem',
-            marginBottom: '1rem',
-            fontFamily: 'var(--font-family-header)',
-            position: 'relative',
-            display: 'inline-block',
-          }}
+          className="relative inline-block text-3xl md:text-4xl font-bold mb-4"
+          style={{ fontFamily: 'var(--font-family-header)' }}
         >
           {category.title}
-          <div
-            style={{
-              height: '4px',
-              width: '40%',
-              background: 'var(--color-accent)',
-              borderRadius: '2px',
-              marginTop: '5px',
-            }}
-          />
+          <div className="h-1 w-2/5 bg-[var(--color-accent)] rounded-xs mt-1.5" />
         </h2>
 
         {/* PRICING TABLE styled cleanly */}
-        <div
-          style={{
-            background: 'var(--color-bg-secondary)',
-            padding: '2rem',
-            borderRadius: 'var(--radius-sm)',
-            border: '1px solid var(--color-border)',
-          }}
-        >
+        <div className="p-6 md:p-8 rounded-xs border border-[var(--color-border)] bg-[var(--color-bg-secondary)] shadow-sm">
           {category.options.map((option, i) => (
             <div
               key={option.name}
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'baseline',
-                marginBottom:
-                  i === category.options.length - 1
-                    ? 0
-                    : option.isSubItem
-                      ? '0.5rem'
-                      : '1rem',
-                borderBottom:
-                  i === category.options.length - 1 ||
-                  option.isSubItem ||
-                  category.options[i + 1]?.isSubItem
-                    ? 'none'
-                    : '1px solid rgba(255,255,255,0.05)',
-                paddingBottom:
-                  i === category.options.length - 1
-                    ? 0
-                    : option.isSubItem
-                      ? '0.5rem'
-                      : '1rem',
-                marginLeft: option.isSubItem ? '1rem' : '0',
-                paddingLeft: option.isSubItem ? '1.5rem' : '0',
-                borderLeft: option.isSubItem
-                  ? '3px solid var(--color-bg-tertiary)'
-                  : 'none',
-                marginTop: option.isSubItem ? '-0.2rem' : '0',
-              }}
+              className={`flex justify-between items-baseline ${
+                i === category.options.length - 1
+                  ? 'mb-0 pb-0'
+                  : option.isSubItem
+                    ? 'mb-2 pb-2'
+                    : 'mb-4 pb-4'
+              } ${
+                i === category.options.length - 1 ||
+                option.isSubItem ||
+                category.options[i + 1]?.isSubItem
+                  ? ''
+                  : 'border-b border-white/5'
+              } ${
+                option.isSubItem
+                  ? 'ml-4 pl-6 border-l-2 border-[var(--color-bg-tertiary)] -mt-1'
+                  : ''
+              }`}
             >
               <div>
                 <strong
-                  style={{
-                    fontSize: option.isSubItem ? '1rem' : '1.2rem',
-                    fontWeight: option.isSubItem ? '600' : 'bold',
-                    display: 'block',
-                    color: option.isSubItem
-                      ? 'var(--color-text-secondary)'
-                      : 'var(--color-text-primary)',
-                  }}
+                  className={`block ${
+                    option.isSubItem
+                      ? 'text-base font-semibold text-[var(--color-text-secondary)]'
+                      : 'text-lg md:text-xl font-bold text-[var(--color-text-primary)]'
+                  }`}
                 >
                   {option.name}
                 </strong>
                 {option.details && (
                   <span
-                    style={{
-                      fontSize: option.isSubItem ? '0.8rem' : '0.9rem',
-                      color: 'var(--color-text-secondary)',
-                      opacity: option.isSubItem ? 0.8 : 1,
-                    }}
+                    className={`block text-xs md:text-sm text-[var(--color-text-secondary)] ${
+                      option.isSubItem ? 'opacity-80' : 'opacity-100'
+                    }`}
                   >
                     {option.details}
                   </span>
                 )}
               </div>
               <div
-                style={{
-                  fontSize: option.isSubItem ? '1.1rem' : '1.4rem',
-                  fontWeight: option.isSubItem ? '600' : '800',
-                  color: 'var(--color-accent)',
-                  opacity: option.isSubItem ? 0.9 : 1,
-                }}
+                className={`font-mono text-[var(--color-accent)] ${
+                  option.isSubItem
+                    ? 'text-lg font-semibold opacity-90'
+                    : 'text-xl md:text-2xl font-extrabold'
+                }`}
               >
                 {option.price}
               </div>
@@ -268,37 +171,15 @@ export const CommissionItem = ({
           ))}
 
           {category.extras && (
-            <div
-              style={{
-                marginTop: '1.5rem',
-                paddingTop: '1rem',
-                borderTop: '2px dashed var(--color-border)',
-              }}
-            >
-              <div
-                style={{
-                  fontSize: '0.85rem',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-secondary)',
-                  fontWeight: 'bold',
-                  marginBottom: '0.5rem',
-                }}
-              >
+            <div className="mt-6 pt-4 border-t-2 border-dashed border-[var(--color-border)]">
+              <div className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-secondary)] mb-2">
                 Add-ons
               </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
+              <div className="flex flex-wrap gap-3">
                 {category.extras.map((extra, idx) => (
                   <span
                     key={idx}
-                    style={{
-                      background: 'var(--color-bg-tertiary)',
-                      padding: '0.4rem 0.8rem',
-                      borderRadius: '6px',
-                      fontSize: '0.9rem',
-                      color: 'var(--color-text-primary)',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                    }}
+                    className="inline-flex items-center px-3 py-1.5 rounded-md text-sm text-[var(--color-text-primary)] bg-[var(--color-bg-tertiary)] border border-transparent hover:border-[var(--color-accent)] transition-colors"
                   >
                     {/* If it's a string, prepend +, otherwise just show it */}
                     {typeof extra === 'string' ? `+ ${extra}` : extra}
