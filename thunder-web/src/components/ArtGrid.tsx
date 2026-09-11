@@ -10,7 +10,7 @@ const ArtGrid = ({ artworks, onArtClick }: ArtGridProps) => {
   return (
     <div className="masonry-grid columns-1 sm:columns-2 lg:columns-3 gap-4 py-4">
       {artworks.map((art) => (
-        <div key={art.id} className="mb-4 break-inside-avoid">
+        <div key={art.id} className="break-inside-avoid">
           <ArtCard art={art} onClick={onArtClick} />
         </div>
       ))}

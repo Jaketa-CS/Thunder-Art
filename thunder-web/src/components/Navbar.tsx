@@ -83,7 +83,7 @@ const Navbar = () => {
         </div>
       </Link>
 
-      <div className="navbar-menu flex items-center gap-4 md:gap-8 mb-0 md:mb-12 text-sm md:text-[1.1rem] font-medium">
+      <div className="navbar-menu flex items-center gap-4 md:gap-8 text-sm md:text-[1.1rem] font-medium">
         <NavLink to="/" active={isActive('/')}>
           Work
         </NavLink>

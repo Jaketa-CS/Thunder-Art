@@ -21,10 +21,10 @@ export const CommissionItem = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.6, delay: 0.1 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.5, delay: 0.1 }}
       className={`commission-item-gap flex items-center gap-8 md:gap-16 mb-16 md:mb-24 flex-wrap ${
         isEven ? 'flex-row' : 'flex-row-reverse'
       }`}
@@ -52,9 +52,11 @@ export const CommissionItem = ({
               : `${category.title} example`
           }
           className={`relative overflow-hidden rounded-xs bg-transparent border-none ${
-            category.title === 'Full Body' || category.title.includes('Piece')
-              ? 'aspect-[3/4]'
-              : 'aspect-[4/3]'
+            category.title === 'Icons' || category.title === 'Badges'
+              ? 'aspect-square'
+              : category.title === 'Full Body' || category.title.includes('Piece')
+                ? 'aspect-[3/4]'
+                : 'aspect-[4/3]'
           } ${category.images.length > 1 ? 'cursor-pointer' : 'cursor-default'}`}
         >
           {isVideo ? (

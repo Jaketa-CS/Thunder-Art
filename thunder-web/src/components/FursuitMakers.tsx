@@ -76,7 +76,7 @@ const FursuitMakers = () => {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-30px' }}
+      viewport={{ once: true, amount: 0.1 }}
       className="flex flex-wrap gap-4 mt-4 mb-6 justify-center"
     >
       {MAKERS.map((maker) => (

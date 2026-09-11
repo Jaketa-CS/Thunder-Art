@@ -78,25 +78,62 @@ test.describe('UI/UX and Tailwind Verification', () => {
   });
 
   test('Captures full-page screenshots for visual inspection', async ({ page }) => {
+    const scrollAndSettle = async () => {
+      await page.evaluate(async () => {
+        const distance = 500;
+        const delay = 50;
+        while (
+          document.scrollingElement &&
+          document.scrollingElement.scrollTop + window.innerHeight <
+            document.scrollingElement.scrollHeight
+        ) {
+          document.scrollingElement.scrollBy(0, distance);
+          await new Promise((resolve) => setTimeout(resolve, delay));
+        }
+      });
+      await page.waitForTimeout(400);
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.waitForTimeout(200);
+    };
+
     // 1. Home Dark
     await page.goto('/');
-    await page.waitForTimeout(600);
-    await page.screenshot({ path: 'test-results/screenshots/home-dark.png', fullPage: true });
+    const currentTheme = await page.evaluate(() =>
+      document.documentElement.getAttribute('data-theme')
+    );
+    if (currentTheme !== 'dark') {
+      await page.getByRole('button', { name: /switch to/i }).click();
+      await page.waitForTimeout(400);
+    }
+    await scrollAndSettle();
+    await page.screenshot({
+      path: 'test-results/screenshots/home-dark.png',
+      fullPage: true,
+    });
 
     // 2. Home Light
     const themeButton = page.getByRole('button', { name: /switch to/i });
     await themeButton.click();
-    await page.waitForTimeout(600);
-    await page.screenshot({ path: 'test-results/screenshots/home-light.png', fullPage: true });
+    await page.waitForTimeout(400);
+    await page.screenshot({
+      path: 'test-results/screenshots/home-light.png',
+      fullPage: true,
+    });
 
     // 3. Commissions
     await page.goto('/commissions');
-    await page.waitForTimeout(600);
-    await page.screenshot({ path: 'test-results/screenshots/commissions.png', fullPage: true });
+    await scrollAndSettle();
+    await page.screenshot({
+      path: 'test-results/screenshots/commissions.png',
+      fullPage: true,
+    });
 
     // 4. About
     await page.goto('/about');
-    await page.waitForTimeout(600);
-    await page.screenshot({ path: 'test-results/screenshots/about.png', fullPage: true });
+    await scrollAndSettle();
+    await page.screenshot({
+      path: 'test-results/screenshots/about.png',
+      fullPage: true,
+    });
   });
 });
