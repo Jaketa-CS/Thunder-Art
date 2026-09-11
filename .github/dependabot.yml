@@ -8,6 +8,12 @@ updates:
       frontend-dependencies:
         patterns:
           - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
     open-pull-requests-limit: 5
 
   - package-ecosystem: 'npm'
@@ -18,6 +24,12 @@ updates:
       root-tooling:
         patterns:
           - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
     open-pull-requests-limit: 5
 
   - package-ecosystem: 'github-actions'
