@@ -15,7 +15,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <div className="app-container">
+        <div className="app-container min-h-screen flex flex-col">
           <Navbar />
 
           <AnimatePresence mode="wait">
