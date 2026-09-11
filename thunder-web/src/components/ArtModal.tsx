@@ -15,108 +15,44 @@ const ArtModal = ({ art, onClose }: ArtModalProps) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="art-modal-overlay"
-        style={{
-          position: 'fixed',
-          inset: 0,
-          background: 'rgba(0, 0, 0, 0.9)',
-          zIndex: 50,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '2rem',
-        }}
+        className="art-modal-overlay fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 md:p-8"
       >
         <motion.div
           layoutId={`art-${art.id}`}
-          onClick={(e) => e.stopPropagation()} // Prevent close on content click
-          className="art-modal-content"
-          style={{
-            background: 'var(--color-bg-secondary)',
-            borderRadius: '12px',
-            overflow: 'hidden',
-            maxWidth: '900px',
-            width: '100%',
-            maxHeight: '90vh',
-            display: 'flex',
-            flexDirection: 'column',
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-          }}
+          onClick={(e) => e.stopPropagation()}
+          className="art-modal-content bg-[var(--color-bg-secondary)] rounded-xl overflow-hidden max-w-[900px] w-full max-h-[90vh] flex flex-col shadow-2xl"
         >
-          <div
-            style={{
-              flex: 1,
-              overflow: 'hidden',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: '#000',
-            }}
-          >
+          <div className="flex-1 overflow-hidden flex items-center justify-center bg-black">
             {art.type === 'video' ? (
               <video
                 src={art.image}
                 controls
                 autoPlay
                 muted
-                style={{
-                  maxHeight: '70vh',
-                  maxWidth: '100%',
-                  outline: 'none',
-                }}
+                className="max-h-[70vh] max-w-full outline-none"
               />
             ) : (
               <img
                 src={art.image}
                 alt={art.title}
-                style={{
-                  maxHeight: '70vh',
-                  maxWidth: '100%',
-                  objectFit: 'contain',
-                }}
+                className="max-h-[70vh] max-w-full object-contain"
               />
             )}
           </div>
 
-          <div className="art-modal-info" style={{ padding: '2rem' }}>
-            <div
-              className="art-modal-header"
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'flex-start',
-              }}
-            >
+          <div className="art-modal-info p-6 md:p-8">
+            <div className="art-modal-header flex justify-between items-start">
               <div>
-                <h2
-                  className="art-modal-title"
-                  style={{ fontSize: '2rem', marginBottom: '0.5rem' }}
-                >
+                <h2 className="art-modal-title text-2xl md:text-3xl font-bold mb-2">
                   {art.title}
                 </h2>
-                <span
-                  style={{
-                    background: 'var(--color-accent)',
-                    color: 'var(--color-bg-primary)',
-                    padding: '0.25rem 0.75rem',
-                    borderRadius: '20px',
-                    fontSize: '0.8rem',
-                    fontWeight: 'bold',
-                  }}
-                >
+                <span className="inline-block bg-[var(--color-accent)] text-[var(--color-bg-primary)] px-3 py-1 rounded-full text-xs font-bold">
                   {art.tags.join(', ')}
                 </span>
               </div>
               <button
                 onClick={onClose}
-                style={{
-                  background: 'transparent',
-                  border: '1px solid var(--color-text-secondary)',
-                  color: 'var(--color-text-primary)',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '8px',
-                  cursor: 'pointer',
-                }}
+                className="bg-transparent border border-[var(--color-text-secondary)] text-[var(--color-text-primary)] px-4 py-2 rounded-lg cursor-pointer hover:border-[var(--color-accent)] transition-colors"
               >
                 Close
               </button>

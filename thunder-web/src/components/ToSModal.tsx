@@ -9,29 +9,14 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 999,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '1rem',
-          }}
-        >
+        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
           {/* Background Blur */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'rgba(0, 0, 0, 0.7)',
-              backdropFilter: 'blur(5px)',
-            }}
+            className="absolute inset-0 bg-black/70 backdrop-blur-xs"
           />
 
           {/* Modal Box */}
@@ -39,63 +24,19 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            style={{
-              position: 'relative',
-              zIndex: 1000,
-              background: 'var(--color-bg-secondary)',
-              padding: '2.5rem',
-              borderRadius: '20px',
-              border: '1px solid var(--color-border)',
-              maxWidth: '700px',
-              width: '100%',
-              maxHeight: '90vh',
-              display: 'flex',
-              flexDirection: 'column',
-              boxShadow: 'var(--shadow-lg)',
-            }}
+            className="relative z-[1000] bg-[var(--color-bg-secondary)] p-6 md:p-10 rounded-2xl border border-[var(--color-border)] max-w-[700px] w-full max-h-[90vh] flex flex-col shadow-2xl"
           >
-            <h2
-              style={{
-                marginBottom: '1rem',
-                color: 'var(--color-text-primary)',
-                fontSize: '2rem',
-              }}
-            >
+            <h2 className="mb-4 text-[var(--color-text-primary)] text-2xl md:text-3xl font-bold">
               Terms of Service
             </h2>
 
-            <div
-              className="custom-scrollbar"
-              style={{
-                color: 'var(--color-text-secondary)',
-                lineHeight: '1.6',
-                fontSize: '0.95rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '2rem',
-                overflowY: 'auto',
-                paddingRight: '1rem',
-              }}
-            >
+            <div className="custom-scrollbar text-[var(--color-text-secondary)] leading-relaxed text-sm md:text-base flex flex-col gap-8 overflow-y-auto pr-4">
               {/* 1. Payment */}
               <section>
-                <h3
-                  style={{
-                    color: 'var(--color-text-primary)',
-                    marginBottom: '0.5rem',
-                    fontSize: '1.1rem',
-                  }}
-                >
+                <h3 className="text-[var(--color-text-primary)] mb-2 text-lg font-semibold">
                   Payment & Invoicing
                 </h3>
-                <ul
-                  style={{
-                    paddingLeft: '1.2rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.5rem',
-                  }}
-                >
+                <ul className="pl-5 flex flex-col gap-2 list-disc">
                   <li>Prices are in USD.</li>
                   <li>Payment is required 100% upfront before I begin work.</li>
                   <li>
@@ -108,33 +49,19 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
 
               {/* 2. Process */}
               <section>
-                <h3
-                  style={{
-                    color: 'var(--color-text-primary)',
-                    marginBottom: '0.5rem',
-                    fontSize: '1.1rem',
-                  }}
-                >
+                <h3 className="text-[var(--color-text-primary)] mb-2 text-lg font-semibold">
                   The Process & Revisions
                 </h3>
-                <p style={{ marginBottom: '0.5rem' }}>
+                <p className="mb-2">
                   Please provide a clear, unshaded reference sheet of your
                   character. (Text-only descriptions are fine too ;3)
                 </p>
-                <p style={{ marginBottom: '0.5rem' }}>
+                <p className="mb-2">
                   I will do my best to keep you highly involved! I will send
                   updates and wait for your approval at each of the following
                   stages:
                 </p>
-                <ul
-                  style={{
-                    paddingLeft: '1.2rem',
-                    marginBottom: '1rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.5rem',
-                  }}
-                >
+                <ul className="pl-5 mb-4 flex flex-col gap-2 list-disc">
                   <li>
                     <strong>WIP Sketch:</strong> Initial pose and layout. (This
                     is the best time for major changes!)
@@ -152,7 +79,7 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
                     shading and lighting.
                   </li>
                 </ul>
-                <p style={{ color: 'var(--color-accent)' }}>
+                <p className="text-[var(--color-accent)]">
                   <strong>Revisions:</strong> You can request major changes
                   during the sketch phase. Once lineart and coloring have
                   started, only minor tweaks (like color adjustments or missed
@@ -163,16 +90,10 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
 
               {/* 3. Turnaround */}
               <section>
-                <h3
-                  style={{
-                    color: 'var(--color-text-primary)',
-                    marginBottom: '0.5rem',
-                    fontSize: '1.1rem',
-                  }}
-                >
+                <h3 className="text-[var(--color-text-primary)] mb-2 text-lg font-semibold">
                   Turnaround Time & Deadlines
                 </h3>
-                <p style={{ marginBottom: '0.5rem' }}>
+                <p className="mb-2">
                   Typical turnaround time is anywhere from 1 to 4 weeks,
                   depending on your place in the queue and the complexity of the
                   piece.
@@ -185,23 +106,10 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
 
               {/* 4. Copyright */}
               <section>
-                <h3
-                  style={{
-                    color: 'var(--color-text-primary)',
-                    marginBottom: '0.5rem',
-                    fontSize: '1.1rem',
-                  }}
-                >
+                <h3 className="text-[var(--color-text-primary)] mb-2 text-lg font-semibold">
                   Copyright & Usage
                 </h3>
-                <ul
-                  style={{
-                    paddingLeft: '1.2rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.5rem',
-                  }}
-                >
+                <ul className="pl-5 flex flex-col gap-2 list-disc">
                   <li>
                     <strong>Personal Use Only:</strong> Commissions are strictly
                     for personal, non-commercial use unless discussed otherwise.
@@ -223,23 +131,10 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
 
               {/* 5. Refunds */}
               <section>
-                <h3
-                  style={{
-                    color: 'var(--color-text-primary)',
-                    marginBottom: '0.5rem',
-                    fontSize: '1.1rem',
-                  }}
-                >
+                <h3 className="text-[var(--color-text-primary)] mb-2 text-lg font-semibold">
                   Refunds & Cancellations
                 </h3>
-                <ul
-                  style={{
-                    paddingLeft: '1.2rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.5rem',
-                  }}
-                >
+                <ul className="pl-5 flex flex-col gap-2 list-disc">
                   <li>
                     If I am unable to complete your commission for any reason,
                     you will receive a full 100% refund.
@@ -252,41 +147,17 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
                     If you cancel after the sketch is completed/approved, I will
                     refund 50% to cover the time already spent.
                   </li>
-                  <li style={{ color: '#e74c3c' }}>
+                  <li className="text-[#e74c3c]">
                     No refunds are given after the piece is fully lined/colored.
                   </li>
                 </ul>
               </section>
             </div>
 
-            <div
-              style={{
-                paddingTop: '2rem',
-                marginTop: 'auto',
-                borderTop: '1px solid rgba(255,255,255,0.05)',
-              }}
-            >
+            <div className="pt-6 mt-auto border-t border-white/5">
               <button
                 onClick={onClose}
-                style={{
-                  width: '100%',
-                  background: 'var(--color-bg-tertiary)',
-                  color: 'var(--color-text-primary)',
-                  border: '1px solid var(--color-border)',
-                  padding: '1rem',
-                  borderRadius: '12px',
-                  fontSize: '1.1rem',
-                  fontWeight: 'bold',
-                  cursor: 'pointer',
-                  transition: 'background 0.2s',
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.background = 'var(--color-border)')
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.background =
-                    'var(--color-bg-tertiary)')
-                }
+                className="w-full bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] border border-[var(--color-border)] p-4 rounded-xl text-lg font-bold cursor-pointer transition-colors hover:bg-[var(--color-border)]"
               >
                 I Understand!
               </button>

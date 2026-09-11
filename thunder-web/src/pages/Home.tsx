@@ -20,38 +20,20 @@ const FilterButton = ({
   <button
     onClick={() => setFilter(value)}
     aria-label={`Filter by ${label}`}
-    style={{
-      position: 'relative',
-      background: 'transparent',
-      color:
-        currentFilter === value
-          ? 'var(--color-bg-primary)'
-          : 'var(--color-text-secondary)',
-      border: 'none',
-      padding: '0.4rem 1rem',
-      borderRadius: 'var(--radius-sm)',
-      cursor: 'pointer',
-      fontSize: '0.9rem',
-      fontWeight: '600',
-      textTransform: 'uppercase',
-      transition: 'all 0.2s ease',
-      zIndex: 1,
-    }}
+    className={`relative bg-transparent border-none px-4 py-1.5 rounded-xs cursor-pointer text-sm font-semibold uppercase transition-all duration-200 z-1 ${
+      currentFilter === value
+        ? 'text-[var(--color-bg-primary)]'
+        : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]'
+    }`}
   >
     {currentFilter === value && (
       <motion.div
         layoutId="activeFilter"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'var(--color-accent)', // Electric Blue
-          borderRadius: 'var(--radius-sm)',
-          zIndex: -1,
-        }}
+        className="absolute inset-0 bg-[var(--color-accent)] rounded-xs -z-1"
         transition={{ type: 'spring', bounce: 0.1, duration: 0.3 }}
       />
     )}
-    <span style={{ display: 'block' }}>{label}</span>
+    <span className="block">{label}</span>
   </button>
 );
 
@@ -69,70 +51,39 @@ const Home = () => {
   return (
     <>
       <motion.div
-        className="container"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      style={{ paddingTop: '2rem' }}
-    >
-      <HeroSection />
-
-      <div
-        className="gallery-header"
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginTop: '2rem',
-          marginBottom: '1rem',
-          flexWrap: 'wrap',
-          gap: '1rem',
-        }}
+        className="container pt-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <h3
-          style={{
-            margin: 0,
-            textTransform: 'uppercase',
-            fontWeight: '700',
-            fontSize: 'clamp(1.5rem, 5vw, 2rem)',
-            letterSpacing: '0.05em',
-          }}
-        >
-          Gallery
-        </h3>
-        <div
-          className="filter-bar"
-          style={{
-            display: 'flex',
-            gap: '0.5rem',
-            alignItems: 'center',
-            overflowX: 'auto',
-            paddingBottom: '0.5rem',
-            scrollbarWidth: 'none',
-            maxWidth: '100%',
-          }}
-        >
-          <FilterButton
-            label="All"
-            value="all"
-            currentFilter={filter}
-            setFilter={setFilter}
-          />
-          <FilterButton
-            label="Animations"
-            value="video"
-            currentFilter={filter}
-            setFilter={setFilter}
-          />
-          <FilterButton
-            label="Illustrations"
-            value="image"
-            currentFilter={filter}
-            setFilter={setFilter}
-          />
+        <HeroSection />
+
+        <div className="gallery-header flex justify-between items-center mt-8 mb-4 flex-wrap gap-4">
+          <h3 className="m-0 uppercase font-bold text-2xl md:text-3xl tracking-wider">
+            Gallery
+          </h3>
+          <div className="filter-bar flex gap-2 items-center overflow-x-auto pb-2 scrollbar-none max-w-full">
+            <FilterButton
+              label="All"
+              value="all"
+              currentFilter={filter}
+              setFilter={setFilter}
+            />
+            <FilterButton
+              label="Animations"
+              value="video"
+              currentFilter={filter}
+              setFilter={setFilter}
+            />
+            <FilterButton
+              label="Illustrations"
+              value="image"
+              currentFilter={filter}
+              setFilter={setFilter}
+            />
+          </div>
         </div>
-      </div>
 
       <ArtGrid artworks={filteredArt} onArtClick={setSelectedArt} />
 

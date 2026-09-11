@@ -107,10 +107,7 @@ export const CommissionItem = ({
 
       {/* TEXT/PRICING SIDE */}
       <div className="flex-1 min-w-[280px] basis-[350px]">
-        <h2
-          className="relative inline-block text-3xl md:text-4xl font-bold mb-4"
-          style={{ fontFamily: 'var(--font-family-header)' }}
-        >
+        <h2 className="relative inline-block text-3xl md:text-4xl font-bold mb-4 font-[var(--font-family-header)]">
           {category.title}
           <div className="h-1 w-2/5 bg-[var(--color-accent)] rounded-xs mt-1.5" />
         </h2>

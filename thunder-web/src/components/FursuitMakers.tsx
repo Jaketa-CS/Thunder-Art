@@ -77,14 +77,7 @@ const FursuitMakers = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-30px' }}
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '1rem',
-        marginTop: '1rem',
-        marginBottom: '1.5rem',
-        justifyContent: 'center',
-      }}
+      className="flex flex-wrap gap-4 mt-4 mb-6 justify-center"
     >
       {MAKERS.map((maker) => (
         <motion.a
@@ -93,44 +86,16 @@ const FursuitMakers = () => {
           target="_blank"
           rel="noopener noreferrer"
           variants={cardVariants}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            textDecoration: 'none',
-            background: 'var(--color-bg-tertiary)',
-            borderRadius: '12px',
-            overflow: 'hidden',
-            cursor: 'pointer',
-            border: '1px solid #2a2a2a',
-            width: '220px',
-          }}
+          className="flex flex-col no-underline bg-[var(--color-bg-tertiary)] rounded-xl overflow-hidden cursor-pointer border border-[#2a2a2a] w-[220px] transition-colors hover:border-[var(--color-accent)]"
         >
-          <div style={{ padding: '0.4rem 0.6rem' }}>
+          <div className="p-2">
             {/* "Head made by" / "Body made by" label */}
-            <div
-              style={{
-                fontSize: '0.6rem',
-                fontWeight: 600,
-                color: 'var(--color-text-secondary)',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em',
-                marginBottom: '0.3rem',
-                textAlign: 'center',
-              }}
-            >
+            <div className="text-[10px] font-semibold text-[var(--color-text-secondary)] uppercase tracking-wider mb-1 text-center">
               {maker.label}
             </div>
 
             {/* Large logo taking most of the space */}
-            <div
-              style={{
-                width: '100%',
-                height: '100px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
+            <div className="w-full h-[100px] flex items-center justify-center">
               <motion.img
                 src={maker.logo}
                 alt={`${maker.name} logo`}
@@ -140,12 +105,7 @@ const FursuitMakers = () => {
                   stiffness: 300,
                   damping: 15,
                 }}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'contain',
-                  padding: '8px',
-                }}
+                className="w-full h-full object-contain p-2"
               />
             </div>
           </div>

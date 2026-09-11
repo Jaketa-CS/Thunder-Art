@@ -12,94 +12,41 @@ const About = () => {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -20 }}
         transition={{ duration: 0.5 }}
-        className="container"
-        style={{ paddingTop: '2rem', paddingBottom: '4rem', maxWidth: '800px' }}
+        className="container pt-8 pb-16 max-w-[800px]"
       >
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>About Me</h1>
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">About Me</h1>
         </div>
 
-        <div
-          className="content-panel"
-          style={{
-            background: 'var(--color-bg-secondary)',
-            padding: '3rem',
-            borderRadius: '12px',
-            border: '1px solid #2a2a2a',
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              gap: '2rem',
-              alignItems: 'center',
-              marginBottom: '2rem',
-              flexDirection: 'column',
-            }}
-          >
-            <div
-              style={{
-                position: 'relative',
-                width: '224px', // Slightly larger for border
-                height: '224px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                overflow: 'hidden',
-              }}
-            >
+        <div className="content-panel bg-[var(--color-bg-secondary)] p-6 md:p-12 rounded-xl border border-[#2a2a2a]">
+          <div className="flex flex-col items-center gap-8 mb-8">
+            <div className="relative w-56 h-56 rounded-full flex items-center justify-center overflow-hidden">
               {/* Spinning Rainbow Border */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: '-50%', // Make it large enough to cover rotation
-                  background:
-                    'conic-gradient(from 0deg, #FF0055, #A020F0, #0055FF, #A020F0, #FF0055)',
-                  animation: 'spin 4s linear infinite',
-                }}
-              />
+              <div className="absolute -inset-1/2 bg-[conic-gradient(from_0deg,#FF0055,#A020F0,#0055FF,#A020F0,#FF0055)] animate-[spin_4s_linear_infinite]" />
 
               {/* Video Container */}
-              <div
-                style={{
-                  width: '220px',
-                  height: '220px',
-                  borderRadius: '50%',
-                  overflow: 'hidden',
-                  position: 'relative',
-                  zIndex: 1, // On top of gradient
-                  background: 'var(--color-bg-secondary)', // Fallback bg
-                }}
-              >
+              <div className="w-[220px] h-[220px] rounded-full overflow-hidden relative z-1 bg-[var(--color-bg-secondary)]">
                 <video
                   src="/2.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    display: 'block',
-                  }}
+                  className="w-full h-full object-cover block"
                 />
               </div>
             </div>
 
-            <div style={{ textAlign: 'center' }}>
-              <h2 style={{ marginBottom: '0.5rem' }}>Thunder / Zevoloz</h2>
-              <p style={{ color: 'var(--color-accent)', fontWeight: '600' }}>
+            <div className="text-center">
+              <h2 className="text-2xl font-bold mb-2">Thunder / Zevoloz</h2>
+              <p className="text-[var(--color-accent)] font-semibold">
                 Digital Artist & Illustrator
               </p>
             </div>
           </div>
 
-          <div
-            style={{ lineHeight: '1.8', color: 'var(--color-text-secondary)' }}
-          >
-            <p style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>
+          <div className="leading-relaxed text-[var(--color-text-secondary)]">
+            <p className="mb-6 text-lg">
               Hi, I'm Thunder (also known as Zevoloz)! I'm a Fennec/Bird hybrid
               based out of Colorado, and I specialize in digital art and
               animation.
@@ -110,24 +57,11 @@ const About = () => {
             </p>
           </div>
 
-          <div style={{ marginTop: '3rem' }}>
-            <h3
-              style={{
-                marginBottom: '1rem',
-                borderBottom: '1px solid var(--color-border)',
-                paddingBottom: '0.5rem',
-              }}
-            >
+          <div className="mt-12">
+            <h3 className="text-xl font-bold mb-4 border-b border-[var(--color-border)] pb-2">
               Software
             </h3>
-            <div
-              style={{
-                display: 'flex',
-                gap: '1rem',
-                flexWrap: 'wrap',
-                marginBottom: '2rem',
-              }}
-            >
+            <div className="flex gap-4 flex-wrap mb-8">
               {[
                 'Procreate',
                 'TVPaint',
@@ -139,40 +73,22 @@ const About = () => {
               ].map((tool) => (
                 <span
                   key={tool}
-                  style={{
-                    background: 'var(--color-bg-tertiary)',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '20px',
-                    fontSize: '0.9rem',
-                    color: 'var(--color-text-primary)',
-                  }}
+                  className="bg-[var(--color-bg-tertiary)] px-4 py-2 rounded-full text-sm text-[var(--color-text-primary)]"
                 >
                   {tool}
                 </span>
               ))}
             </div>
 
-            <h3
-              style={{
-                marginBottom: '1rem',
-                borderBottom: '1px solid var(--color-border)',
-                paddingBottom: '0.5rem',
-              }}
-            >
+            <h3 className="text-xl font-bold mb-4 border-b border-[var(--color-border)] pb-2">
               Hardware
             </h3>
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <div className="flex gap-4 flex-wrap">
               {['iPad Pro 13" (2024)', 'Huion Kamvas Pro 16 (2021)'].map(
                 (gear) => (
                   <span
                     key={gear}
-                    style={{
-                      background: 'var(--color-bg-tertiary)',
-                      padding: '0.5rem 1rem',
-                      borderRadius: '20px',
-                      fontSize: '0.9rem',
-                      color: 'var(--color-text-primary)',
-                    }}
+                    className="bg-[var(--color-bg-tertiary)] px-4 py-2 rounded-full text-sm text-[var(--color-text-primary)]"
                   >
                     {gear}
                   </span>
@@ -181,14 +97,8 @@ const About = () => {
             </div>
           </div>
 
-          <div style={{ marginTop: '3rem' }}>
-            <h3
-              style={{
-                marginBottom: '1rem',
-                borderBottom: '1px solid var(--color-border)',
-                paddingBottom: '0.5rem',
-              }}
-            >
+          <div className="mt-12">
+            <h3 className="text-xl font-bold mb-4 border-b border-[var(--color-border)] pb-2">
               Fursuiting
             </h3>
 
@@ -201,37 +111,17 @@ const About = () => {
               href="https://www.furtrack.com/index/character:thunder_(gryphon)"
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                textDecoration: 'none',
-                display: 'block',
-                textAlign: 'center',
-              }}
+              className="no-underline block text-center my-6"
             >
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                style={{
-                  background: '#2e1052', // FurTrack Purple
-                  color: '#fff',
-                  border: '1px solid #4a2080',
-                  padding: '0.8rem 2rem',
-                  borderRadius: '30px',
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.8rem',
-                }}
+                className="bg-[#2e1052] text-white border border-[#4a2080] px-8 py-3 rounded-full text-base font-semibold cursor-pointer inline-flex items-center gap-3 transition-colors hover:brightness-110"
               >
                 <img
                   src="/furtrack-logo.png"
                   alt="FurTrack Logo"
-                  style={{
-                    width: '24px',
-                    height: '24px',
-                    objectFit: 'contain',
-                  }}
+                  className="w-6 h-6 object-contain"
                 />
                 View More on FurTrack
               </motion.button>

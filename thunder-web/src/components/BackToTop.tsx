@@ -35,33 +35,7 @@ const BackToTop = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          style={{
-            position: 'fixed',
-            bottom: '2rem',
-            right: '2rem',
-            background: 'var(--color-bg-tertiary)',
-            color: 'var(--color-text-primary)',
-            border: '1px solid var(--color-border)',
-            width: '50px',
-            height: '50px',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            boxShadow: 'var(--shadow-md)',
-            zIndex: 100,
-            fontSize: '1.5rem',
-            transition: 'background 0.2s ease, transform 0.2s ease',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-5px)';
-            e.currentTarget.style.background = 'var(--color-border)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.background = 'var(--color-bg-tertiary)';
-          }}
+          className="fixed bottom-8 right-8 bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] border border-[var(--color-border)] w-[50px] h-[50px] rounded-full flex items-center justify-center cursor-pointer shadow-[var(--shadow-md)] z-[100] text-2xl transition-all duration-200 hover:-translate-y-1 hover:bg-[var(--color-border)]"
           aria-label="Back to Top"
         >
           ↑

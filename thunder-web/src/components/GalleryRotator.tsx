@@ -42,16 +42,7 @@ const GalleryRotator = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '1rem',
-        marginBottom: '2rem',
-        height: '400px',
-        width: '100%',
-      }}
-    >
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 h-[400px] w-full">
       {images.map((imgIndex, i) => {
         const filename = `fTrackImage-${imgIndex + 1}.jpg`;
         const data = metadata[filename];
@@ -62,27 +53,14 @@ const GalleryRotator = () => {
             key={i}
             initial="idle"
             whileHover="hover"
-            style={{
-              position: 'relative',
-              width: '100%',
-              height: '100%',
-              borderRadius: '12px',
-              overflow: 'hidden',
-              background: '#222',
-              border: '1px solid #333',
-            }}
+            className="relative w-full h-full rounded-xl overflow-hidden bg-[#222] border border-[#333]"
           >
             {/* Clickable Link */}
             <a
               href={linkUrl}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: 'block',
-                width: '100%',
-                height: '100%',
-                cursor: 'pointer',
-              }}
+              className="block w-full h-full cursor-pointer"
             >
               <AnimatePresence mode="wait">
                 <motion.img
@@ -93,27 +71,12 @@ const GalleryRotator = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 1, ease: 'easeInOut' }}
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    objectPosition: 'top center',
-                  }}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
                 />
               </AnimatePresence>
 
               {/* Glossy Overlay */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background:
-                    'linear-gradient(to bottom, rgba(255,255,255,0.05), transparent)',
-                  pointerEvents: 'none',
-                }}
-              />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
             </a>
           </motion.div>
         );

@@ -101,18 +101,14 @@ const cardVariants = {
 
 const ConSchedule = () => {
   return (
-    <div style={{ marginTop: '3rem' }}>
+    <div className="mt-12">
       {/* Header */}
       <motion.h3
         initial={{ opacity: 0, x: -10 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4 }}
-        style={{
-          marginBottom: '1rem',
-          borderBottom: '1px solid var(--color-border)',
-          paddingBottom: '0.5rem',
-        }}
+        className="text-xl font-bold mb-4 border-b border-[var(--color-border)] pb-2"
       >
         Convention Log Book (where I've been & where I'm heading!)
       </motion.h3>
@@ -123,7 +119,7 @@ const ConSchedule = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-50px' }}
-        style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}
+        className="flex flex-col gap-3"
       >
         {CONVENTIONS.map((con) => {
           const isCover = con.logoStyle === 'cover';
@@ -132,40 +128,22 @@ const ConSchedule = () => {
             <motion.div
               key={con.abbrev}
               variants={cardVariants}
-              className="con-card"
-              style={{
-                display: 'flex',
-                alignItems: 'stretch',
-                background: 'var(--color-bg-tertiary)',
-                borderRadius: '12px',
-                overflow: 'hidden',
-                height: '60px', // Fixed height for all cards
-              }}
+              className="con-card flex items-stretch bg-[var(--color-bg-tertiary)] rounded-xl overflow-hidden min-h-[60px] h-auto sm:h-[60px]"
             >
               {/* Logo Section - 1/3 of card with gradient fade */}
               <div
-                className="con-logo-section"
+                className="con-logo-section w-[70px] sm:w-[100px] shrink-0 relative flex items-center justify-center overflow-hidden"
                 style={{
-                  width: 100,
-                  flexShrink: 0,
-                  position: 'relative',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
                   background: con.logoBg || 'transparent',
-                  overflow: 'hidden',
                 }}
               >
                 {/* Logo Image */}
                 <img
                   src={con.logo}
                   alt={`${con.name} logo`}
+                  className={`w-full h-full ${isCover ? 'object-cover p-0' : 'object-contain p-2'}`}
                   style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: isCover ? 'cover' : 'contain',
                     objectPosition: con.logoPosition || 'center',
-                    padding: isCover ? 0 : '0.5rem',
                     transform: con.logoScale
                       ? `scale(${con.logoScale})`
                       : undefined,
@@ -174,50 +152,21 @@ const ConSchedule = () => {
 
                 {/* Gradient Fade Overlay - only for cover style */}
                 {isCover && (
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      right: 0,
-                      bottom: 0,
-                      width: '50%',
-                      background:
-                        'linear-gradient(to right, transparent, var(--color-bg-tertiary))',
-                      pointerEvents: 'none',
-                    }}
-                  />
+                  <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-r from-transparent to-[var(--color-bg-tertiary)] pointer-events-none" />
                 )}
               </div>
 
               {/* Content - right side */}
               <div
-                style={{
-                  flex: 1,
-                  display: 'flex',
-                  alignItems: 'center',
-                  padding: '0.8rem 1rem',
-                  paddingLeft: isCover ? '0.5rem' : '1rem',
-                  gap: '1rem',
-                  minWidth: 0,
-                }}
+                className={`flex-1 flex items-center py-3 px-4 gap-4 min-w-0 ${isCover ? 'pl-2' : 'pl-4'}`}
               >
                 {/* Name Block */}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div
-                    style={{
-                      fontSize: '1.15rem',
-                      fontWeight: 800,
-                      letterSpacing: '0.01em',
-                      color: 'var(--color-text-primary)',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
+                <div className="flex-1 min-w-0">
+                  <div className="text-base sm:text-lg font-extrabold tracking-wide text-[var(--color-text-primary)] truncate">
                     {con.name}
                   </div>
                   {/* Mobile-only years list */}
-                  <div className="con-mobile-years">
+                  <div className="con-mobile-years block min-[401px]:hidden text-xs text-[var(--color-accent)] font-semibold mt-0.5">
                     {con.years
                       .filter((y) => !String(y).includes('?'))
                       .join(', ')}
@@ -225,17 +174,7 @@ const ConSchedule = () => {
                 </div>
 
                 {/* Years Grid - Fixed columns for each year */}
-                <div
-                  className="con-years-grid"
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(5, 45px)', // 5 years, fixed width each
-                    gap: '4px',
-                    fontSize: '0.85rem',
-                    color: 'var(--color-text-secondary)',
-                    flexShrink: 0,
-                  }}
-                >
+                <div className="con-years-grid hidden min-[401px]:grid grid-cols-5 gap-1 text-xs sm:text-sm text-[var(--color-text-secondary)] shrink-0 w-[175px] sm:w-[225px]">
                   {ALL_YEARS.map((year) => {
                     // Check if this convention attended this year
                     const attended = con.years.some((y) =>
@@ -246,16 +185,13 @@ const ConSchedule = () => {
                     return (
                       <div
                         key={year}
-                        style={{
-                          textAlign: 'center',
-                          fontWeight: attended ? (isNext ? 700 : 500) : 300,
-                          color: attended
+                        className={`text-center ${
+                          attended
                             ? isNext
-                              ? 'var(--color-accent)'
-                              : 'var(--color-text-primary)'
-                            : 'var(--color-text-secondary)',
-                          opacity: attended ? 1 : 0.3,
-                        }}
+                              ? 'font-bold text-[var(--color-accent)] opacity-100'
+                              : 'font-medium text-[var(--color-text-primary)] opacity-100'
+                            : 'font-light text-[var(--color-text-secondary)] opacity-30'
+                        }`}
                       >
                         {attended ? year : '—'}
                       </div>

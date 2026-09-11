@@ -6,17 +6,7 @@ const HeroSection = () => {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8 }}
-      style={{
-        display: 'none', // Hidden until content is ready
-        position: 'relative',
-        width: '100%',
-        height: '400px', // Adjustable height
-        borderRadius: '24px',
-        overflow: 'hidden',
-        marginBottom: '4rem',
-        boxShadow: 'var(--shadow-md)',
-        background: 'var(--color-bg-secondary)', // Fallback
-      }}
+      className="hidden relative w-full h-[400px] rounded-3xl overflow-hidden mb-16 shadow-[var(--shadow-md)] bg-[var(--color-bg-secondary)]"
     >
       {/* 
         INSTRUCTION: 
@@ -27,38 +17,13 @@ const HeroSection = () => {
       {/* <img
         src="/recent-work-placeholder.png"
         alt="Recent Work"
-        style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-        }}
+        className="w-full h-full object-cover"
       />
 
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background:
-            'linear-gradient(to top, var(--color-bg-primary) 0%, transparent 20%)',
-          pointerEvents: 'none',
-        }}
-      />
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] to-transparent pointer-events-none" />
 
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '2rem',
-          left: '2rem',
-          zIndex: 10,
-        }}
-      >
-        <h2
-          style={{
-            fontSize: '2rem',
-            color: '#fff',
-            textShadow: '0 2px 4px rgba(0,0,0,0.5)',
-          }}
-        >
+      <div className="absolute bottom-8 left-8 z-10">
+        <h2 className="text-3xl text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
           IN PROGRESS ///
         </h2>
       </div> */}

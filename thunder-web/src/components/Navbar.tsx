@@ -24,10 +24,7 @@ const Navbar = () => {
           alt="Dancing Character"
           className="h-20 md:h-[120px] w-auto mr-0 md:mr-7"
         />
-        <div
-          className="flex items-center -mt-2.5 md:-mt-5 text-xl md:text-[1.7rem] font-bold tracking-[0.15rem]"
-          style={{ fontFamily: 'var(--font-family-header)' }}
-        >
+        <div className="flex items-center -mt-2.5 md:-mt-5 text-xl md:text-[1.7rem] font-bold tracking-[0.15rem] font-[var(--font-family-header)]">
           THUNDER
           <span className="text-[var(--color-accent)] inline-flex items-center ml-0.5 relative">
             {/* Primary Bolt */}
