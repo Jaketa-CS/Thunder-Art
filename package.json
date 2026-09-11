@@ -2,7 +2,8 @@
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
-    "prettier": "^3.7.4"
+    "prettier": "^3.7.4",
+    "prettier-plugin-tailwindcss": "^0.8.1"
   },
   "name": "thunder-art",
   "version": "1.0.0",
