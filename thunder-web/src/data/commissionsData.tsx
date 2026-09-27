@@ -56,8 +56,9 @@ export const COMMISSION_DATA: CommissionCategory[] = [
       { name: '9 Pack', price: '$200' },
     ],
     extras: [
-      <span>+$5-15 per complex prop</span>,
+      <span key="prop-addon">+$5-15 per complex prop</span>,
       <a
+        key="telegram-pack-link"
         href="https://t.me/addstickers/Zevoloz"
         target="_blank"
         rel="noopener noreferrer"
