@@ -11,7 +11,10 @@ const ArtCard = ({ art, onClick }: ArtCardProps) => {
     <motion.div
       layoutId={`art-${art.id}`}
       onClick={() => onClick(art)}
-      className="art-card mb-4 break-inside-avoid relative rounded-lg overflow-hidden cursor-pointer"
+      whileHover={{ scale: 1.015 }}
+      whileTap={{ scale: 0.99 }}
+      transition={{ duration: 0.2 }}
+      className="art-card group relative mb-4 cursor-pointer break-inside-avoid overflow-hidden rounded-lg shadow-sm transition-shadow duration-300 hover:shadow-xl"
     >
       {art.type === 'video' ? (
         <video
@@ -20,31 +23,16 @@ const ArtCard = ({ art, onClick }: ArtCardProps) => {
           loop
           muted
           playsInline
-          className="w-full block object-cover [transform:translateZ(0)] [backface-visibility:hidden]"
+          className="block w-full [transform:translateZ(0)] object-cover transition-transform duration-300 [backface-visibility:hidden] group-hover:brightness-105"
         />
       ) : (
         <img
           src={art.image}
           alt={art.title}
-          className="w-full block [transform:translateZ(0)] [backface-visibility:hidden]"
+          className="block w-full [transform:translateZ(0)] transition-transform duration-300 [backface-visibility:hidden] group-hover:brightness-105"
           loading="lazy"
         />
       )}
-
-      {/* Overlay */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
-        transition={{ duration: 0.2 }}
-        className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4"
-      >
-        <h3 className="text-lg font-medium mb-1 text-white">
-          {art.title}
-        </h3>
-        <span className="text-sm text-[var(--color-accent)] uppercase tracking-wider">
-          {art.tags.join(', ')}
-        </span>
-      </motion.div>
     </motion.div>
   );
 };

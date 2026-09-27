@@ -15,49 +15,49 @@ const ArtModal = ({ art, onClose }: ArtModalProps) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="art-modal-overlay fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 md:p-8"
+        className="art-modal-overlay fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/90 p-4 md:p-8"
       >
+        {/* Floating Close Button */}
+        <button
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute top-4 right-4 z-50 flex cursor-pointer items-center justify-center rounded-full border border-white/20 bg-black/60 p-2.5 text-white transition-all duration-200 hover:scale-105 hover:bg-black/90 active:scale-95 md:top-6 md:right-6"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+
         <motion.div
           layoutId={`art-${art.id}`}
           onClick={(e) => e.stopPropagation()}
-          className="art-modal-content bg-[var(--color-bg-secondary)] rounded-xl overflow-hidden max-w-[900px] w-full max-h-[90vh] flex flex-col shadow-2xl"
+          className="art-modal-content relative flex max-h-[90vh] max-w-[92vw] cursor-default items-center justify-center overflow-hidden rounded-xl shadow-2xl"
         >
-          <div className="flex-1 overflow-hidden flex items-center justify-center bg-black">
-            {art.type === 'video' ? (
-              <video
-                src={art.image}
-                controls
-                autoPlay
-                muted
-                className="max-h-[70vh] max-w-full outline-none"
-              />
-            ) : (
-              <img
-                src={art.image}
-                alt={art.title}
-                className="max-h-[70vh] max-w-full object-contain"
-              />
-            )}
-          </div>
-
-          <div className="art-modal-info p-6 md:p-8">
-            <div className="art-modal-header flex justify-between items-start">
-              <div>
-                <h2 className="art-modal-title text-2xl md:text-3xl font-bold mb-2">
-                  {art.title}
-                </h2>
-                <span className="inline-block bg-[var(--color-accent)] text-[var(--color-bg-primary)] px-3 py-1 rounded-full text-xs font-bold">
-                  {art.tags.join(', ')}
-                </span>
-              </div>
-              <button
-                onClick={onClose}
-                className="bg-transparent border border-[var(--color-text-secondary)] text-[var(--color-text-primary)] px-4 py-2 rounded-lg cursor-pointer hover:border-[var(--color-accent)] transition-colors"
-              >
-                Close
-              </button>
-            </div>
-          </div>
+          {art.type === 'video' ? (
+            <video
+              src={art.image}
+              controls
+              autoPlay
+              muted
+              className="max-h-[85vh] max-w-full rounded-xl outline-none"
+            />
+          ) : (
+            <img
+              src={art.image}
+              alt=""
+              className="max-h-[85vh] max-w-full rounded-xl object-contain select-none"
+            />
+          )}
         </motion.div>
       </motion.div>
     </RemoveScroll>
