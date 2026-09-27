@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const TOTAL_IMAGES = 17;
 
@@ -42,7 +42,7 @@ const GalleryRotator = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 h-[400px] w-full">
+    <div className="mb-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
       {images.map((imgIndex, i) => {
         const filename = `fTrackImage-${imgIndex + 1}.jpg`;
         const data = metadata[filename];
@@ -53,14 +53,14 @@ const GalleryRotator = () => {
             key={i}
             initial="idle"
             whileHover="hover"
-            className="relative w-full h-full rounded-xl overflow-hidden bg-[#222] border border-[#333]"
+            className="relative h-[420px] w-full overflow-hidden rounded-xl border border-[#333] bg-[#222] sm:h-[500px]"
           >
             {/* Clickable Link */}
             <a
               href={linkUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full h-full cursor-pointer"
+              className="block h-full w-full cursor-pointer"
             >
               <AnimatePresence mode="wait">
                 <motion.img
@@ -71,12 +71,12 @@ const GalleryRotator = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 1, ease: 'easeInOut' }}
-                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  className="absolute inset-0 h-full w-full object-cover object-top"
                 />
               </AnimatePresence>
 
               {/* Glossy Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 to-transparent" />
             </a>
           </motion.div>
         );
