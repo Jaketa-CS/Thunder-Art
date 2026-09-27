@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import GalleryRotator from '@/components/GalleryRotator';
-import ConSchedule from '@/components/ConSchedule';
 import FursuitMakers from '@/components/FursuitMakers';
 import Footer from '@/components/Footer';
 
@@ -12,34 +11,34 @@ const About = () => {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -20 }}
         transition={{ duration: 0.5 }}
-        className="container pt-8 pb-16 max-w-[800px]"
+        className="container max-w-[800px] pt-8 pb-16"
       >
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">About Me</h1>
+        <div className="mb-16 text-center">
+          <h1 className="mb-4 text-4xl font-bold md:text-5xl">About Me</h1>
         </div>
 
-        <div className="content-panel bg-[var(--color-bg-secondary)] p-6 md:p-12 rounded-xl border border-[#2a2a2a]">
-          <div className="flex flex-col items-center gap-8 mb-8">
-            <div className="relative w-56 h-56 rounded-full flex items-center justify-center overflow-hidden">
+        <div className="content-panel rounded-xl border border-[#2a2a2a] bg-[var(--color-bg-secondary)] p-6 md:p-12">
+          <div className="mb-8 flex flex-col items-center gap-8">
+            <div className="relative flex h-56 w-56 items-center justify-center overflow-hidden rounded-full">
               {/* Spinning Rainbow Border */}
-              <div className="absolute -inset-1/2 bg-[conic-gradient(from_0deg,#FF0055,#A020F0,#0055FF,#A020F0,#FF0055)] animate-[spin_4s_linear_infinite]" />
+              <div className="absolute -inset-1/2 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,#FF0055,#A020F0,#0055FF,#A020F0,#FF0055)]" />
 
               {/* Video Container */}
-              <div className="w-[220px] h-[220px] rounded-full overflow-hidden relative z-1 bg-[var(--color-bg-secondary)]">
+              <div className="relative z-1 h-[220px] w-[220px] overflow-hidden rounded-full bg-[var(--color-bg-secondary)]">
                 <video
                   src="/2.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover block"
+                  className="block h-full w-full object-cover"
                 />
               </div>
             </div>
 
             <div className="text-center">
-              <h2 className="text-2xl font-bold mb-2">Thunder / Zevoloz</h2>
-              <p className="text-[var(--color-accent)] font-semibold">
+              <h2 className="mb-2 text-2xl font-bold">Thunder / Zevoloz</h2>
+              <p className="font-semibold text-[var(--color-accent)]">
                 Digital Artist & Illustrator
               </p>
             </div>
@@ -58,10 +57,10 @@ const About = () => {
           </div>
 
           <div className="mt-12">
-            <h3 className="text-xl font-bold mb-4 border-b border-[var(--color-border)] pb-2">
+            <h3 className="mb-4 border-b border-[var(--color-border)] pb-2 text-xl font-bold">
               Software
             </h3>
-            <div className="flex gap-4 flex-wrap mb-8">
+            <div className="mb-8 flex flex-wrap gap-4">
               {[
                 'Procreate',
                 'TVPaint',
@@ -73,22 +72,22 @@ const About = () => {
               ].map((tool) => (
                 <span
                   key={tool}
-                  className="bg-[var(--color-bg-tertiary)] px-4 py-2 rounded-full text-sm text-[var(--color-text-primary)]"
+                  className="rounded-full bg-[var(--color-bg-tertiary)] px-4 py-2 text-sm text-[var(--color-text-primary)]"
                 >
                   {tool}
                 </span>
               ))}
             </div>
 
-            <h3 className="text-xl font-bold mb-4 border-b border-[var(--color-border)] pb-2">
+            <h3 className="mb-4 border-b border-[var(--color-border)] pb-2 text-xl font-bold">
               Hardware
             </h3>
-            <div className="flex gap-4 flex-wrap">
+            <div className="flex flex-wrap gap-4">
               {['iPad Pro 13" (2024)', 'Huion Kamvas Pro 16 (2021)'].map(
                 (gear) => (
                   <span
                     key={gear}
-                    className="bg-[var(--color-bg-tertiary)] px-4 py-2 rounded-full text-sm text-[var(--color-text-primary)]"
+                    className="rounded-full bg-[var(--color-bg-tertiary)] px-4 py-2 text-sm text-[var(--color-text-primary)]"
                   >
                     {gear}
                   </span>
@@ -98,7 +97,7 @@ const About = () => {
           </div>
 
           <div className="mt-12">
-            <h3 className="text-xl font-bold mb-4 border-b border-[var(--color-border)] pb-2">
+            <h3 className="mb-4 border-b border-[var(--color-border)] pb-2 text-xl font-bold">
               Fursuiting
             </h3>
 
@@ -111,23 +110,21 @@ const About = () => {
               href="https://www.furtrack.com/index/character:thunder_(gryphon)"
               target="_blank"
               rel="noopener noreferrer"
-              className="no-underline block text-center my-6"
+              className="my-6 block text-center no-underline"
             >
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#2e1052] text-white border border-[#4a2080] px-8 py-3 rounded-full text-base font-semibold cursor-pointer inline-flex items-center gap-3 transition-colors hover:brightness-110"
+                className="inline-flex cursor-pointer items-center gap-3 rounded-full border border-[#4a2080] bg-[#2e1052] px-8 py-3 text-base font-semibold text-white transition-colors hover:brightness-110"
               >
                 <img
                   src="/furtrack-logo.png"
                   alt="FurTrack Logo"
-                  className="w-6 h-6 object-contain"
+                  className="h-6 w-6 object-contain"
                 />
                 View More on FurTrack
               </motion.button>
             </a>
-
-            <ConSchedule />
           </div>
         </div>
       </motion.div>
