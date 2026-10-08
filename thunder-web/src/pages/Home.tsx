@@ -42,7 +42,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="container pt-10 md:pt-12 pb-12">
+      <div className="container pt-16 md:pt-20 pb-12">
         <div className="flex justify-between items-center mb-6 flex-wrap gap-4">
           <h1 className="text-2xl md:text-3xl font-bold uppercase tracking-wider">
             Gallery

@@ -11,7 +11,7 @@ const About = () => {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -20 }}
         transition={{ duration: 0.5 }}
-        className="container max-w-[800px] pt-10 md:pt-12 pb-16"
+        className="container max-w-[800px] pt-16 md:pt-20 pb-16"
       >
         <div className="mb-16 text-center">
           <h1 className="mb-4 text-4xl font-bold md:text-5xl">About Me</h1>
