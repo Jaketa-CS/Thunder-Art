@@ -1,5 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // Pages
 import Navbar from '@/components/Navbar';
@@ -15,17 +14,13 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <div className="app-container min-h-screen flex flex-col">
+        <div className="app-container flex min-h-screen flex-col">
           <Navbar />
-
-          <AnimatePresence mode="wait">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/commissions" element={<Commissions />} />
-              <Route path="/about" element={<About />} />
-            </Routes>
-          </AnimatePresence>
-
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/commissions" element={<Commissions />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
           <BackToTop />
         </div>
       </Router>
