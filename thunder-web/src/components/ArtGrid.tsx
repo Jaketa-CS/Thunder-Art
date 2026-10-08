@@ -8,11 +8,9 @@ interface ArtGridProps {
 
 const ArtGrid = ({ artworks, onArtClick }: ArtGridProps) => {
   return (
-    <div className="masonry-grid columns-1 sm:columns-2 lg:columns-3 gap-4 py-4">
+    <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 py-2">
       {artworks.map((art) => (
-        <div key={art.id} className="break-inside-avoid">
-          <ArtCard art={art} onClick={onArtClick} />
-        </div>
+        <ArtCard key={art.id} art={art} onClick={onArtClick} />
       ))}
     </div>
   );

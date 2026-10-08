@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { ArtPiece } from '@/data/mockArt';
 
 interface ArtCardProps {
@@ -8,13 +7,9 @@ interface ArtCardProps {
 
 const ArtCard = ({ art, onClick }: ArtCardProps) => {
   return (
-    <motion.div
-      layoutId={`art-${art.id}`}
+    <div
       onClick={() => onClick(art)}
-      whileHover={{ scale: 1.015 }}
-      whileTap={{ scale: 0.99 }}
-      transition={{ duration: 0.2 }}
-      className="art-card group relative mb-4 cursor-pointer break-inside-avoid overflow-hidden rounded-lg shadow-sm transition-shadow duration-300 hover:shadow-xl"
+      className="group relative mb-4 cursor-pointer break-inside-avoid overflow-hidden rounded-lg bg-(--color-bg-secondary) border border-(--color-border)/40 transition-opacity hover:opacity-90"
     >
       {art.type === 'video' ? (
         <video
@@ -23,17 +18,17 @@ const ArtCard = ({ art, onClick }: ArtCardProps) => {
           loop
           muted
           playsInline
-          className="block w-full [transform:translateZ(0)] object-cover transition-transform duration-300 [backface-visibility:hidden] group-hover:brightness-105"
+          className="block w-full object-cover"
         />
       ) : (
         <img
           src={art.image}
           alt={art.title}
-          className="block w-full [transform:translateZ(0)] transition-transform duration-300 [backface-visibility:hidden] group-hover:brightness-105"
+          className="block w-full object-cover"
           loading="lazy"
         />
       )}
-    </motion.div>
+    </div>
   );
 };
 

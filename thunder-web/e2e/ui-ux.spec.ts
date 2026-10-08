@@ -111,13 +111,31 @@ test.describe('UI/UX and Tailwind Verification', () => {
       fullPage: true,
     });
 
+    // Dark scrolled viewport (verifies sticky header over content)
+    await page.evaluate(() => window.scrollTo(0, 600));
+    await page.waitForTimeout(200);
+    await page.screenshot({
+      path: 'test-results/screenshots/home-scrolled-dark.png',
+      fullPage: false,
+    });
+
     // 2. Home Light
     const themeButton = page.getByRole('button', { name: /switch to/i });
     await themeButton.click();
     await page.waitForTimeout(400);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(200);
     await page.screenshot({
       path: 'test-results/screenshots/home-light.png',
       fullPage: true,
+    });
+
+    // Light scrolled viewport
+    await page.evaluate(() => window.scrollTo(0, 600));
+    await page.waitForTimeout(200);
+    await page.screenshot({
+      path: 'test-results/screenshots/home-scrolled-light.png',
+      fullPage: false,
     });
 
     // 3. Commissions
@@ -135,5 +153,24 @@ test.describe('UI/UX and Tailwind Verification', () => {
       path: 'test-results/screenshots/about.png',
       fullPage: true,
     });
+  });
+
+  test('Sticky header remains at top of viewport when scrolling', async ({ page }) => {
+    await page.goto('/');
+    const header = page.locator('header');
+    await expect(header).toBeVisible();
+
+    const initialBox = await header.boundingBox();
+    expect(initialBox).not.toBeNull();
+    expect(initialBox?.y).toBe(0);
+
+    // Scroll down 500px
+    await page.evaluate(() => window.scrollTo(0, 500));
+    await page.waitForTimeout(200);
+
+    const scrolledBox = await header.boundingBox();
+    expect(scrolledBox).not.toBeNull();
+    // Sticky header stays at top of viewport (y === 0)
+    expect(scrolledBox?.y).toBe(0);
   });
 });

@@ -14,6 +14,7 @@ const ArtModal = ({ art, onClose }: ArtModalProps) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
+        transition={{ duration: 0.15 }}
         onClick={onClose}
         className="art-modal-overlay fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/90 p-4 md:p-8"
       >
@@ -38,8 +39,7 @@ const ArtModal = ({ art, onClose }: ArtModalProps) => {
           </svg>
         </button>
 
-        <motion.div
-          layoutId={`art-${art.id}`}
+        <div
           onClick={(e) => e.stopPropagation()}
           className="art-modal-content relative flex max-h-[90vh] max-w-[92vw] cursor-default items-center justify-center overflow-hidden rounded-xl shadow-2xl"
         >
@@ -54,11 +54,11 @@ const ArtModal = ({ art, onClose }: ArtModalProps) => {
           ) : (
             <img
               src={art.image}
-              alt=""
+              alt={art.title || ''}
               className="max-h-[85vh] max-w-full rounded-xl object-contain select-none"
             />
           )}
-        </motion.div>
+        </div>
       </motion.div>
     </RemoveScroll>
   );
