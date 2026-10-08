@@ -15,13 +15,13 @@ const Commissions = () => {
   return (
     <>
       <ToSModal isOpen={isToSOpen} onClose={() => setIsToSOpen(false)} />
-      <div className="pt-12 pb-24 max-w-[1200px] mx-auto px-6 font-[var(--font-family-body)] overflow-x-hidden">
+      <div className="mx-auto max-w-[1200px] overflow-x-hidden px-6 pt-16 pb-24 font-[var(--font-family-body)] md:pt-20">
         {/* Clean, Professional Header */}
-        <div className="commissions-header text-center mb-24 mt-12 flex flex-col items-center">
+        <div className="commissions-header mt-12 mb-24 flex flex-col items-center text-center">
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold mb-4 text-[var(--color-text-primary)] tracking-wide"
+            className="mb-4 text-4xl font-bold tracking-wide text-[var(--color-text-primary)] md:text-5xl"
           >
             COMMISSIONS
           </motion.h1>
@@ -31,14 +31,14 @@ const Commissions = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-xs text-xs font-semibold tracking-wider mb-6 bg-transparent border ${
+            className={`mb-6 inline-flex items-center gap-2 rounded-xs border bg-transparent px-4 py-1.5 text-xs font-semibold tracking-wider ${
               siteConfig.commissions.status === 'OPEN'
                 ? 'border-[#2ea043] text-[#3fb950]'
                 : 'border-[#f85149] text-[#f85149]'
             }`}
           >
             <div
-              className={`w-2 h-2 rounded-full ${
+              className={`h-2 w-2 rounded-full ${
                 siteConfig.commissions.status === 'OPEN'
                   ? 'bg-[#3fb950] shadow-[0_0_8px_#3fb950]'
                   : 'bg-[#f85149] shadow-[0_0_8px_#f85149]'
@@ -52,14 +52,14 @@ const Commissions = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="flex items-center justify-center gap-4 flex-wrap mb-6"
+            className="mb-6 flex flex-wrap items-center justify-center gap-4"
           >
             {/* Primary Button */}
             <a
               href="https://t.me/ThunderFennec"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[var(--color-accent)] text-[var(--color-bg-primary)] px-7 py-3 rounded-xs text-base font-semibold no-underline transition-all duration-200 hover:brightness-110 active:scale-95"
+              className="rounded-xs bg-[var(--color-accent)] px-7 py-3 text-base font-semibold text-[var(--color-bg-primary)] no-underline transition-all duration-200 hover:brightness-110 active:scale-95"
             >
               Send a Message
             </a>
@@ -69,7 +69,7 @@ const Commissions = () => {
               href="https://trello.com/b/w0MZ464h/thunder-commision-info"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] px-7 py-3 rounded-md text-base font-medium no-underline border border-[var(--color-border)] transition-colors duration-200 hover:bg-[var(--color-border)]"
+              className="rounded-md border border-[var(--color-border)] bg-[var(--color-bg-tertiary)] px-7 py-3 text-base font-medium text-[var(--color-text-primary)] no-underline transition-colors duration-200 hover:bg-[var(--color-border)]"
             >
               View Queue
             </a>
@@ -80,7 +80,7 @@ const Commissions = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             onClick={() => setIsToSOpen(true)}
-            className="bg-transparent text-[var(--color-text-secondary)] text-sm border-none cursor-pointer inline-block transition-colors hover:text-[var(--color-text-primary)] hover:underline"
+            className="inline-block cursor-pointer border-none bg-transparent text-sm text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)] hover:underline"
           >
             Read Terms of Service
           </motion.button>
