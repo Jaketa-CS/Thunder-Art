@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 const About = () => {
   return (
     <>
-      <div className="container max-w-[800px] pt-16 pb-16 md:pt-20">
+      <div className="container max-w-[800px] pt-8 pb-16 md:pt-10">
         <div className="mb-16 text-center">
           <h1 className="mb-4 text-4xl font-bold md:text-5xl">About Me</h1>
         </div>

@@ -33,7 +33,7 @@ const Navbar = () => {
           to="/"
           className="text-xl font-bold tracking-widest text-(--color-text-primary) uppercase transition-opacity hover:opacity-80 md:text-2xl"
         >
-          THUNDER
+          THUNDERFENNEC
         </Link>
 
         <div className="flex items-center gap-6 font-medium md:gap-8">

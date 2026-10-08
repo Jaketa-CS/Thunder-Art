@@ -35,31 +35,26 @@ const Home = () => {
 
   return (
     <>
-      <div className="container pt-16 pb-12 md:pt-20">
-        <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-          <h1 className="text-2xl font-bold tracking-wider uppercase md:text-3xl">
-            Art
-          </h1>
-          <div className="flex items-center gap-2">
-            <FilterButton
-              label="All"
-              value="all"
-              currentFilter={filter}
-              setFilter={setFilter}
-            />
-            <FilterButton
-              label="Animations"
-              value="video"
-              currentFilter={filter}
-              setFilter={setFilter}
-            />
-            <FilterButton
-              label="Illustrations"
-              value="image"
-              currentFilter={filter}
-              setFilter={setFilter}
-            />
-          </div>
+      <div className="container pt-6 pb-12 md:pt-8">
+        <div className="mb-6 flex items-center justify-end gap-2">
+          <FilterButton
+            label="All"
+            value="all"
+            currentFilter={filter}
+            setFilter={setFilter}
+          />
+          <FilterButton
+            label="Animations"
+            value="video"
+            currentFilter={filter}
+            setFilter={setFilter}
+          />
+          <FilterButton
+            label="Illustrations"
+            value="image"
+            currentFilter={filter}
+            setFilter={setFilter}
+          />
         </div>
 
         <div className="border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-4 shadow-sm sm:p-6 md:p-8">
