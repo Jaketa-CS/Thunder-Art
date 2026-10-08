@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('Homepage E2E', () => {
   test('loads homepage with correct title and navigation links', async ({
@@ -9,8 +9,8 @@ test.describe('Homepage E2E', () => {
     // Verify title
     await expect(page).toHaveTitle(/ThunderFennec/i);
 
-    // Verify nav links: Work, About, Commissions
-    await expect(page.getByRole('link', { name: /work/i })).toBeVisible();
+    // Verify nav links: Art, About, Commissions
+    await expect(page.getByRole('link', { name: /art/i })).toBeVisible();
     await expect(page.getByRole('link', { name: /about/i })).toBeVisible();
     await expect(
       page.getByRole('link', { name: /commissions/i })

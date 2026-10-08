@@ -1,7 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('UI/UX and Tailwind Verification', () => {
-  test('Tailwind CSS engine compiles and applies utility classes to DOM elements', async ({ page }) => {
+  test('Tailwind CSS engine compiles and applies utility classes to DOM elements', async ({
+    page,
+  }) => {
     await page.goto('/');
 
     const appContainer = page.locator('.app-container');
@@ -18,32 +20,45 @@ test.describe('UI/UX and Tailwind Verification', () => {
     expect(hasMinHeight).toBe(true);
   });
 
-  test('Theme switcher toggles between dark and light themes without breaking styles', async ({ page }) => {
+  test('Theme switcher toggles between dark and light themes without breaking styles', async ({
+    page,
+  }) => {
     await page.goto('/');
 
     const themeButton = page.getByRole('button', { name: /switch to/i });
     await expect(themeButton).toBeVisible();
 
-    const initialTheme = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
+    const initialTheme = await page.evaluate(() =>
+      document.documentElement.getAttribute('data-theme')
+    );
     expect(initialTheme).toMatch(/dark|light/);
 
     // Toggle theme
     await themeButton.click();
-    const updatedTheme = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
+    const updatedTheme = await page.evaluate(() =>
+      document.documentElement.getAttribute('data-theme')
+    );
     expect(updatedTheme).not.toBe(initialTheme);
 
     // Toggle back
     await themeButton.click();
-    const revertedTheme = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
+    const revertedTheme = await page.evaluate(() =>
+      document.documentElement.getAttribute('data-theme')
+    );
     expect(revertedTheme).toBe(initialTheme);
   });
 
-  test('All primary pages load with zero fatal console errors', async ({ page }) => {
+  test('All primary pages load with zero fatal console errors', async ({
+    page,
+  }) => {
     const fatalErrors: string[] = [];
     page.on('console', (msg) => {
       if (msg.type() === 'error') {
         const text = msg.text();
-        if (!text.includes('favicon') && !text.includes('ERR_CONNECTION_REFUSED')) {
+        if (
+          !text.includes('favicon') &&
+          !text.includes('ERR_CONNECTION_REFUSED')
+        ) {
           fatalErrors.push(text);
         }
       }
@@ -55,7 +70,7 @@ test.describe('UI/UX and Tailwind Verification', () => {
     // 1. Home
     await page.goto('/');
     await expect(page).toHaveTitle(/ThunderFennec/i);
-    await expect(page.getByRole('link', { name: /work/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /art/i })).toBeVisible();
 
     // 2. Commissions & ToS Modal
     await page.goto('/commissions');
@@ -64,7 +79,9 @@ test.describe('UI/UX and Tailwind Verification', () => {
     if (await tosButton.isVisible()) {
       await tosButton.click();
       await expect(page.getByText(/terms of service/i).first()).toBeVisible();
-      const closeButton = page.getByRole('button', { name: /close|accept/i }).first();
+      const closeButton = page
+        .getByRole('button', { name: /close|accept/i })
+        .first();
       if (await closeButton.isVisible()) {
         await closeButton.click();
       }
@@ -77,7 +94,9 @@ test.describe('UI/UX and Tailwind Verification', () => {
     expect(fatalErrors).toEqual([]);
   });
 
-  test('Captures full-page screenshots for visual inspection', async ({ page }) => {
+  test('Captures full-page screenshots for visual inspection', async ({
+    page,
+  }) => {
     const scrollAndSettle = async () => {
       await page.evaluate(async () => {
         const distance = 500;
@@ -155,7 +174,9 @@ test.describe('UI/UX and Tailwind Verification', () => {
     });
   });
 
-  test('Sticky header remains at top of viewport when scrolling', async ({ page }) => {
+  test('Sticky header remains at top of viewport when scrolling', async ({
+    page,
+  }) => {
     await page.goto('/');
     const header = page.locator('header');
     await expect(header).toBeVisible();

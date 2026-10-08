@@ -10,10 +10,10 @@ interface NavLinkProps {
 const NavLink = ({ to, children, active }: NavLinkProps) => (
   <Link
     to={to}
-    className={`text-sm md:text-base tracking-wide transition-colors ${
+    className={`text-sm tracking-wide transition-colors md:text-base ${
       active
-        ? 'text-(--color-text-primary) font-semibold border-b-2 border-(--color-accent) pb-0.5'
-        : 'text-(--color-text-secondary) font-normal hover:text-(--color-text-primary)'
+        ? 'border-b-2 border-(--color-accent) pb-0.5 font-semibold text-(--color-text-primary)'
+        : 'font-normal text-(--color-text-secondary) hover:text-(--color-text-primary)'
     }`}
   >
     {children}
@@ -27,18 +27,18 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[var(--color-bg-header)] border-b border-[var(--color-border)] shadow-[var(--shadow-sm)] transition-[background-color,border-color] duration-300">
-      <nav className="flex items-center justify-between max-w-[1400px] mx-auto w-full px-4 py-4 md:px-8">
+    <header className="sticky top-0 z-40 w-full border-b border-[var(--color-border)] bg-[var(--color-bg-header)] shadow-[var(--shadow-sm)] transition-[background-color,border-color] duration-300">
+      <nav className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-4 py-4 md:px-8">
         <Link
           to="/"
-          className="text-xl md:text-2xl font-bold tracking-widest uppercase text-(--color-text-primary) hover:opacity-80 transition-opacity"
+          className="text-xl font-bold tracking-widest text-(--color-text-primary) uppercase transition-opacity hover:opacity-80 md:text-2xl"
         >
           THUNDER
         </Link>
 
-        <div className="flex items-center gap-6 md:gap-8 font-medium">
+        <div className="flex items-center gap-6 font-medium md:gap-8">
           <NavLink to="/" active={isActive('/')}>
-            Work
+            Art
           </NavLink>
           <NavLink to="/commissions" active={isActive('/commissions')}>
             Commissions
@@ -50,7 +50,7 @@ const Navbar = () => {
           <button
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
-            className="flex items-center justify-center w-8 h-8 rounded-md border border-(--color-border) bg-(--color-bg-tertiary) text-(--color-text-primary) transition-colors cursor-pointer hover:border-(--color-accent)"
+            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-(--color-border) bg-(--color-bg-tertiary) text-(--color-text-primary) transition-colors hover:border-(--color-accent)"
           >
             {theme === 'dark' ? (
               /* Sun Icon */
