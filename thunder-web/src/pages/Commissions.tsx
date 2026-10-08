@@ -15,7 +15,7 @@ const Commissions = () => {
   return (
     <>
       <ToSModal isOpen={isToSOpen} onClose={() => setIsToSOpen(false)} />
-      <div className="mx-auto max-w-[1200px] overflow-x-hidden px-6 pt-16 pb-24 font-[var(--font-family-body)] md:pt-20">
+      <div className="mx-auto max-w-[1200px] overflow-x-hidden px-6 pt-8 pb-24 font-[var(--font-family-body)] md:pt-10">
         {/* Clean, Professional Header */}
         <div className="commissions-header mt-12 mb-24 flex flex-col items-center text-center">
           <motion.h1
