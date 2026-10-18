@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 // import { useTheme } from '@/contexts/ThemeContext';
@@ -23,13 +24,32 @@ const NavLink = ({ to, children, active }: NavLinkProps) => (
 
 const Navbar = () => {
   const location = useLocation();
-  // const { theme, toggleTheme } = useTheme();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-[#3b4261] bg-gradient-to-r from-[#181b29] via-[#232a48] to-[#332f50] shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-[background,border-color] duration-300">
-      <nav className="mx-auto flex h-20 w-full max-w-[1400px] items-center justify-between px-4 md:h-24 md:px-8">
+    <header
+      className={`sticky top-0 z-40 w-full border-b transition-all duration-300 ease-in-out ${
+        isScrolled
+          ? 'border-[#3b4261]/60 bg-gradient-to-r from-[#181b29]/90 via-[#232a48]/90 to-[#332f50]/90 shadow-[0_4px_24px_rgba(0,0,0,0.7)] backdrop-blur-md'
+          : 'border-[#3b4261] bg-gradient-to-r from-[#181b29] via-[#232a48] to-[#332f50] shadow-[0_4px_20px_rgba(0,0,0,0.5)]'
+      }`}
+    >
+      <nav
+        className={`mx-auto flex w-full max-w-[1400px] items-center justify-between px-4 transition-all duration-300 ease-in-out md:px-8 ${
+          isScrolled ? 'h-[68px] md:h-[80px]' : 'h-20 md:h-24'
+        }`}
+      >
         <Link
           to="/"
           className="flex items-center gap-1.5 md:gap-2"
@@ -38,12 +58,16 @@ const Navbar = () => {
           <img
             src="/site-images/ThunderLogo.webp"
             alt="Thunder Fennec Face Logo"
-            className="h-[76px] w-auto object-contain [image-rendering:-webkit-optimize-contrast] md:h-[92px]"
+            className={`w-auto object-contain transition-all duration-300 ease-in-out [image-rendering:-webkit-optimize-contrast] ${
+              isScrolled ? 'h-[68px] md:h-[82px]' : 'h-[80px] md:h-[98px]'
+            }`}
           />
           <img
             src="/site-images/ThunderLogoText.webp"
             alt="Thunder Fennec"
-            className="h-16 w-auto object-contain [image-rendering:-webkit-optimize-contrast] md:h-22"
+            className={`w-auto object-contain transition-all duration-300 ease-in-out [image-rendering:-webkit-optimize-contrast] ${
+              isScrolled ? 'h-[54px] md:h-[72px]' : 'h-16 md:h-22'
+            }`}
           />
         </Link>
 
