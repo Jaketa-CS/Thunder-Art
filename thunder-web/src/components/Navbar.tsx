@@ -29,12 +29,22 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[var(--color-border)] bg-[var(--color-bg-header)] shadow-[var(--shadow-sm)] transition-[background-color,border-color] duration-300">
-      <nav className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-4 py-4 md:px-8">
+      <nav className="mx-auto flex h-20 w-full max-w-[1400px] items-center justify-between px-4 md:h-24 md:px-8">
         <Link
           to="/"
-          className="text-xl font-bold tracking-widest text-(--color-text-primary) uppercase transition-opacity hover:opacity-80 md:text-2xl"
+          className="flex items-center gap-1.5 md:gap-2"
+          aria-label="ThunderFennec"
         >
-          THUNDERFENNEC
+          <img
+            src="/site-images/ThunderLogo.webp"
+            alt="Thunder Fennec Face Logo"
+            className="h-[76px] w-auto object-contain [image-rendering:-webkit-optimize-contrast] md:h-[92px]"
+          />
+          <img
+            src="/site-images/ThunderLogoText.webp"
+            alt="Thunder Fennec"
+            className="h-16 w-auto object-contain [image-rendering:-webkit-optimize-contrast] md:h-22"
+          />
         </Link>
 
         <div className="flex items-center gap-6 font-medium md:gap-8">
@@ -54,7 +64,7 @@ const Navbar = () => {
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
             className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-(--color-border) bg-(--color-bg-tertiary) text-(--color-text-primary) transition-colors hover:border-(--color-accent)"
           >
-            {theme === 'dark' ? (
+            {theme === 'dark'? (
               <svg
                 width="16"
                 height="16"
