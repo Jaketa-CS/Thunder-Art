@@ -11,7 +11,7 @@ const About = () => {
           <h1 className="mb-4 text-4xl font-bold md:text-5xl">About Me</h1>
         </div>
 
-        <div className="content-panel rounded-xl border border-[#2a2a2a] bg-[var(--color-bg-secondary)] p-6 md:p-12">
+        <div className="content-panel rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-6 md:p-12">
           <div className="mb-8 flex flex-col items-center gap-8">
             <div className="relative flex h-56 w-56 items-center justify-center overflow-hidden rounded-full">
               {/* Spinning Rainbow Border */}
@@ -66,7 +66,7 @@ const About = () => {
               ].map((tool) => (
                 <span
                   key={tool}
-                  className="rounded-full bg-[var(--color-bg-tertiary)] px-4 py-2 text-sm text-[var(--color-text-primary)]"
+                  className="rounded-full border border-[var(--color-border)] bg-[var(--color-bg-tertiary)] px-4 py-2 text-sm text-[var(--color-text-primary)]"
                 >
                   {tool}
                 </span>
@@ -81,7 +81,7 @@ const About = () => {
                 (gear) => (
                   <span
                     key={gear}
-                    className="rounded-full bg-[var(--color-bg-tertiary)] px-4 py-2 text-sm text-[var(--color-text-primary)]"
+                    className="rounded-full border border-[var(--color-border)] bg-[var(--color-bg-tertiary)] px-4 py-2 text-sm text-[var(--color-text-primary)]"
                   >
                     {gear}
                   </span>
@@ -116,7 +116,7 @@ const About = () => {
                   alt="FurTrack Logo"
                   className="h-6 w-6 object-contain"
                 />
-                View More on FurTrack
+                <span>View More on FurTrack</span>
               </motion.button>
             </a>
           </div>

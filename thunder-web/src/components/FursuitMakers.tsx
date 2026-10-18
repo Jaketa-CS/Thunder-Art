@@ -77,7 +77,7 @@ const FursuitMakers = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
-      className="flex flex-wrap gap-4 mt-4 mb-6 justify-center"
+      className="mt-4 mb-6 flex flex-wrap justify-center gap-4"
     >
       {MAKERS.map((maker) => (
         <motion.a
@@ -86,16 +86,16 @@ const FursuitMakers = () => {
           target="_blank"
           rel="noopener noreferrer"
           variants={cardVariants}
-          className="flex flex-col no-underline bg-[var(--color-bg-tertiary)] rounded-xl overflow-hidden cursor-pointer border border-[#2a2a2a] w-[220px] transition-colors hover:border-[var(--color-accent)]"
+          className="flex w-[220px] cursor-pointer flex-col overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-tertiary)] no-underline transition-colors hover:border-[var(--color-accent)]"
         >
           <div className="p-2">
             {/* "Head made by" / "Body made by" label */}
-            <div className="text-[10px] font-semibold text-[var(--color-text-secondary)] uppercase tracking-wider mb-1 text-center">
+            <div className="mb-1 text-center text-[10px] font-semibold tracking-wider text-[var(--color-text-secondary)] uppercase">
               {maker.label}
             </div>
 
             {/* Large logo taking most of the space */}
-            <div className="w-full h-[100px] flex items-center justify-center">
+            <div className="flex h-[100px] w-full items-center justify-center">
               <motion.img
                 src={maker.logo}
                 alt={`${maker.name} logo`}
@@ -103,9 +103,10 @@ const FursuitMakers = () => {
                 transition={{
                   type: 'spring',
                   stiffness: 300,
+
                   damping: 15,
                 }}
-                className="w-full h-full object-contain p-2"
+                className="h-full w-full object-contain p-2"
               />
             </div>
           </div>

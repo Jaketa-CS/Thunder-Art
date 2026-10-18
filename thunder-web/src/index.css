@@ -5,9 +5,10 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('JetBrainsMono Nerd Font'),
-  local('JetBrainsMono NF'),
-  url('./assets/fonts/JetBrainsMonoNerdFont-Regular.ttf') format('truetype');
+  src:
+    local('JetBrainsMono Nerd Font'),
+    local('JetBrainsMono NF'),
+    url('./assets/fonts/JetBrainsMonoNerdFont-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -15,9 +16,10 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: local('JetBrainsMono Nerd Font Medium'),
-  local('JetBrainsMono NF Medium'),
-  url('./assets/fonts/JetBrainsMonoNerdFont-Medium.ttf') format('truetype');
+  src:
+    local('JetBrainsMono Nerd Font Medium'),
+    local('JetBrainsMono NF Medium'),
+    url('./assets/fonts/JetBrainsMonoNerdFont-Medium.ttf') format('truetype');
 }
 
 @font-face {
@@ -25,9 +27,10 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local('JetBrainsMono Nerd Font Bold'),
-  local('JetBrainsMono NF Bold'),
-  url('./assets/fonts/JetBrainsMonoNerdFont-Bold.ttf') format('truetype');
+  src:
+    local('JetBrainsMono Nerd Font Bold'),
+    local('JetBrainsMono NF Bold'),
+    url('./assets/fonts/JetBrainsMonoNerdFont-Bold.ttf') format('truetype');
 }
 
 :root {
@@ -48,21 +51,23 @@
   --radius-full: 9999px;
 
   /* Transitions */
-  --transition-theme: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  --transition-theme:
+    background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 :root,
 [data-theme='dark'] {
-  /* Google Dark Theme - Material 3 (Default & Primary) */
-  --color-bg-primary: #121212; /* Deepest Background */
-  --color-bg-secondary: #1e1e1e; /* Surface Container */
-  --color-bg-tertiary: #2c2c2c; /* Surface Container High */
-  --color-bg-header: #000000; /* Solid Black, darker than background */
+  /* Cool Slate Dark Theme (Default & Primary) */
+  --color-bg-primary: #10151c; /* Deepest Slate Background */
+  --color-bg-secondary: #151d28; /* Slate Surface Container */
+  --color-bg-tertiary: #1d2736; /* Elevated Slate Surface / Badges */
+  --color-bg-badge: #1d2736; /* Elevated Slate for Badges */
+  --color-bg-header: #0b0f14; /* Deep Slate Black */
 
-  --color-text-primary: #e3e3e3;
-  --color-text-secondary: #c4c7c5;
+  --color-text-primary: #e4eaf2;
+  --color-text-secondary: #9aa8bc;
 
-  --color-border: #444746;
+  --color-border: #2b384e;
   --color-accent: #00e5ff; /* Electric Blue (Cyan A400) */
 
   --radius-sm: 2px;
@@ -187,4 +192,3 @@
     }
   }
 }
-

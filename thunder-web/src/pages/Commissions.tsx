@@ -31,7 +31,7 @@ const Commissions = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className={`mb-6 inline-flex items-center gap-2 rounded-xs border bg-transparent px-4 py-1.5 text-xs font-semibold tracking-wider ${
+            className={`mb-6 inline-flex items-center gap-2 rounded-xs border bg-[var(--color-bg-secondary)] px-4 py-1.5 text-xs font-semibold tracking-wider ${
               siteConfig.commissions.status === 'OPEN'
                 ? 'border-[#2ea043] text-[#3fb950]'
                 : 'border-[#f85149] text-[#f85149]'

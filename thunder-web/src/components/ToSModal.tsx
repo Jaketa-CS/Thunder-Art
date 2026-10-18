@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface ToSModalProps {
   isOpen: boolean;
@@ -11,12 +11,14 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
       {isOpen && (
         <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
           {/* Background Blur */}
-          <motion.div
+          <motion.button
+            type="button"
+            aria-label="Close Terms of Service modal"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/70 backdrop-blur-xs"
+            className="absolute inset-0 h-full w-full border-none bg-[var(--color-bg-primary)]/80 backdrop-blur-xs"
           />
 
           {/* Modal Box */}
@@ -24,19 +26,19 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative z-[1000] bg-[var(--color-bg-secondary)] p-6 md:p-10 rounded-2xl border border-[var(--color-border)] max-w-[700px] w-full max-h-[90vh] flex flex-col shadow-2xl"
+            className="relative z-[1000] flex max-h-[90vh] w-full max-w-[700px] flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-6 shadow-2xl md:p-10"
           >
-            <h2 className="mb-4 text-[var(--color-text-primary)] text-2xl md:text-3xl font-bold">
+            <h2 className="mb-4 text-2xl font-bold text-[var(--color-text-primary)] md:text-3xl">
               Terms of Service
             </h2>
 
-            <div className="custom-scrollbar text-[var(--color-text-secondary)] leading-relaxed text-sm md:text-base flex flex-col gap-8 overflow-y-auto pr-4">
+            <div className="custom-scrollbar flex flex-col gap-8 overflow-y-auto pr-4 text-sm leading-relaxed text-[var(--color-text-secondary)] md:text-base">
               {/* 1. Payment */}
               <section>
-                <h3 className="text-[var(--color-text-primary)] mb-2 text-lg font-semibold">
+                <h3 className="mb-2 text-lg font-semibold text-[var(--color-text-primary)]">
                   Payment & Invoicing
                 </h3>
-                <ul className="pl-5 flex flex-col gap-2 list-disc">
+                <ul className="flex list-disc flex-col gap-2 pl-5">
                   <li>Prices are in USD.</li>
                   <li>Payment is required 100% upfront before I begin work.</li>
                   <li>
@@ -49,7 +51,7 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
 
               {/* 2. Process */}
               <section>
-                <h3 className="text-[var(--color-text-primary)] mb-2 text-lg font-semibold">
+                <h3 className="mb-2 text-lg font-semibold text-[var(--color-text-primary)]">
                   The Process & Revisions
                 </h3>
                 <p className="mb-2">
@@ -61,7 +63,7 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
                   updates and wait for your approval at each of the following
                   stages:
                 </p>
-                <ul className="pl-5 mb-4 flex flex-col gap-2 list-disc">
+                <ul className="mb-4 flex list-disc flex-col gap-2 pl-5">
                   <li>
                     <strong>WIP Sketch:</strong> Initial pose and layout. (This
                     is the best time for major changes!)
@@ -90,7 +92,7 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
 
               {/* 3. Turnaround */}
               <section>
-                <h3 className="text-[var(--color-text-primary)] mb-2 text-lg font-semibold">
+                <h3 className="mb-2 text-lg font-semibold text-[var(--color-text-primary)]">
                   Turnaround Time & Deadlines
                 </h3>
                 <p className="mb-2">
@@ -106,10 +108,10 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
 
               {/* 4. Copyright */}
               <section>
-                <h3 className="text-[var(--color-text-primary)] mb-2 text-lg font-semibold">
+                <h3 className="mb-2 text-lg font-semibold text-[var(--color-text-primary)]">
                   Copyright & Usage
                 </h3>
-                <ul className="pl-5 flex flex-col gap-2 list-disc">
+                <ul className="flex list-disc flex-col gap-2 pl-5">
                   <li>
                     <strong>Personal Use Only:</strong> Commissions are strictly
                     for personal, non-commercial use unless discussed otherwise.
@@ -131,10 +133,10 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
 
               {/* 5. Refunds */}
               <section>
-                <h3 className="text-[var(--color-text-primary)] mb-2 text-lg font-semibold">
+                <h3 className="mb-2 text-lg font-semibold text-[var(--color-text-primary)]">
                   Refunds & Cancellations
                 </h3>
-                <ul className="pl-5 flex flex-col gap-2 list-disc">
+                <ul className="flex list-disc flex-col gap-2 pl-5">
                   <li>
                     If I am unable to complete your commission for any reason,
                     you will receive a full 100% refund.
@@ -154,10 +156,10 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
               </section>
             </div>
 
-            <div className="pt-6 mt-auto border-t border-white/5">
+            <div className="mt-auto border-t border-white/5 pt-6">
               <button
                 onClick={onClose}
-                className="w-full bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] border border-[var(--color-border)] p-4 rounded-xl text-lg font-bold cursor-pointer transition-colors hover:bg-[var(--color-border)]"
+                className="w-full cursor-pointer rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-tertiary)] p-4 text-lg font-bold text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-border)]"
               >
                 I Understand!
               </button>

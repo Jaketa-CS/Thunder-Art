@@ -2,10 +2,10 @@
   <img src="public/site-images/image02.png" alt="ThunderFennec Logo" width="100" />
   <h1>ThunderFennec</h1>
   
-  [![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
-  [![React](https://img.shields.io/badge/react-%2320232a.svg?style=flat-square&logo=react&logoColor=%2361DAFB)](https://react.dev/)
-  [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-  [![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=flat-square&logo=Cloudflare&logoColor=white)](https://pages.cloudflare.com/)
+  [![Vite](https://img.shields.io/badge/vite-%2312171e.svg?style=flat-square&logo=vite&logoColor=%23646CFF)](https://vitejs.dev/)
+  [![React](https://img.shields.io/badge/react-%2312171e.svg?style=flat-square&logo=react&logoColor=%2361DAFB)](https://react.dev/)
+  [![TypeScript](https://img.shields.io/badge/typescript-%2312171e.svg?style=flat-square&logo=typescript&logoColor=%233178C6)](https://www.typescriptlang.org/)
+  [![Cloudflare](https://img.shields.io/badge/Cloudflare-%2312171e?style=flat-square&logo=Cloudflare&logoColor=%23F38020)](https://pages.cloudflare.com/)
 </div>
 
 <br />

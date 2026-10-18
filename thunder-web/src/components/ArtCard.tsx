@@ -8,12 +8,14 @@ interface ArtCardProps {
 
 const ArtCard = ({ art, hidden = false, onClick }: ArtCardProps) => {
   return (
-    <div
+    <button
+      type="button"
       onClick={() => onClick(art)}
-      className={`group relative mb-4 cursor-pointer break-inside-avoid overflow-hidden border border-(--color-border)/40 bg-(--color-bg-tertiary) transition-opacity hover:opacity-90 ${
+      className={`group relative mb-4 block w-full cursor-pointer break-inside-avoid overflow-hidden border border-(--color-border)/40 bg-(--color-bg-tertiary) p-0 text-left transition-opacity hover:opacity-90 ${
         hidden ? 'hidden' : ''
       }`}
       aria-hidden={hidden}
+      aria-label={`View ${art.title}`}
     >
       {art.type === 'video' ? (
         <video
@@ -33,7 +35,7 @@ const ArtCard = ({ art, hidden = false, onClick }: ArtCardProps) => {
           loading="lazy"
         />
       )}
-    </div>
+    </button>
   );
 };
 

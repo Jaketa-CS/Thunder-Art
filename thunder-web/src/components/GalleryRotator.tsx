@@ -2,6 +2,13 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const TOTAL_IMAGES = 17;
+const PANELS = ['left-panel', 'right-panel'] as const;
+
+const getRandomInt = (max: number): number => {
+  const randomBuffer = new Uint32Array(1);
+  crypto.getRandomValues(randomBuffer);
+  return randomBuffer[0] % max;
+};
 
 interface ImageMetadata {
   credit: string;
@@ -23,7 +30,7 @@ const GalleryRotator = () => {
   const getNextImage = (currentIndices: number[]) => {
     let next;
     do {
-      next = Math.floor(Math.random() * TOTAL_IMAGES);
+      next = getRandomInt(TOTAL_IMAGES);
     } while (currentIndices.includes(next));
     return next;
   };
@@ -31,7 +38,7 @@ const GalleryRotator = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setImages((prev) => {
-        const panelToUpdate = Math.random() > 0.5 ? 0 : 1;
+        const panelToUpdate = getRandomInt(2);
         const newIndices = [...prev];
         newIndices[panelToUpdate] = getNextImage(prev);
         return newIndices;
@@ -43,17 +50,18 @@ const GalleryRotator = () => {
 
   return (
     <div className="mb-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
-      {images.map((imgIndex, i) => {
+      {PANELS.map((panelId, i) => {
+        const imgIndex = images[i];
         const filename = `fTrackImage-${imgIndex + 1}.jpg`;
         const data = metadata[filename];
         const linkUrl = data?.url || '#';
 
         return (
           <motion.div
-            key={i}
+            key={panelId}
             initial="idle"
             whileHover="hover"
-            className="relative h-[420px] w-full overflow-hidden rounded-xl border border-[#333] bg-[#222] sm:h-[500px]"
+            className="relative h-[420px] w-full overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-tertiary)] sm:h-[500px]"
           >
             {/* Clickable Link */}
             <a

@@ -22,6 +22,19 @@ const getOptionMargin = (isLast: boolean, isSubItem?: boolean): string => {
   return 'mb-4 pb-4';
 };
 
+const getExtraKey = (
+  extra: string | React.ReactNode,
+  fallback: string
+): string => {
+  if (typeof extra === 'string') {
+    return extra;
+  }
+  if (React.isValidElement(extra) && extra.key != null) {
+    return String(extra.key);
+  }
+  return fallback;
+};
+
 export const CommissionItem = ({
   category,
   index,
@@ -52,27 +65,18 @@ export const CommissionItem = ({
     >
       {/* IMAGE SIDE */}
       <div className="relative min-w-70 flex-1 basis-100">
-        <motion.div
+        <motion.button
+          type="button"
           whileHover={{ scale: 1.02, rotate: isEven ? 1 : -1 }}
           whileTap={{ scale: 0.98 }}
           onClick={category.images.length > 1 ? handleNextImage : undefined}
-          onKeyDown={(e) => {
-            if (
-              category.images.length > 1 &&
-              (e.key === 'Enter' || e.key === ' ')
-            ) {
-              e.preventDefault();
-              handleNextImage();
-            }
-          }}
-          role={category.images.length > 1 ? 'button' : 'img'}
-          tabIndex={category.images.length > 1 ? 0 : undefined}
+          disabled={category.images.length <= 1}
           aria-label={
             category.images.length > 1
               ? `View next image for ${category.title}`
               : `${category.title} example`
           }
-          className={`relative overflow-hidden rounded-xs border-none bg-transparent ${aspectRatioClass} ${
+          className={`relative block w-full overflow-hidden rounded-xs border-none bg-transparent p-0 text-left ${aspectRatioClass} ${
             category.images.length > 1 ? 'cursor-pointer' : 'cursor-default'
           }`}
         >
@@ -103,18 +107,18 @@ export const CommissionItem = ({
 
           {/* Label Badge */}
           {category.imageLabels?.[currentImageIndex] && (
-            <div className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-xs bg-(--color-accent) px-3 py-1 text-sm font-semibold text-(--color-bg-primary) opacity-90">
+            <div className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-xs border border-(--color-accent)/40 bg-(--color-bg-secondary)/95 px-3 py-1 text-sm font-semibold text-(--color-accent)">
               {category.imageLabels[currentImageIndex]}
             </div>
           )}
 
           {/* Number Counter Badge */}
           {category.images.length > 1 && (
-            <div className="pointer-events-none absolute right-2.5 bottom-2.5 rounded-xs bg-black/60 px-2 py-1 font-mono text-xs text-white">
+            <div className="pointer-events-none absolute right-2.5 bottom-2.5 rounded-xs border border-(--color-border)/60 bg-(--color-bg-primary)/90 px-2 py-1 font-mono text-xs text-(--color-text-primary)">
               {currentImageIndex + 1}/{category.images.length}
             </div>
           )}
-        </motion.div>
+        </motion.button>
 
         {/* Decorative element behind image */}
         <div
@@ -139,9 +143,9 @@ export const CommissionItem = ({
             const borderClass =
               isLast || option.isSubItem || category.options[i + 1]?.isSubItem
                 ? ''
-                : 'border-b border-white/5';
+                : 'border-b border-(--color-border)/40';
             const subItemBorder = option.isSubItem
-              ? '-mt-1 ml-4 border-l-2 border-(--color-bg-tertiary) pl-6'
+              ? '-mt-1 ml-4 border-l-2 border-(--color-border) pl-6'
               : '';
 
             return (
@@ -184,22 +188,17 @@ export const CommissionItem = ({
 
           {category.extras && (
             <div className="mt-6 border-t-2 border-dashed border-(--color-border) pt-4">
-              <div className="mb-2 text-xs font-bold tracking-wider uppercase text-(--color-text-secondary)">
+              <div className="mb-2 text-xs font-bold tracking-wider text-(--color-text-secondary) uppercase">
                 Add-ons
               </div>
               <div className="flex flex-wrap gap-3">
                 {category.extras.map((extra) => {
-                  const extraKey =
-                    typeof extra === 'string'
-                      ? extra
-                      : React.isValidElement(extra) && extra.key != null
-                        ? String(extra.key)
-                        : category.title;
+                  const extraKey = getExtraKey(extra, category.title);
 
                   return (
                     <span
                       key={extraKey}
-                      className="inline-flex items-center rounded-md border border-transparent bg-(--color-bg-tertiary) px-3 py-1.5 text-sm text-(--color-text-primary) transition-colors hover:border-(--color-accent)"
+                      className="inline-flex items-center rounded-md border border-(--color-border) bg-(--color-bg-tertiary) px-3 py-1.5 text-sm text-(--color-text-primary) transition-colors hover:border-(--color-accent)"
                     >
                       {typeof extra === 'string' ? `+ ${extra}` : extra}
                     </span>
