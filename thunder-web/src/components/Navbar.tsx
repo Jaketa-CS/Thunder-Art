@@ -83,7 +83,7 @@ const Navbar = () => {
           </NavLink>
 
           {/* Theme switcher temporarily commented out while focusing on dark mode:
-          <button 
+          <button
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === 'light'? 'dark': 'light'} theme`}
             className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-(--color-border) bg-(--color-bg-tertiary) text-(--color-text-primary) transition-colors hover:border-(--color-accent)"

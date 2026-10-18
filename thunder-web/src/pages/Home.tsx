@@ -5,24 +5,28 @@ import Footer from '@/components/Footer';
 import ArtModal from '@/components/ArtModal';
 import { ArtPiece, MOCK_ART } from '@/data/mockArt';
 
+export type ArtFilter = 'all' | 'video' | 'image';
+
+interface FilterButtonProps {
+  label: string;
+  value: ArtFilter;
+  currentFilter: ArtFilter;
+  setFilter: (val: ArtFilter) => void;
+}
+
 const FilterButton = ({
   label,
   value,
   currentFilter,
   setFilter,
-}: {
-  label: string;
-  value: 'all' | 'video' | 'image';
-  currentFilter: 'all' | 'video' | 'image';
-  setFilter: (val: 'all' | 'video' | 'image') => void;
-}) => (
+}: FilterButtonProps) => (
   <button
     onClick={() => setFilter(value)}
     aria-label={`Filter by ${label}`}
-    className={`cursor-pointer px-3.5 py-1.5 text-xs font-semibold uppercase transition-colors md:text-sm ${
+    className={`cursor-pointer px-3 py-1 text-xs tracking-wider uppercase transition-colors md:text-sm ${
       currentFilter === value
-        ? 'bg-(--color-accent) text-(--color-bg-primary)'
-        : 'text-(--color-text-secondary) hover:bg-(--color-bg-tertiary) hover:text-(--color-text-primary)'
+        ? 'font-bold text-white'
+        : 'font-normal text-[var(--color-text-secondary)] hover:text-white'
     }`}
   >
     {label}
@@ -31,38 +35,40 @@ const FilterButton = ({
 
 const Home = () => {
   const [selectedArt, setSelectedArt] = useState<ArtPiece | null>(null);
-  const [filter, setFilter] = useState<'all' | 'video' | 'image'>('all');
+  const [filter, setFilter] = useState<ArtFilter>('all');
 
   return (
     <>
       <div className="container pt-6 pb-12 md:pt-8">
-        <div className="mb-6 flex items-center justify-end gap-2">
-          <FilterButton
-            label="All"
-            value="all"
-            currentFilter={filter}
-            setFilter={setFilter}
-          />
-          <FilterButton
-            label="Animations"
-            value="video"
-            currentFilter={filter}
-            setFilter={setFilter}
-          />
-          <FilterButton
-            label="Illustrations"
-            value="image"
-            currentFilter={filter}
-            setFilter={setFilter}
-          />
-        </div>
+        <div className="border border-[var(--color-border)] bg-[var(--color-bg-secondary)] shadow-sm">
+          <div className="flex flex-wrap items-center justify-center gap-3 border-b border-[var(--color-border)] py-3 sm:gap-6">
+            <FilterButton
+              label="All"
+              value="all"
+              currentFilter={filter}
+              setFilter={setFilter}
+            />
+            <FilterButton
+              label="Animations"
+              value="video"
+              currentFilter={filter}
+              setFilter={setFilter}
+            />
+            <FilterButton
+              label="Illustrations"
+              value="image"
+              currentFilter={filter}
+              setFilter={setFilter}
+            />
+          </div>
 
-        <div className="border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-4 shadow-sm sm:p-6 md:p-8">
-          <ArtGrid
-            artworks={MOCK_ART}
-            filter={filter}
-            onArtClick={setSelectedArt}
-          />
+          <div className="p-4 sm:p-6 md:p-8">
+            <ArtGrid
+              artworks={MOCK_ART}
+              filter={filter}
+              onArtClick={setSelectedArt}
+            />
+          </div>
         </div>
 
         <AnimatePresence>

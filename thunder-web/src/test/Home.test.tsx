@@ -27,12 +27,12 @@ describe('Home Page and Filtering', () => {
     const allBtn = screen.getByRole('button', { name: /filter by all/i });
 
     fireEvent.click(animationsBtn);
-    expect(animationsBtn).toHaveClass('bg-(--color-accent)');
+    expect(animationsBtn).toHaveClass('text-white', 'font-bold');
 
     fireEvent.click(illustrationsBtn);
-    expect(illustrationsBtn).toHaveClass('bg-(--color-accent)');
+    expect(illustrationsBtn).toHaveClass('text-white', 'font-bold');
 
     fireEvent.click(allBtn);
-    expect(allBtn).toHaveClass('bg-(--color-accent)');
+    expect(allBtn).toHaveClass('text-white', 'font-bold');
   });
 });
