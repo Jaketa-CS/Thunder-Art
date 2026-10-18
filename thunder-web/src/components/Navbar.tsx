@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 // import { useTheme } from '@/contexts/ThemeContext';
@@ -73,19 +73,19 @@ const Navbar = () => {
 
         <div className="flex items-center gap-6 font-medium md:gap-8">
           <NavLink to="/" active={isActive('/')}>
-            Art
+            ART
           </NavLink>
           <NavLink to="/commissions" active={isActive('/commissions')}>
-            Commissions
+            COMMISSIONS
           </NavLink>
           <NavLink to="/about" active={isActive('/about')}>
-            About
+            ABOUT
           </NavLink>
 
           {/* Theme switcher temporarily commented out while focusing on dark mode:
-          <button
+          <button 
             onClick={toggleTheme}
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+            aria-label={`Switch to ${theme === 'light'? 'dark': 'light'} theme`}
             className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-(--color-border) bg-(--color-bg-tertiary) text-(--color-text-primary) transition-colors hover:border-(--color-accent)"
           >
             {theme === 'dark'? (
