@@ -28,7 +28,7 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-[var(--color-border)] bg-[var(--color-bg-header)] shadow-[var(--shadow-sm)] transition-[background-color,border-color] duration-300">
+    <header className="sticky top-0 z-40 w-full border-b border-[#3b4261] bg-gradient-to-r from-[#181b29] via-[#232a48] to-[#332f50] shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-[background,border-color] duration-300">
       <nav className="mx-auto flex h-20 w-full max-w-[1400px] items-center justify-between px-4 md:h-24 md:px-8">
         <Link
           to="/"
