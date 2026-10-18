@@ -67,4 +67,4 @@ You should see a local URL (e.g., `http://localhost:5173`) where you can view yo
 - `src/App.jsx`: The main component structure.
 - `vite.config.js`: Configuration for the build tool.
 
-Happy Coding!
+'v'

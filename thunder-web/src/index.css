@@ -1,9 +1,39 @@
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'JetBrainsMono Nerd Font';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('JetBrainsMono Nerd Font'),
+  local('JetBrainsMono NF'),
+  url('./assets/fonts/JetBrainsMonoNerdFont-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'JetBrainsMono Nerd Font';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('JetBrainsMono Nerd Font Medium'),
+  local('JetBrainsMono NF Medium'),
+  url('./assets/fonts/JetBrainsMonoNerdFont-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'JetBrainsMono Nerd Font';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('JetBrainsMono Nerd Font Bold'),
+  local('JetBrainsMono NF Bold'),
+  url('./assets/fonts/JetBrainsMonoNerdFont-Bold.ttf') format('truetype');
+}
+
 :root {
   /* Typography */
-  --font-family-body: 'JetBrains Mono', monospace;
-  --font-family-header: 'JetBrains Mono', monospace;
+  --font-family-body: 'JetBrainsMono Nerd Font', 'JetBrains Mono', monospace;
+  --font-family-header: 'JetBrainsMono Nerd Font', 'JetBrains Mono', monospace;
 
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -55,7 +85,7 @@
   }
 
   body {
-    font-family: var(--font-family-body);
+    font-family: var(--font-family-body), serif;
     background-color: var(--color-bg-primary);
     color: var(--color-text-primary);
     line-height: 1.6;
@@ -68,7 +98,7 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-family-header);
+    font-family: var(--font-family-header), serif;
     font-weight: 700;
     color: var(--color-text-primary);
     line-height: 1.2;
