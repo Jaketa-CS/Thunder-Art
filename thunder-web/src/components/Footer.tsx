@@ -9,7 +9,7 @@ const Footer = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.5, duration: 0.5 }}
-      className="relative z-10 mt-16 mt-auto border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)] px-8 pt-16 pb-12 md:mt-24 md:pt-20 md:pb-14"
+      className="relative z-10 mt-16 mt-auto bg-[var(--color-bg-secondary)] px-8 pt-16 pb-12 md:mt-24 md:pt-20 md:pb-14"
     >
       <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-6">
         {/* Social Links */}

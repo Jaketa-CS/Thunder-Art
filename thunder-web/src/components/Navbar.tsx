@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useTheme } from '@/contexts/ThemeContext';
+
+// import { useTheme } from '@/contexts/ThemeContext';
 
 interface NavLinkProps {
   to: string;
@@ -22,7 +23,7 @@ const NavLink = ({ to, children, active }: NavLinkProps) => (
 
 const Navbar = () => {
   const location = useLocation();
-  const { theme, toggleTheme } = useTheme();
+  // const { theme, toggleTheme } = useTheme();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -47,13 +48,13 @@ const Navbar = () => {
             About
           </NavLink>
 
+          {/* Theme switcher temporarily commented out while focusing on dark mode:
           <button
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
             className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-(--color-border) bg-(--color-bg-tertiary) text-(--color-text-primary) transition-colors hover:border-(--color-accent)"
           >
             {theme === 'dark' ? (
-              /* Sun Icon */
               <svg
                 width="16"
                 height="16"
@@ -70,7 +71,6 @@ const Navbar = () => {
                 />
               </svg>
             ) : (
-              /* Moon Icon */
               <svg
                 width="16"
                 height="16"
@@ -85,6 +85,7 @@ const Navbar = () => {
               </svg>
             )}
           </button>
+          */}
         </div>
       </nav>
     </header>

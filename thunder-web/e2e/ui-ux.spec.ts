@@ -20,34 +20,6 @@ test.describe('UI/UX and Tailwind Verification', () => {
     expect(hasMinHeight).toBe(true);
   });
 
-  test('Theme switcher toggles between dark and light themes without breaking styles', async ({
-    page,
-  }) => {
-    await page.goto('/');
-
-    const themeButton = page.getByRole('button', { name: /switch to/i });
-    await expect(themeButton).toBeVisible();
-
-    const initialTheme = await page.evaluate(() =>
-      document.documentElement.getAttribute('data-theme')
-    );
-    expect(initialTheme).toMatch(/dark|light/);
-
-    // Toggle theme
-    await themeButton.click();
-    const updatedTheme = await page.evaluate(() =>
-      document.documentElement.getAttribute('data-theme')
-    );
-    expect(updatedTheme).not.toBe(initialTheme);
-
-    // Toggle back
-    await themeButton.click();
-    const revertedTheme = await page.evaluate(() =>
-      document.documentElement.getAttribute('data-theme')
-    );
-    expect(revertedTheme).toBe(initialTheme);
-  });
-
   test('All primary pages load with zero fatal console errors', async ({
     page,
   }) => {
@@ -110,9 +82,14 @@ test.describe('UI/UX and Tailwind Verification', () => {
           await new Promise((resolve) => setTimeout(resolve, delay));
         }
       });
-      await page.waitForTimeout(400);
+      await page.waitForFunction(
+        () =>
+          !document.scrollingElement ||
+          document.scrollingElement.scrollTop + window.innerHeight >=
+            document.scrollingElement.scrollHeight - 50
+      );
       await page.evaluate(() => window.scrollTo(0, 0));
-      await page.waitForTimeout(200);
+      await page.waitForFunction(() => window.scrollY === 0);
     };
 
     // 1. Home Dark
@@ -120,10 +97,7 @@ test.describe('UI/UX and Tailwind Verification', () => {
     const currentTheme = await page.evaluate(() =>
       document.documentElement.getAttribute('data-theme')
     );
-    if (currentTheme !== 'dark') {
-      await page.getByRole('button', { name: /switch to/i }).click();
-      await page.waitForTimeout(400);
-    }
+    expect(currentTheme).toBe('dark');
     await scrollAndSettle();
     await page.screenshot({
       path: 'test-results/screenshots/home-dark.png',
@@ -132,32 +106,13 @@ test.describe('UI/UX and Tailwind Verification', () => {
 
     // Dark scrolled viewport (verifies sticky header over content)
     await page.evaluate(() => window.scrollTo(0, 600));
-    await page.waitForTimeout(200);
+    await page.waitForFunction(() => window.scrollY >= 600);
     await page.screenshot({
       path: 'test-results/screenshots/home-scrolled-dark.png',
       fullPage: false,
     });
 
-    // 2. Home Light
-    const themeButton = page.getByRole('button', { name: /switch to/i });
-    await themeButton.click();
-    await page.waitForTimeout(400);
-    await page.evaluate(() => window.scrollTo(0, 0));
-    await page.waitForTimeout(200);
-    await page.screenshot({
-      path: 'test-results/screenshots/home-light.png',
-      fullPage: true,
-    });
-
-    // Light scrolled viewport
-    await page.evaluate(() => window.scrollTo(0, 600));
-    await page.waitForTimeout(200);
-    await page.screenshot({
-      path: 'test-results/screenshots/home-scrolled-light.png',
-      fullPage: false,
-    });
-
-    // 3. Commissions
+    // 2. Commissions
     await page.goto('/commissions');
     await scrollAndSettle();
     await page.screenshot({
@@ -165,7 +120,7 @@ test.describe('UI/UX and Tailwind Verification', () => {
       fullPage: true,
     });
 
-    // 4. About
+    // 3. About
     await page.goto('/about');
     await scrollAndSettle();
     await page.screenshot({
@@ -187,7 +142,7 @@ test.describe('UI/UX and Tailwind Verification', () => {
 
     // Scroll down 500px
     await page.evaluate(() => window.scrollTo(0, 500));
-    await page.waitForTimeout(200);
+    await page.waitForFunction(() => window.scrollY >= 500);
 
     const scrolledBox = await header.boundingBox();
     expect(scrolledBox).not.toBeNull();
