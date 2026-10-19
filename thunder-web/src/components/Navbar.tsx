@@ -12,7 +12,7 @@ interface NavLinkProps {
 const NavLink = ({ to, children, active }: NavLinkProps) => (
   <Link
     to={to}
-    className={`text-sm tracking-wide transition-colors md:text-base ${
+    className={`text-xs tracking-wide transition-colors sm:text-sm md:text-base ${
       active
         ? 'border-b-2 border-(--color-accent) pb-0.5 font-semibold text-(--color-text-primary)'
         : 'font-normal text-(--color-text-secondary) hover:text-(--color-text-primary)'
@@ -52,26 +52,28 @@ const Navbar = () => {
       >
         <Link
           to="/"
-          className="flex items-center gap-1.5 md:gap-2"
+          className="flex shrink-0 items-center gap-1 sm:gap-1.5 md:gap-2"
           aria-label="ThunderFennec"
         >
           <img
             src="/site-images/ThunderLogo.webp"
             alt="Thunder Fennec Face Logo"
             className={`w-auto object-contain transition-all duration-300 ease-in-out [image-rendering:-webkit-optimize-contrast] ${
-              isScrolled ? 'h-[68px] md:h-[82px]' : 'h-[80px] md:h-[98px]'
+              isScrolled
+                ? 'h-10 sm:h-[68px] md:h-[82px]'
+                : 'h-11 sm:h-[80px] md:h-[98px]'
             }`}
           />
           <img
             src="/site-images/ThunderLogoText.webp"
             alt="Thunder Fennec"
             className={`w-auto object-contain transition-all duration-300 ease-in-out [image-rendering:-webkit-optimize-contrast] ${
-              isScrolled ? 'h-[54px] md:h-[72px]' : 'h-16 md:h-22'
+              isScrolled ? 'h-6 sm:h-[54px] md:h-[72px]' : 'h-7 sm:h-16 md:h-22'
             }`}
           />
         </Link>
 
-        <div className="flex items-center gap-6 font-medium md:gap-8">
+        <div className="flex shrink-0 items-center gap-2.5 font-medium sm:gap-6 md:gap-8">
           <NavLink to="/" active={isActive('/')}>
             ART
           </NavLink>

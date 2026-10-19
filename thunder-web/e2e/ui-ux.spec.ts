@@ -52,8 +52,8 @@ test.describe('UI/UX and Tailwind Verification', () => {
       await tosButton.click();
       await expect(page.getByText(/terms of service/i).first()).toBeVisible();
       const closeButton = page
-        .getByRole('button', { name: /close|accept/i })
-        .first();
+        .getByRole('button', { name: /understand|close|accept/i })
+        .last();
       if (await closeButton.isVisible()) {
         await closeButton.click();
       }
@@ -148,5 +148,44 @@ test.describe('UI/UX and Tailwind Verification', () => {
     expect(scrolledBox).not.toBeNull();
     // Sticky header stays at top of viewport (y === 0)
     expect(scrolledBox?.y).toBe(0);
+  });
+
+  test('Navbar renders correctly on mobile viewport without overlap', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 320, height: 568 });
+    await page.goto('/');
+
+    const brandLink = page.getByRole('link', { name: /thunderfennec/i });
+    const artLink = page.getByRole('link', { name: /^art$/i });
+    const commissionsLink = page.getByRole('link', { name: /commissions/i });
+    const aboutLink = page.getByRole('link', { name: /about/i });
+
+    // Assert all links are visible on mobile
+    await expect(brandLink).toBeVisible();
+    await expect(artLink).toBeVisible();
+    await expect(commissionsLink).toBeVisible();
+    await expect(aboutLink).toBeVisible();
+
+    const brandBox = await brandLink.boundingBox();
+    const artBox = await artLink.boundingBox();
+    const commissionsBox = await commissionsLink.boundingBox();
+    const aboutBox = await aboutLink.boundingBox();
+
+    expect(brandBox).not.toBeNull();
+    expect(artBox).not.toBeNull();
+    expect(commissionsBox).not.toBeNull();
+    expect(aboutBox).not.toBeNull();
+
+    // Assert brand logo and navigation options do not overlap horizontally
+    expect(brandBox!.x + brandBox!.width).toBeLessThanOrEqual(artBox!.x);
+    expect(artBox!.x + artBox!.width).toBeLessThanOrEqual(commissionsBox!.x);
+    expect(commissionsBox!.x + commissionsBox!.width).toBeLessThanOrEqual(
+      aboutBox!.x
+    );
+
+    await page.screenshot({
+      path: 'test-results/screenshots/mobile-navbar-320.png',
+    });
   });
 });
