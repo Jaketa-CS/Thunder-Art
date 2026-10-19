@@ -46,7 +46,7 @@ const Navbar = () => {
       }`}
     >
       <nav
-        className={`mx-auto flex w-full max-w-[1400px] items-center justify-between px-4 transition-all duration-300 ease-in-out md:px-8 ${
+        className={`mx-auto flex w-full max-w-[1400px] items-center justify-between px-3 transition-all duration-300 ease-in-out sm:px-6 md:px-8 ${
           isScrolled ? 'h-[68px] md:h-[80px]' : 'h-20 md:h-24'
         }`}
       >
@@ -60,20 +60,22 @@ const Navbar = () => {
             alt="Thunder Fennec Face Logo"
             className={`w-auto object-contain transition-all duration-300 ease-in-out [image-rendering:-webkit-optimize-contrast] ${
               isScrolled
-                ? 'h-10 sm:h-[68px] md:h-[82px]'
-                : 'h-11 sm:h-[80px] md:h-[98px]'
+                ? 'h-12 min-[360px]:h-14 sm:h-[68px] md:h-[82px]'
+                : 'h-14 min-[360px]:h-16 min-[390px]:h-[70px] sm:h-[80px] md:h-[98px]'
             }`}
           />
           <img
             src="/site-images/ThunderLogoText.webp"
             alt="Thunder Fennec"
             className={`w-auto object-contain transition-all duration-300 ease-in-out [image-rendering:-webkit-optimize-contrast] ${
-              isScrolled ? 'h-6 sm:h-[54px] md:h-[72px]' : 'h-7 sm:h-16 md:h-22'
+              isScrolled
+                ? 'h-8 min-[360px]:h-9 sm:h-[54px] md:h-[72px]'
+                : 'h-9 min-[360px]:h-11 min-[390px]:h-12 sm:h-16 md:h-22'
             }`}
           />
         </Link>
 
-        <div className="flex shrink-0 items-center gap-2.5 font-medium sm:gap-6 md:gap-8">
+        <div className="flex shrink-0 items-center gap-2 font-medium min-[390px]:gap-3 sm:gap-6 md:gap-8">
           <NavLink to="/" active={isActive('/')}>
             ART
           </NavLink>
