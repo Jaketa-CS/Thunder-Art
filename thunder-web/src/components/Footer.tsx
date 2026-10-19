@@ -114,7 +114,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center text-sm text-[var(--color-text-secondary)] opacity-80">
           <p className="m-0">
-            &copy; {currentYear} Thunder Fennec. All rights reserved.
+            &copy; {currentYear} ThunderFennec. All rights reserved.
           </p>
         </div>
       </div>
