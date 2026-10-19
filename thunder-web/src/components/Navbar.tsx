@@ -12,13 +12,19 @@ interface NavLinkProps {
 const NavLink = ({ to, children, active }: NavLinkProps) => (
   <Link
     to={to}
-    className={`text-xs tracking-wide transition-colors sm:text-sm md:text-base ${
+    className={`inline-flex items-center px-1 py-3 text-xs tracking-wide transition-colors min-[360px]:px-1.5 min-[360px]:text-[13px] min-[390px]:px-2 min-[390px]:text-sm md:px-2.5 md:text-base ${
       active
-        ? 'border-b-2 border-(--color-accent) pb-0.5 font-semibold text-(--color-text-primary)'
+        ? 'font-semibold text-(--color-text-primary)'
         : 'font-normal text-(--color-text-secondary) hover:text-(--color-text-primary)'
     }`}
   >
-    {children}
+    <span
+      className={
+        active ? 'border-b-2 border-(--color-accent) pb-0.5' : 'pb-0.5'
+      }
+    >
+      {children}
+    </span>
   </Link>
 );
 
@@ -46,7 +52,7 @@ const Navbar = () => {
       }`}
     >
       <nav
-        className={`mx-auto flex w-full max-w-[1400px] items-center justify-between px-3 transition-all duration-300 ease-in-out sm:px-6 md:px-8 ${
+        className={`mx-auto flex w-full max-w-[1400px] items-center justify-between px-2.5 transition-all duration-300 ease-in-out min-[390px]:px-3.5 sm:px-6 md:px-8 ${
           isScrolled ? 'h-[68px] md:h-[80px]' : 'h-20 md:h-24'
         }`}
       >
@@ -60,8 +66,8 @@ const Navbar = () => {
             alt="Thunder Fennec Face Logo"
             className={`w-auto object-contain transition-all duration-300 ease-in-out [image-rendering:-webkit-optimize-contrast] ${
               isScrolled
-                ? 'h-12 min-[360px]:h-14 sm:h-[68px] md:h-[82px]'
-                : 'h-14 min-[360px]:h-16 min-[390px]:h-[70px] sm:h-[80px] md:h-[98px]'
+                ? 'h-12 min-[360px]:h-13 sm:h-[68px] md:h-[82px]'
+                : 'h-13 min-[360px]:h-15 min-[390px]:h-16 sm:h-[80px] md:h-[98px]'
             }`}
           />
           <img
@@ -69,13 +75,13 @@ const Navbar = () => {
             alt="Thunder Fennec"
             className={`w-auto object-contain transition-all duration-300 ease-in-out [image-rendering:-webkit-optimize-contrast] ${
               isScrolled
-                ? 'h-8 min-[360px]:h-9 sm:h-[54px] md:h-[72px]'
-                : 'h-9 min-[360px]:h-11 min-[390px]:h-12 sm:h-16 md:h-22'
+                ? 'h-7 min-[360px]:h-8 sm:h-[54px] md:h-[72px]'
+                : 'h-8 min-[360px]:h-9 min-[390px]:h-10 sm:h-16 md:h-22'
             }`}
           />
         </Link>
 
-        <div className="flex shrink-0 items-center gap-2 font-medium min-[390px]:gap-3 sm:gap-6 md:gap-8">
+        <div className="flex shrink-0 items-center gap-0.5 font-medium min-[390px]:gap-1 sm:gap-4 md:gap-6">
           <NavLink to="/" active={isActive('/')}>
             ART
           </NavLink>
