@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { ArtPiece } from '@/data/mockArt';
 
 interface ArtCardProps {
@@ -7,6 +8,55 @@ interface ArtCardProps {
 }
 
 const ArtCard = ({ art, hidden = false, onClick }: ArtCardProps) => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || art.type !== 'video') return;
+
+    if (hidden) {
+      video.pause();
+      return;
+    }
+
+    if (typeof IntersectionObserver === 'undefined') {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            video.muted = true;
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        }
+      },
+      { rootMargin: '200px 0px' }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+      video.pause();
+    };
+  }, [art.type, hidden]);
+
+  const posterUrl =
+    art.poster ?? art.image.replace(/^\/(.*)\.mp4$/i, '/posters/$1.webp');
+  const aspectStyle = art.aspectRatio
+    ? { aspectRatio: art.aspectRatio }
+    : undefined;
+  const videoStyle = {
+    ...aspectStyle,
+    backgroundImage: `url("${posterUrl}")`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  };
+
   return (
     <button
       type="button"
@@ -19,18 +69,21 @@ const ArtCard = ({ art, hidden = false, onClick }: ArtCardProps) => {
     >
       {art.type === 'video' ? (
         <video
+          ref={videoRef}
           src={art.image}
-          autoPlay
+          poster={posterUrl}
           loop
           muted
           playsInline
-          preload="auto"
+          preload="none"
+          style={videoStyle}
           className="block w-full object-cover"
         />
       ) : (
         <img
           src={art.image}
           alt={art.title}
+          style={aspectStyle}
           className="block w-full object-cover"
           loading="lazy"
         />

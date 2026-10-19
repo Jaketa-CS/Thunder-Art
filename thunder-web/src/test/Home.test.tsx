@@ -35,4 +35,17 @@ describe('Home Page and Filtering', () => {
     fireEvent.click(allBtn);
     expect(allBtn).toHaveClass('text-white', 'font-bold');
   });
+
+  it('renders gallery videos with lazy-loading attributes and poster thumbnails', () => {
+    const { container } = render(<Home />);
+    const videos = container.querySelectorAll('video');
+    expect(videos.length).toBeGreaterThan(0);
+
+    videos.forEach((video) => {
+      expect(video).toHaveAttribute('preload', 'none');
+      expect(video).toHaveAttribute('poster');
+      expect(video).toHaveAttribute('playsinline');
+      expect(video.muted).toBe(true);
+    });
+  });
 });

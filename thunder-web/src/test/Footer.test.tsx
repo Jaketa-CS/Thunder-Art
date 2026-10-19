@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import Footer from '@/components/Footer';
 
 describe('Footer Component', () => {
@@ -8,7 +8,7 @@ describe('Footer Component', () => {
     const currentYear = new Date().getFullYear().toString();
     expect(screen.getByText(new RegExp(currentYear))).toBeInTheDocument();
     expect(
-      screen.getByText(/Thunder Fennec\. All rights reserved\./i)
+      screen.getByText(/Thunder\s?Fennec\. All rights reserved\./i)
     ).toBeInTheDocument();
   });
 

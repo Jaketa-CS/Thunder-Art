@@ -8,7 +8,7 @@
   src:
     local('JetBrainsMono Nerd Font'),
     local('JetBrainsMono NF'),
-    url('./assets/fonts/JetBrainsMonoNerdFont-Regular.ttf') format('truetype');
+    url('./assets/fonts/JetBrainsMonoNerdFont-Regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -19,7 +19,7 @@
   src:
     local('JetBrainsMono Nerd Font Medium'),
     local('JetBrainsMono NF Medium'),
-    url('./assets/fonts/JetBrainsMonoNerdFont-Medium.ttf') format('truetype');
+    url('./assets/fonts/JetBrainsMonoNerdFont-Medium.woff2') format('woff2');
 }
 
 @font-face {
@@ -30,7 +30,7 @@
   src:
     local('JetBrainsMono Nerd Font Bold'),
     local('JetBrainsMono NF Bold'),
-    url('./assets/fonts/JetBrainsMonoNerdFont-Bold.ttf') format('truetype');
+    url('./assets/fonts/JetBrainsMonoNerdFont-Bold.woff2') format('woff2');
 }
 
 :root {

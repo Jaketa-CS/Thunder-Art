@@ -87,6 +87,10 @@ export const CommissionItem = ({
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
               src={currentMedia}
+              poster={currentMedia.replace(
+                /^\/(.*)\.mp4$/i,
+                '/posters/$1.webp'
+              )}
               autoPlay
               loop
               muted

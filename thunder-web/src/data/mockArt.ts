@@ -3,6 +3,8 @@ export interface ArtPiece {
   title: string;
   image: string; // Used for thumbnail or video source
   type?: 'image' | 'video';
+  poster?: string;
+  aspectRatio?: string;
   tags: string[];
 }
 
@@ -13,6 +15,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Electric Motion',
     image: '/3.mp4',
     type: 'video',
+    poster: '/posters/3.webp',
+    aspectRatio: '1076 / 720',
     tags: ['Animation'],
   },
   {
@@ -20,6 +24,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Bomb',
     image: '/bomb.mp4',
     type: 'video',
+    poster: '/posters/bomb.webp',
+    aspectRatio: '954 / 720',
     tags: ['Animation'],
   },
   {
@@ -27,6 +33,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Kitty',
     image: '/kitty.mp4',
     type: 'video',
+    poster: '/posters/kitty.webp',
+    aspectRatio: '784 / 848',
     tags: ['Animation'],
   },
   {
@@ -34,6 +42,7 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Character Art',
     image: '/FVvo6d6VsAAScqC.jpg',
     type: 'image',
+    aspectRatio: '1032 / 1200',
     tags: ['Illustration'],
   },
   {
@@ -41,6 +50,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Chill Vibes',
     image: '/chill.mp4',
     type: 'video',
+    poster: '/posters/chill.webp',
+    aspectRatio: '1256 / 1184',
     tags: ['Animation'],
   },
   {
@@ -48,6 +59,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Ears',
     image: '/EARS.mp4',
     type: 'video',
+    poster: '/posters/EARS.webp',
+    aspectRatio: '612 / 556',
     tags: ['Animation'],
   },
   {
@@ -55,6 +68,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Egg',
     image: '/egg.mp4',
     type: 'video',
+    poster: '/posters/egg.webp',
+    aspectRatio: '720 / 720',
     tags: ['Animation'],
   },
   {
@@ -62,6 +77,7 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Character Sketch',
     image: '/GQSIImaWMAEm8Gd.jpg',
     type: 'image',
+    aspectRatio: '1690 / 2075',
     tags: ['Illustration'],
   },
   {
@@ -69,6 +85,7 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Draw Your Mutuals PFP',
     image: '/Draw%20your%20Mutuals%20PFP!.webp',
     type: 'image',
+    aspectRatio: '1080 / 1080',
     tags: ['Illustration'],
   },
   {
@@ -76,6 +93,7 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Draw Your Mutuals OCs',
     image: '/Draw%20your%20Mutuals%20OCs.webp',
     type: 'image',
+    aspectRatio: '1080 / 1350',
     tags: ['Illustration'],
   },
   {
@@ -83,6 +101,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Get Off My Porch',
     image: '/get%20off%20my%20porch%20with%20shepgoesblep.mp4',
     type: 'video',
+    poster: '/posters/get%20off%20my%20porch%20with%20shepgoesblep.webp',
+    aspectRatio: '750 / 720',
     tags: ['Animation'],
   },
   {
@@ -90,6 +110,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Go Go Big Ah Ears',
     image: '/GoGoBIgAAA-Ears.mp4',
     type: 'video',
+    poster: '/posters/GoGoBIgAAA-Ears.webp',
+    aspectRatio: '1080 / 946',
     tags: ['Animation'],
   },
   {
@@ -97,6 +119,7 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Draw Your Mutuals Sonas',
     image: '/Draw%20your%20Mutuals%20sonas!.webp',
     type: 'image',
+    aspectRatio: '1080 / 838',
     tags: ['Illustration'],
   },
   {
@@ -104,6 +127,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Eggy Phis',
     image: '/eggyphis.mp4',
     type: 'video',
+    poster: '/posters/eggyphis.webp',
+    aspectRatio: '938 / 720',
     tags: ['Animation'],
   },
   {
@@ -111,6 +136,7 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Character Design',
     image: '/G5Zi88AWEAAxdOW.jpg',
     type: 'image',
+    aspectRatio: '1547 / 1850',
     tags: ['Illustration'],
   },
   {
@@ -118,6 +144,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Problem',
     image: '/Problem.mp4',
     type: 'video',
+    poster: '/posters/Problem.webp',
+    aspectRatio: '608 / 760',
     tags: ['Animation'],
   },
   {
@@ -125,6 +153,7 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Draw Your Mutuals PFP Part 3',
     image: '/Draw%20your%20Mutuals%20PFP!%20%5BPART%203%5D.jpg',
     type: 'image',
+    aspectRatio: '1080 / 1150',
     tags: ['Illustration'],
   },
   {
@@ -132,13 +161,16 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Parsenoire Doodles',
     image: '/some%20parsenoire%20doodles!!!.jpg',
     type: 'image',
+    aspectRatio: '1080 / 1217',
     tags: ['Illustration'],
   },
   {
     id: 'img-leashes-gif',
     title: 'Why Birbs Dont Wear Leashes GIF',
-    image: '/whybirbsdontwearleashes.gif',
-    type: 'image',
+    image: '/whybirbsdontwearleashes.mp4',
+    type: 'video',
+    poster: '/posters/whybirbsdontwearleashes.webp',
+    aspectRatio: '714 / 524',
     tags: ['Animation'],
   },
   {
@@ -146,6 +178,7 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Mountain Biking Birb',
     image: '/G4RlXHCWsAASPnA.jpg',
     type: 'image',
+    aspectRatio: '2048 / 1434',
     tags: ['Illustration'],
   },
   {
@@ -153,6 +186,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Rock',
     image: '/rock.mp4',
     type: 'video',
+    poster: '/posters/rock.webp',
+    aspectRatio: '1280 / 720',
     tags: ['Animation'],
   },
   {
@@ -160,6 +195,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Meow',
     image: '/meow.mp4',
     type: 'video',
+    poster: '/posters/meow.webp',
+    aspectRatio: '892 / 720',
     tags: ['Animation'],
   },
   {
@@ -167,6 +204,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Autumn Birb Doodles',
     image: '/autumn.mp4',
     type: 'video',
+    poster: '/posters/autumn.webp',
+    aspectRatio: '720 / 792',
     tags: ['Animation'],
   },
   {
@@ -174,6 +213,7 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Portrait Study',
     image: '/Gg3fEjPWMAEf84F.jpg',
     type: 'image',
+    aspectRatio: '2048 / 1750',
     tags: ['Illustration'],
   },
   {
@@ -181,6 +221,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Waffle',
     image: '/waffle.mp4',
     type: 'video',
+    poster: '/posters/waffle.webp',
+    aspectRatio: '962 / 720',
     tags: ['Animation'],
   },
   {
@@ -188,6 +230,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Bite',
     image: '/bite.mp4',
     type: 'video',
+    poster: '/posters/bite.webp',
+    aspectRatio: '996 / 720',
     tags: ['Animation'],
   },
   {
@@ -195,6 +239,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Show Off',
     image: '/showoff.mp4',
     type: 'video',
+    poster: '/posters/showoff.webp',
+    aspectRatio: '1112 / 720',
     tags: ['Animation'],
   },
   {
@@ -202,6 +248,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Waffle Dance',
     image: '/waffledance.mp4',
     type: 'video',
+    poster: '/posters/waffledance.webp',
+    aspectRatio: '1088 / 610',
     tags: ['Animation'],
   },
   {
@@ -209,6 +257,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Raccoon Animation',
     image: '/raccoon.mp4',
     type: 'video',
+    poster: '/posters/raccoon.webp',
+    aspectRatio: '720 / 720',
     tags: ['Animation'],
   },
   {
@@ -216,13 +266,17 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Xmas Special',
     image: '/xmas.mp4',
     type: 'video',
+    poster: '/posters/xmas.webp',
+    aspectRatio: '1258 / 844',
     tags: ['Animation'],
   },
   {
     id: 'vid-watch-yo-tone',
     title: 'Watch Yo Tone with Shepgoesblep',
-    image: '/watchyotone.gif',
-    type: 'image',
+    image: '/watchyotone_with_shepgoesblep.mp4',
+    type: 'video',
+    poster: '/posters/watchyotone_with_shepgoesblep.webp',
+    aspectRatio: '252 / 320',
     tags: ['Animation'],
   },
   {
@@ -230,6 +284,8 @@ export const MOCK_ART: ArtPiece[] = [
     title: 'Animation Loop',
     image: '/1.mp4',
     type: 'video',
+    poster: '/posters/1.webp',
+    aspectRatio: '570 / 536',
     tags: ['Animation'],
   },
 ];
