@@ -2,7 +2,7 @@
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
-    "prettier": "^3.7.4",
+    "prettier": "^3.9.10",
     "prettier-plugin-tailwindcss": "^0.8.1"
   },
   "name": "thunder-art",
@@ -10,7 +10,7 @@
   "description": "Welcome! This is the starting point for my portfolio website.",
   "main": "index.js",
   "dependencies": {
-    "puppeteer": "^25.10.0"
+    "puppeteer": "^25.14.0"
   },
   "scripts": {
     "dev": "npm --prefix thunder-web run dev",
