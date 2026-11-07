@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-// import { useTheme } from '@/contexts/ThemeContext';
-
 interface NavLinkProps {
   to: string;
   children: React.ReactNode;
