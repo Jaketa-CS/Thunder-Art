@@ -15,13 +15,13 @@ const Commissions = () => {
   return (
     <>
       <ToSModal isOpen={isToSOpen} onClose={() => setIsToSOpen(false)} />
-      <div className="mx-auto max-w-[1200px] overflow-x-hidden px-6 pt-8 pb-24 font-[var(--font-family-body)] md:pt-10">
+      <div className="mx-auto max-w-300 overflow-x-hidden px-6 pt-8 pb-24 font-(--font-family-body) md:pt-10">
         {/* Clean, Professional Header */}
         <div className="commissions-header mt-12 mb-24 flex flex-col items-center text-center">
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-4 text-4xl font-bold tracking-wide text-[var(--color-text-primary)] md:text-5xl"
+            className="mb-4 text-4xl font-bold tracking-wide text-(--color-text-primary) md:text-5xl"
           >
             COMMISSIONS
           </motion.h1>
@@ -31,7 +31,7 @@ const Commissions = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className={`mb-6 inline-flex items-center gap-2 rounded-xs border bg-[var(--color-bg-secondary)] px-4 py-1.5 text-xs font-semibold tracking-wider ${
+            className={`mb-6 inline-flex items-center gap-2 rounded-xs border bg-(--color-bg-secondary) px-4 py-1.5 text-xs font-semibold tracking-wider ${
               siteConfig.commissions.status === 'OPEN'
                 ? 'border-[#2ea043] text-[#3fb950]'
                 : 'border-[#f85149] text-[#f85149]'
@@ -59,7 +59,7 @@ const Commissions = () => {
               href="https://t.me/ThunderFennec"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-xs bg-[var(--color-accent)] px-7 py-3 text-base font-semibold text-[var(--color-bg-primary)] no-underline transition-all duration-200 hover:brightness-110 active:scale-95"
+              className="rounded-xs bg-(--color-accent) px-7 py-3 text-base font-semibold text-(--color-bg-primary) no-underline transition-all duration-200 hover:brightness-110 active:scale-95"
             >
               Send a Message
             </a>
@@ -69,7 +69,7 @@ const Commissions = () => {
               href="https://trello.com/b/w0MZ464h/thunder-commision-info"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md border border-[var(--color-border)] bg-[var(--color-bg-tertiary)] px-7 py-3 text-base font-medium text-[var(--color-text-primary)] no-underline transition-colors duration-200 hover:bg-[var(--color-border)]"
+              className="rounded-md border border-(--color-border) bg-(--color-bg-tertiary) px-7 py-3 text-base font-medium text-(--color-text-primary) no-underline transition-colors duration-200 hover:bg-(--color-border)"
             >
               View Queue
             </a>
@@ -80,7 +80,7 @@ const Commissions = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             onClick={() => setIsToSOpen(true)}
-            className="inline-block cursor-pointer border-none bg-transparent text-sm text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)] hover:underline"
+            className="inline-block cursor-pointer border-none bg-transparent text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text-primary) hover:underline"
           >
             Read Terms of Service
           </motion.button>

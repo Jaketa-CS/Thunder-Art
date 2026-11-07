@@ -86,11 +86,11 @@ const FursuitMakers = () => {
           target="_blank"
           rel="noopener noreferrer"
           variants={cardVariants}
-          className="flex w-[220px] cursor-pointer flex-col overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-tertiary)] no-underline transition-colors hover:border-[var(--color-accent)]"
+          className="flex w-[220px] cursor-pointer flex-col overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg-tertiary) no-underline transition-colors hover:border-(--color-accent)"
         >
           <div className="p-2">
             {/* "Head made by" / "Body made by" label */}
-            <div className="mb-1 text-center text-[10px] font-semibold tracking-wider text-[var(--color-text-secondary)] uppercase">
+            <div className="mb-1 text-center text-[10px] font-semibold tracking-wider text-(--color-text-secondary) uppercase">
               {maker.label}
             </div>
 

@@ -35,7 +35,7 @@ const BackToTop = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed bottom-8 right-8 bg-[var(--color-bg-tertiary)] text-[var(--color-text-primary)] border border-[var(--color-border)] w-[50px] h-[50px] rounded-full flex items-center justify-center cursor-pointer shadow-[var(--shadow-md)] z-[100] text-2xl transition-all duration-200 hover:-translate-y-1 hover:bg-[var(--color-border)]"
+          className="fixed right-8 bottom-8 z-[100] flex h-[50px] w-[50px] cursor-pointer items-center justify-center rounded-full border border-(--color-border) bg-(--color-bg-tertiary) text-2xl text-(--color-text-primary) shadow-(--shadow-md) transition-all duration-200 hover:-translate-y-1 hover:bg-(--color-border)"
           aria-label="Back to Top"
         >
           ↑

@@ -61,7 +61,7 @@ const GalleryRotator = () => {
             key={panelId}
             initial="idle"
             whileHover="hover"
-            className="relative h-[420px] w-full overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-tertiary)] sm:h-[500px]"
+            className="relative h-[420px] w-full overflow-hidden rounded-xl border border-(--color-border) bg-(--color-bg-tertiary) sm:h-[500px]"
           >
             {/* Clickable Link */}
             <a

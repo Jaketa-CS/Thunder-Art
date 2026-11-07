@@ -18,7 +18,7 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 h-full w-full border-none bg-[var(--color-bg-primary)]/80 backdrop-blur-xs"
+            className="absolute inset-0 h-full w-full border-none bg-(--color-bg-primary)/80 backdrop-blur-xs"
           />
 
           {/* Modal Box */}
@@ -26,16 +26,16 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative z-[1000] flex max-h-[90vh] w-full max-w-[700px] flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-6 shadow-2xl md:p-10"
+            className="relative z-[1000] flex max-h-[90vh] w-full max-w-[700px] flex-col rounded-2xl border border-(--color-border) bg-(--color-bg-secondary) p-6 shadow-2xl md:p-10"
           >
-            <h2 className="mb-4 text-2xl font-bold text-[var(--color-text-primary)] md:text-3xl">
+            <h2 className="mb-4 text-2xl font-bold text-(--color-text-primary) md:text-3xl">
               Terms of Service
             </h2>
 
-            <div className="custom-scrollbar flex flex-col gap-8 overflow-y-auto pr-4 text-sm leading-relaxed text-[var(--color-text-secondary)] md:text-base">
+            <div className="custom-scrollbar flex flex-col gap-8 overflow-y-auto pr-4 text-sm leading-relaxed text-(--color-text-secondary) md:text-base">
               {/* 1. Payment */}
               <section>
-                <h3 className="mb-2 text-lg font-semibold text-[var(--color-text-primary)]">
+                <h3 className="mb-2 text-lg font-semibold text-(--color-text-primary)">
                   Payment & Invoicing
                 </h3>
                 <ul className="flex list-disc flex-col gap-2 pl-5">
@@ -51,7 +51,7 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
 
               {/* 2. Process */}
               <section>
-                <h3 className="mb-2 text-lg font-semibold text-[var(--color-text-primary)]">
+                <h3 className="mb-2 text-lg font-semibold text-(--color-text-primary)">
                   The Process & Revisions
                 </h3>
                 <p className="mb-2">
@@ -81,7 +81,7 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
                     shading and lighting.
                   </li>
                 </ul>
-                <p className="text-[var(--color-accent)]">
+                <p className="text-(--color-accent)">
                   <strong>Revisions:</strong> You can request major changes
                   during the sketch phase. Once lineart and coloring have
                   started, only minor tweaks (like color adjustments or missed
@@ -92,7 +92,7 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
 
               {/* 3. Turnaround */}
               <section>
-                <h3 className="mb-2 text-lg font-semibold text-[var(--color-text-primary)]">
+                <h3 className="mb-2 text-lg font-semibold text-(--color-text-primary)">
                   Turnaround Time & Deadlines
                 </h3>
                 <p className="mb-2">
@@ -108,7 +108,7 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
 
               {/* 4. Copyright */}
               <section>
-                <h3 className="mb-2 text-lg font-semibold text-[var(--color-text-primary)]">
+                <h3 className="mb-2 text-lg font-semibold text-(--color-text-primary)">
                   Copyright & Usage
                 </h3>
                 <ul className="flex list-disc flex-col gap-2 pl-5">
@@ -133,7 +133,7 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
 
               {/* 5. Refunds */}
               <section>
-                <h3 className="mb-2 text-lg font-semibold text-[var(--color-text-primary)]">
+                <h3 className="mb-2 text-lg font-semibold text-(--color-text-primary)">
                   Refunds & Cancellations
                 </h3>
                 <ul className="flex list-disc flex-col gap-2 pl-5">
@@ -159,7 +159,7 @@ const ToSModal = ({ isOpen, onClose }: ToSModalProps) => {
             <div className="mt-auto border-t border-white/5 pt-6">
               <button
                 onClick={onClose}
-                className="w-full cursor-pointer rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-tertiary)] p-4 text-lg font-bold text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-border)]"
+                className="w-full cursor-pointer rounded-xl border border-(--color-border) bg-(--color-bg-tertiary) p-4 text-lg font-bold text-(--color-text-primary) transition-colors hover:bg-(--color-border)"
               >
                 I Understand!
               </button>

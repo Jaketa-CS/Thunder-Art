@@ -11,14 +11,14 @@ const About = () => {
           <h1 className="mb-4 text-4xl font-bold md:text-5xl">About Me</h1>
         </div>
 
-        <div className="content-panel rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-6 md:p-12">
+        <div className="content-panel rounded-xl border border-(--color-border) bg-(--color-bg-secondary) p-6 md:p-12">
           <div className="mb-8 flex flex-col items-center gap-8">
             <div className="relative flex h-56 w-56 items-center justify-center overflow-hidden rounded-full">
               {/* Spinning Rainbow Border */}
               <div className="absolute -inset-1/2 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,#FF0055,#A020F0,#0055FF,#A020F0,#FF0055)]" />
 
               {/* Video Container */}
-              <div className="relative z-1 h-[220px] w-[220px] overflow-hidden rounded-full bg-[var(--color-bg-secondary)]">
+              <div className="relative z-1 h-[220px] w-[220px] overflow-hidden rounded-full bg-(--color-bg-secondary)">
                 <video
                   src="/2.mp4"
                   autoPlay
@@ -32,13 +32,13 @@ const About = () => {
 
             <div className="text-center">
               <h2 className="mb-2 text-2xl font-bold">Thunder / Zevoloz</h2>
-              <p className="font-semibold text-[var(--color-accent)]">
+              <p className="font-semibold text-(--color-accent)">
                 Digital Artist & Illustrator
               </p>
             </div>
           </div>
 
-          <div className="leading-relaxed text-[var(--color-text-secondary)]">
+          <div className="leading-relaxed text-(--color-text-secondary)">
             <p className="mb-6 text-lg">
               Hi, I'm Thunder (also known as Zevoloz)! I'm a Fennec/Bird hybrid
               based out of Colorado, and I specialize in digital art and
@@ -51,7 +51,7 @@ const About = () => {
           </div>
 
           <div className="mt-12">
-            <h3 className="mb-4 border-b border-[var(--color-border)] pb-2 text-xl font-bold">
+            <h3 className="mb-4 border-b border-(--color-border) pb-2 text-xl font-bold">
               Software
             </h3>
             <div className="mb-8 flex flex-wrap gap-4">
@@ -66,14 +66,14 @@ const About = () => {
               ].map((tool) => (
                 <span
                   key={tool}
-                  className="rounded-full border border-[var(--color-border)] bg-[var(--color-bg-tertiary)] px-4 py-2 text-sm text-[var(--color-text-primary)]"
+                  className="rounded-full border border-(--color-border) bg-(--color-bg-tertiary) px-4 py-2 text-sm text-(--color-text-primary)"
                 >
                   {tool}
                 </span>
               ))}
             </div>
 
-            <h3 className="mb-4 border-b border-[var(--color-border)] pb-2 text-xl font-bold">
+            <h3 className="mb-4 border-b border-(--color-border) pb-2 text-xl font-bold">
               Hardware
             </h3>
             <div className="flex flex-wrap gap-4">
@@ -81,7 +81,7 @@ const About = () => {
                 (gear) => (
                   <span
                     key={gear}
-                    className="rounded-full border border-[var(--color-border)] bg-[var(--color-bg-tertiary)] px-4 py-2 text-sm text-[var(--color-text-primary)]"
+                    className="rounded-full border border-(--color-border) bg-(--color-bg-tertiary) px-4 py-2 text-sm text-(--color-text-primary)"
                   >
                     {gear}
                   </span>
@@ -91,7 +91,7 @@ const About = () => {
           </div>
 
           <div className="mt-12">
-            <h3 className="mb-4 border-b border-[var(--color-border)] pb-2 text-xl font-bold">
+            <h3 className="mb-4 border-b border-(--color-border) pb-2 text-xl font-bold">
               Fursuiting
             </h3>
 

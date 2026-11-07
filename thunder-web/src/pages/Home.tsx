@@ -26,7 +26,7 @@ const FilterButton = ({
     className={`cursor-pointer px-3 py-1 text-xs tracking-wider uppercase transition-colors md:text-sm ${
       currentFilter === value
         ? 'font-bold text-white'
-        : 'font-normal text-[var(--color-text-secondary)] hover:text-white'
+        : 'font-normal text-(--color-text-secondary) hover:text-white'
     }`}
   >
     {label}
@@ -40,8 +40,8 @@ const Home = () => {
   return (
     <>
       <div className="container pt-6 pb-12 md:pt-8">
-        <div className="border border-[var(--color-border)] bg-[var(--color-bg-secondary)] shadow-sm">
-          <div className="flex flex-wrap items-center justify-center gap-3 border-b border-[var(--color-border)] py-3 sm:gap-6">
+        <div className="border border-(--color-border) bg-(--color-bg-secondary) shadow-sm">
+          <div className="flex flex-wrap items-center justify-center gap-3 border-b border-(--color-border) py-3 sm:gap-6">
             <FilterButton
               label="All"
               value="all"
